@@ -1,0 +1,99 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.footer{
+    background-color: $primary-blue;
+    color: $orange;
+    padding: 10vh 6vmax 5vh;
+    span{
+        color: $white;
+    }
+    .continuity{
+        .basic-info{
+            font-size: 2.5em;
+            @include mediaM(760px){
+                font-size: 1.2em;
+            }
+        }
+        button{
+            @include solid-button($primary-green, $primary-green-hover, 30px, 10px, 16px);
+            border-radius: 6px;
+        }
+        // .subscribe{
+        //     display: grid;
+        //     grid-template-columns: auto 110px !important;
+        //     border: none;
+        //     border-radius: 6px;
+        //     overflow: hidden;
+        //     max-width: 450px;
+        //     margin: 3vh auto;
+        //     @include mediaM(760px){
+        //         grid-template-columns: auto 90px !important;
+        //     }
+        //     .input-area{
+        //         // padding: 4px 12px;
+        //         background-color: $white;
+        //         input{
+        //             padding: 10px;
+        //             // border-radius: 15px;
+        //             border: none;
+        //             width: 100%;
+        //             &:focus{
+        //                 background-color: $white;
+        //                 outline: none;
+        //             }
+        //             &::placeholder{
+        //                 color: $black;
+        //                 opacity: 0.5;
+        //             }
+        //         }
+
+        //     }
+        //     .submit-area{
+        //         padding: 10px 5px;
+        //         background-color: $primary-green;
+        //         color: $white;
+        //         display: flex;
+        //         align-items: center;
+        //         justify-content: center;
+        //         // font-size: 12px;
+        //         // font-weight: 500;
+        //         transition: 0.2s ease;
+        //         cursor: pointer;
+        //         &:hover{
+        //             background-color: $primary-green-hover;
+        //             color: $white;
+        //         }
+        //         &:active{
+        //             background-color: $primary-green-active;
+        //             color: $white;
+        //         }
+        //     }
+        // }
+    }
+    .row-sects{
+        font-size: 1.1em;
+    }
+    .bottom-holder{
+        padding: 10px 0;
+        a{
+            margin: 10px;
+            color: $orange;
+            transition: 0.2s ease;
+            &:hover{
+                color: $white;
+                text-decoration: none;
+            }
+            &:active{
+                transform: scale(1.2);
+            }
+        }
+        i{
+            font-size: 1.6em;
+            @include mediaM(750px){
+                padding: 10px;
+                font-size: 2.5em;
+            }
+        }
+    }
+}

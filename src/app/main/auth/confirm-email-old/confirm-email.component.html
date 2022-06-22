@@ -1,0 +1,33 @@
+<div class="auth-bg">
+    <div class="auth-card">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <p>
+                        A verification code has been sent to <strong>{{ userDetails.email }}</strong>.
+                        Type in the code to verify your email address.
+                    </p>
+                    <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                        <label>Verification Code</label>
+                        <input type="text" required name="code" required [(ngModel)]="form.code"
+                            id="code" placeholder="Enter verification code">
+                        <p class="text-center">
+                            Didn't get a code?
+                            <span *ngIf="!canResend">Wait a little while to be able to resend</span>
+                            <span *ngIf="canResend" (click)="resendCode()" class="font-weight-bold">Resend Code</span>
+                        </p>
+                        <button class="solid-button" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Confirm Email</span>
+                            <div class="load-holder" *ngIf="loading"><app-basic-loader [colorMap]="'light'"></app-basic-loader></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

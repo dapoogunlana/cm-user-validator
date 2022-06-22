@@ -1,0 +1,9 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.availability-capsule{
+    color: $primary-blue;
+    background-color: $light-blue;
+    border-radius: 12px;
+    padding: 2px 10px;
+}

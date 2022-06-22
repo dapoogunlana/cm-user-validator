@@ -1,0 +1,93 @@
+<div class="hero py-5">
+    <div class="spread-info mb-custom">
+        <div class="imh logo">
+            <a routerLink="/">
+                <img src="../../../../assets/images/new-marketing/main-logo.png" alt="">
+            </a>
+        </div>
+        <a routerLink="/auth/log-in">
+            <button class="solid-button-orange-2">Login</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+<div class="benefit mt-5">
+    <div class="w90 max1200">
+        <h1 class="g-4">Getting Started</h1>
+        <p class="c-grey">
+            <span *ngFor="let level of levels; let i = index">{{ level }} <span *ngIf="(i + 1) < levels.length">/ </span></span>
+        </p>
+        <div class="mt-4 faq-sect">
+            <div class="faq-sect-header">
+                <h6 class="my-2 py-2 px-4">Articles in this category</h6>
+            </div>
+            <div class="faq-sect-body py-5 px-5">
+                <div *ngIf="articleExpanded">
+                    <h5 class="c-grey">Submitting Your Profile</h5>
+                    <p class="c-grey">
+                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation 
+                        veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat 
+                        duis  mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do 
+                        amet sint. Velit duis enim velit mollit. Exon deserunt ullamco est sit aliqua dolor do amet sint. Velit officia 
+                        consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit 
+                        aliqua dolor do amet sint. Velit  duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim 
+                        mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam 
+                        consequat sunt nostrud amet.Amet non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis 
+                        enim velit mollit. Exercitation v.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat 
+                        duis enim velit mollit. Eamet sint. Velit duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation 
+                        veniam consequat sunt nostrud amet.Amet non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat 
+                        duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                    </p>
+                </div>
+                <hr *ngIf="articleExpanded">
+                <div>
+                    <h5 class="c-grey"><span *ngIf="articleExpanded">Related </span>Articles</h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6" *ngFor="let article of articles">
+                            <p class="c-sc-blue clickable" (click)="pickArticle(1)">Conduct multidisciplinary consults</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-5 pb-4">
+            <p class="c-grey">
+                Cant find the answers you are looking for?  We are here to help
+            </p>
+            <button class="solid-button-sec-2" (click)="openContactModal()">Contact cm Support</button>
+        </div>
+    </div>
+</div>
+
+<app-faq-modal *ngIf="contactModalpened" (modalSignal)="closeContactModal()"></app-faq-modal>
+
+
+<div class="footer p-3">
+    <div class="spread-info-web-sm w90 holder">
+        <div class="center-info">
+            <a routerLink="/insights">Insights</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/privacy">Privacy</a>
+            <a routerLink="/terms">Terms</a>
+        </div>
+        <div class="center-info">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="center-info footer-space-equator">
+            cm, Inc
+        </div>
+    </div>
+</div>
+

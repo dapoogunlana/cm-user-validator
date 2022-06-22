@@ -1,0 +1,207 @@
+<div class="hero">
+    <div class="underlay"></div>
+    <div class="info" data-aos="fade-right">
+        <div class="spacer"></div>
+        <h2>
+            Monetize your Expertise. Impact the world
+        </h2>
+        <p>
+            We believe you’re very qualified in your field, so why not get paid for it?
+        </p>
+        <div class="mt-3 spread-info-front">
+            <a routerLink="/auth/signup-roadmap">
+                <button><h6>Become an Expert</h6></button>
+            </a>
+            <div class="clickable spread-info-front ml-3" (click)="toggleVideo(true)">
+                <i class="far fa-play-circle increased-xl ml-2 mr-2"></i>
+                <h6 class="mb-0">Take A Tour</h6>
+            </div>
+        </div>
+    </div>
+    <div class="hero-image" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">
+        <div class="imh">
+            <img src="assets//images/marketing/bg-pic-card.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="stats-bar">
+    <div>
+        <h2>Market your expertise.</h2>
+    </div>
+    <div>
+        <h2>Help others advance.</h2>
+    </div>
+    <div>
+        <h2>Earn Money.</h2>
+    </div>
+</div>
+<div class="credibility-sect">
+    <div class="coaches mb-5">
+        <div class="validation">
+            <p class="text-center">
+                In-demand Coaches
+            </p>
+        </div>
+        <div class="row scale-90m">
+            <div class="col-6 col-md-3 pl-0 pr-0 mob" [ngClass]="{'mobile-fade': i < 4}" *ngFor="let tutor of tutors; let i = index">
+                <div class="tutor-card imh">
+                    <img [src]="'assets/images/marketing/tutor' + (i + 1) + '.png'" alt="">
+                    <div class="overlay">
+                      <div>
+                          <h6>{{ tutor.name }}</h6>
+                          <span>{{ tutor.profession }}</span><br>
+                          <span>{{ tutor.username }}</span><br>
+                          <span>{{ tutor.sessionsCompleted }} lessons completed</span><br>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 pl-0 pr-0">
+                <div class="tutor-card imh">
+                    <img [src]="'assets/images/marketing/tutor2.png'" alt="">
+                    <div class="overlay-strong">
+                        <h2>
+                            What’s your area of expertise?
+                        </h2>
+                        <a routerLink="/auth/coach-signup">
+                            <button><h6>Become an Expert</h6></button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="for-protegees">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="w90">
+                    <h2>
+                        For Coaches
+                    </h2>
+                    <div class="highlight blue mt-3 mb-5"></div>
+                    <p>
+                        We put the best minds on the map to enable them share their intellect and shape 
+                        young minds for accelerated success. Join us today!
+                    </p>
+                </div>
+                <div class="row mt-10">
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="benefit-card">
+                            <div class="max60 imh" data-aos="zoom-in">
+                                <img src="../../../../assets/images/marketing/for-coach-icon/target.png" class="rad-10" alt="">
+                            </div>
+                            <h6 class="mt-3">
+                                Global reach for impact
+                            </h6>
+                            <div class="highlight-slim brown mt-3 mb-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="benefit-card">
+                            <div class="max60 imh" data-aos="zoom-in">
+                                <img src="../../../../assets/images/marketing/for-coach-icon/award.png" class="rad-10" alt="">
+                            </div>
+                            <h6 class="mt-3">
+                                Convenient and secure payment platform
+                            </h6>
+                            <div class="highlight-slim green mt-3 mb-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="w90 pr-image mb-5" data-aos="zoom-out" data-aos-delay="500">
+                    <img src="../../../../assets/images/marketing/big-coach-image.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mt-3 mb-3">
+                <div class="benefit-card">
+                    <div class="max60 imh" data-aos="zoom-in">
+                        <img src="../../../../assets/images/marketing/for-coach-icon/thumbs-up.png" class="rad-10" alt="">
+                    </div>
+                    <h6 class="mt-3">
+                        Simple powerful tools to create world class content
+                    </h6>
+                    <div class="highlight-slim dirty-green mt-3 mb-3"></div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-3 mb-3">
+                <div class="benefit-card">
+                    <div class="max60 imh" data-aos="zoom-in">
+                        <img src="../../../../assets/images/marketing/for-coach-icon/key.png" class="rad-10" alt="">
+                    </div>
+                    <h6 class="mt-3">
+                        AI-driven performance metrics 
+                    </h6>
+                    <div class="highlight-slim pink mt-3 mb-3"></div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-3 mb-3">
+                <div class="benefit-card">
+                    <div class="max60 imh" data-aos="zoom-in">
+                        <img src="../../../../assets/images/marketing/for-coach-icon/collaborate.png" class="rad-10" alt="">
+                    </div>
+                    <h6 class="mt-3">
+                        Collaborate with top coaches for accelerated sessions 
+                    </h6>
+                    <div class="highlight-slim orange mt-3 mb-3"></div>
+                </div>
+            </div>
+            <div class="col-md-3 mt-3 mb-3">
+                <div class="benefit-card">
+                    <div class="max60 imh" data-aos="zoom-in">
+                        <img src="../../../../assets/images/marketing/for-coach-icon/assistance.png" class="rad-10" alt="">
+                    </div>
+                    <h6 class="mt-3">
+                        Expert assistance for seamless coaching
+                    </h6>
+                    <div class="highlight-slim dark-blue mt-3 mb-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="how-to">
+    <div class="center-info-col">
+        <h2>How it works</h2>
+        <div class="highlight pink mt-3 mb-5"></div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4">
+            <div class="step1">
+                <div class="imh w90 max300" data-aos="fade-in">
+                    <img src="../../../../assets/images/marketing/coach-step1.png" data-aos-delay="400" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="step2">
+                <div class="imh w90 max300" data-aos="fade-in" data-aos-delay="900">
+                    <img src="../../../../assets/images/marketing/coach-step2.png" class="rad-10" alt="">
+                </div>
+                <div class="imh arrow mobile-fade" data-aos-delay="1000">
+                    <img src="../../../../assets/images/marketing/coach-straight-arrow.svg" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="step3">
+                <div class="imh w90 max300" data-aos="fade-in" data-aos-delay="1400">
+                    <img src="../../../../assets/images/marketing/coach-step3.png" class="rad-10" alt="">
+                </div>
+                <div class="imh arrow mobile-fade" data-aos-delay="600">
+                    <img src="../../../../assets/images/marketing/coach-angular-arrow.svg" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="be-coach">
+        <a routerLink="coaches-events">
+            <button><h6>Become an Expert now</h6></button>
+        </a>
+    </div>
+</div>
+
+<app-video-modal *ngIf="videoToggle" (modalSignal)="toggleVideo()"></app-video-modal>

@@ -1,0 +1,97 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <h1 class="mb-3">1:1 Sessions</h1>
+    <div class="tablet-case mb-3 mt-4">
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'new'}" (click)="switchTab('new')">
+            New
+        </div>
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'upcoming'}" (click)="switchTab('upcoming')">
+            Upcoming
+        </div>
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'history'}" (click)="switchTab('history')">
+            History
+        </div>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'new'">
+        <div class="py-5 center-info" *ngIf="!sessionDetailsLoaded; else newSessionLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #newSessionLoaded>
+            <div class="white rad-15 sc-blue-border p-3" data-aos="fade-up" *ngIf="newSessions.length === 0">
+                <p class="m-0">You have no sessions request at this time</p>
+            </div>
+            <div class="white rad-15 p-3 shadowed" data-aos="fade-up" *ngIf="newSessions.length > 0">
+                <h5 class="g-6 pt-3 mb-3">Session requests</h5>
+                <div class="maxh-60 auto-flow mb-4">
+                    <div class="rad-15 p-3 grey-border mb-4" *ngFor="let request of newSessions; let i = index">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="center-info-front">
+                                            <img src="./../../.././../assets/images/new-coach-dashboard/user.svg" alt="">
+                                            <span class="ml-4">{{ request.client }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="center-info-front">
+                                            <img src="./../../.././../assets/images/new-coach-dashboard/calendar.svg" alt="">
+                                            <span class="ml-4">{{ request.date }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="center-info-front">
+                                            <img src="./../../.././../assets/images/new-coach-dashboard/clock.svg" alt="">
+                                            <span class="ml-4">{{ request.time }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="center-info-front">
+                                            <img src="./../../.././../assets/images/new-coach-dashboard/dollar-sign.svg" alt="">
+                                            <span class="ml-4">{{ request.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="py-0 my-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="c-grey mb-1 pb-1">Request Description</p>
+                                <p class="c-grey reduced">{{ request.description }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="spread-info-back">
+                                    <img src="./../../../../assets/images/new-coach-dashboard/one-on-one-icon-block.svg" width="60" />
+                                    <span class="ml-3">{{ request.type }}</span>
+                                  </div>
+                                <div class="spread-info-back">
+                                    <p class="mb-0 py-2 px-3 clickable c-sc-blue mr-4" (click)="rejectRequest(request.id)">Can't make it</p>
+                                    <button class="solid-button-sec" (click)="acceptRequest(request.id)">Accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'upcoming'">
+        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+            <h5 class="g-6 pt-3">Upcoming Sessions</h5>
+            <hr class="py-0 my-3">
+            <app-default-table [title]="'Its false'" [tableData]="upcomingessionsTableData" [calculateTotal]="false"></app-default-table>
+        </div>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'history'">
+        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+            <h5 class="g-6 pt-3">Previous Sessions</h5>
+            <hr class="py-0 my-3">
+            <app-default-table [title]="'Its false'" [tableData]="previousSessionsTableData" [calculateTotal]="false"></app-default-table>
+        </div>
+    </div>
+</div>

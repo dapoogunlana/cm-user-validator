@@ -1,0 +1,77 @@
+<div class="all">
+    <div class="w96 max1100">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="coach-img mb-3">
+                    <img [src]="eventDetails.eventImage" alt="">
+                    <!-- <img src="./../../../../assets/images/marketing/card-photo2.png" alt=""> -->
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="coach-info mb-5">
+                    <h3 class="c-primary-blue font-weight-bold">{{ eventDetails.eventTitle }}</h3>
+                    <div class="spread-info-front mb-2">
+                        <div class="avatar">
+                            <img [src]="eventDetails.organizerImage" alt="">
+                        </div>
+                        <p class="c-secondary-blue mb-0">{{ eventDetails.organizer }}</p>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <p class="mb-0 mr-5" [innerHTML]="utility.calculateColoredStars(eventDetails.rating)"></p>
+                        <p class="mb-0 font-weight-bold mr-l c-primary-blue"><i class="fas fa-video mr-3"></i>Intro Video </p>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <img src="./../../../../assets/images/marketing/calendar.svg" width="30px" alt="">
+                        <p class="mb-0 ml-2">{{ eventDetails.date }}</p>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <img src="./../../../../assets/images/marketing/clock.svg" width="30px" alt="">
+                        <p class="mb-0 ml-2">{{ eventDetails.time }}</p>
+                    </div>
+                    <div class="c-pr-blue">
+                        <small>Enrollment fee</small>
+                        <p class="mb-0 font-weight-bold increased">${{ eventDetails.enrollmentFee }} </p>
+                    </div>
+                    <div class="spread-info-front">
+                        <div class="imageStack">
+                            <img [src]="image" *ngFor="let image of eventDetails.atendeeImages" alt="">
+                        </div>
+                        <div>
+                            <p class="mb-0 c-sc-blue">+{{ eventDetails.numberOfAtendees }} Atendees</p>
+                            <p class="mb-0 c-orange">+{{ eventDetails.numberOfSeatsRemaining }} seats remaining</p>
+                        </div>
+                    </div>
+                    <p class="c-faint-font mt-3 mb-3">
+                        {{ eventDetails.brief }}
+                    </p>
+                    <div class="max400 info-grid">
+                        <button class="hollow-button"><i class="fas fa-share-alt"></i> Share</button>
+                        <span></span>
+                        <button class="solid-button">Enroll</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="tablet-case mb-3 mt-3">
+                <div class="tablet" [ngClass]="{'active-tab': activeTab === 'event_outline'}" (click)="switchTab('event_outline')">
+                    Event Outline
+                </div>
+                <div class="tablet" [ngClass]="{'active-tab': activeTab === 'relating_events'}" (click)="switchTab('relating_events')">
+                    Relating Events
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="activeTab === 'relating_events'">
+                <!-- <div class="col-md-6" *ngFor="let event of eventDetails.relatingEvents"> -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3 mt-3" *ngFor="let item of events">
+                    <app-event-card [cardData]="item"></app-event-card>
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="activeTab === 'event_outline'">
+                <div class="col-md-12">
+                    <p class="c-faint-font mb-3" *ngFor="let topic of eventDetails.outline">{{ topic }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

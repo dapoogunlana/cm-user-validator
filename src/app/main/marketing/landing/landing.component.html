@@ -1,0 +1,336 @@
+<div class="hero">
+    <div class="underlay"></div>
+    <div class="info" data-aos="fade-right">
+        <div class="spacer"></div>
+        <h1>
+            Learn. Apply. Achieve: <br>
+            Your Path to Greatness Begins Here
+        </h1>
+        <p>
+            Build skills and learn from the best minds and coaches across the world.
+        </p>
+        <div class="search-area mt-3">
+            <div class="input-area">
+                <input type="text" placeholder="Try “IELTS, MCAT, ICAN”" [(ngModel)]="search" name="search" id="search">
+            </div>
+            <div class="submit-area" (click)="runSearch()">
+                <i class="fa fa-search"></i> &nbsp; Search
+            </div>
+        </div>
+        <div class="popular">
+            <div class="unwrapped">Popular</div>
+            <a routerLink="/"><div>Mobile App Development</div></a>
+            <a routerLink="/"><div>Mobile</div></a>
+            <a routerLink="/"><div>Web Design</div></a>
+            <a routerLink="/"><div>SEO Training</div></a>
+        </div>
+    </div>
+    <div class="hero-image" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">
+        <div class="imh">
+            <img src="assets//images/marketing/bg-girl.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="credibility-sect">
+    <div class="validation">
+        <p class="text-center">
+            Our Coaches are from some of the world’s best companies
+        </p>
+        <div class="companies">
+            <img src="assets/images/marketing/logos/Google-Logo.svg" alt="">
+            <img src="assets/images/marketing/logos/Twitter-Logo.svg" alt="">
+            <img src="assets/images/marketing/logos/Facebook-Logo.svg" alt="">
+            <img src="assets/images/marketing/logos/Apple-Logo.svg" alt="">
+            <img src="assets/images/marketing/logos/Citi-Venture-Capital-International-Logo.svg" alt="">
+            <img src="assets/images/marketing/logos/Microsoft-Logo.svg" alt="">
+        </div>
+    </div>
+    <div class="coaches">
+        <ngb-carousel #carousel [interval]="3000" [showNavigationArrows]="false" [showNavigationIndicators]="true">
+            <ng-template ngbSlide>
+              <div class="row scale-90m mb-5">
+                  <div class="col-6 col-md-3 pl-0 pr-0" *ngFor="let tutor of topCoaches; let i = index">
+                      <div class="tutor-card imh">
+                          <img [src]="tutor.imageUrl" alt="">
+                          <div class="overlay">
+                            <div>
+                                <h6>{{ tutor.name }}</h6>
+                                <span>{{ tutor.catchyAchievementPhrase }}</span><br>
+                                <!-- <span>{{ tutor.username }}</span><br>
+                                <span>{{ tutor.sessionsCompleted }} lessons completed</span><br> -->
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="row scale-90m mb-5">
+                  <div class="col-6 col-md-3 pl-0 pr-0" *ngFor="let tutor of topCoaches; let i = index">
+                      <div class="tutor-card imh">
+                          <img [src]="'assets/images/marketing/tutor' + (i + 1) + '.png'" alt="">
+                          <div class="overlay">
+                            <div>
+                                <h6>{{ tutor.name }}</h6>
+                                <span>{{ tutor.catchyAchievementPhrase }}</span><br>
+                                <!-- <span>{{ tutor.username }}</span><br>
+                                <span>{{ tutor.sessionsCompleted }} lessons completed</span><br> -->
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <div class="domains">
+        <h3>Trending Categories</h3>
+        <div class="highlight cyan"></div>
+        <div class="grid5b mt-5 mb-5">
+            <!-- <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="00">
+                <div class="im-ma w60 max100">
+                    <img [src]="../../../../assets/images/marketing/domain-icons/wallet-1.svg" alt="">
+                </div>
+                <p>Finance</p>
+            </div> -->
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700"
+            data-aos-delay="200" *ngFor="let domain of domains; let i = index">
+                <div class="im-ma w60 max100">
+                    <img src="domain.imageUrl" alt="">
+                </div>
+                <p>{{ domain.name }}</p>
+            </div>
+            <!-- <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="100">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/suitcase-1.svg" alt="">
+                </div>
+                <p>Business development</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="200">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/laptop-1.svg" alt="">
+                </div>
+                <p>E-commerce</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="300">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/wallet-1.svg" alt="">
+                </div>
+                <p>Finance</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="400">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/bank-1.svg" alt="">
+                </div>
+                <p>Banking</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="500">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/laptop-1.svg" alt="">
+                </div>
+                <p>E-commerce</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="600">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/wallet-1.svg" alt="">
+                </div>
+                <p>Finance</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="700">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/bank-1.svg" alt="">
+                </div>
+                <p>Banking</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="800">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/suitcase-1.svg" alt="">
+                </div>
+                <p>Business development</p>
+            </div>
+            <div class="text-center my-3" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="900">
+                <div class="im-ma w60 max100">
+                    <img src="../../../../assets/images/marketing/domain-icons/laptop-1.svg" alt="">
+                </div>
+                <p>E-commerce</p>
+            </div> -->
+        </div>
+    </div>
+</div>
+<div class="plans">
+    <div class="skew-bg"></div>
+    <div class="full-content pt-5">
+        <div class="w90 max550 text-center">
+            <h2>
+                Plans To Fit Every Budget
+            </h2>
+            <div class="highlight-c blue"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" *ngFor="let plan of pricingPlans">
+                <div class="plan">
+                    <div class="plan-top">
+                        <h3>{{ plan.name }}</h3>
+                        <p>
+                            {{ plan.briefSummary }}
+                        </p>
+                    </div>
+                    <div class="plan-body">
+                        <div class="plan-grid"  *ngFor="let feature of plan.descriptions">
+                            <i class="fas fa-check"></i>
+                            <p>
+                                {{ feature.description }}
+                            </p>
+                        </div>
+                        <div class="plan-button">
+                            <a routerLink="/find-coach" [queryParams]="{plan: plan.id}">
+                                <button><strong>Explore Coaches</strong></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="for-protegees">
+    <div class="skew-bg"></div>
+    <div class="skew-bg2"></div>
+    <div class="full-content pt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="w90">
+                    <h2>
+                        For Learners
+                    </h2>
+                    <div class="highlight green mt-3 mb-5"></div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="w90 pr-image mt-5 mb-5">
+                    <img src="../../../../assets/images/marketing/for-protegee.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="w90 row">
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/trending-up.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Up-skill or carve a new path altogether
+                        </h6>
+                        <div class="highlight-slim orange mt-3 mb-7"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/target.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Goal-oriented coaching to help unlock your next level 
+                        </h6>
+                        <div class="highlight-slim brown mt-23 mb-7"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/award.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Strong community of peers and mentors to achieve quantifiable goals
+                        </h6>
+                        <div class="highlight-slim green mt-3 mb-7"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/key.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Proven coaches + Time-tested Principles at an affordable cost
+                        </h6>
+                        <div class="highlight-slim blue mt-3 mb-7"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/thumbs-up.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Exclusive access to the best minds to enable transformation
+                        </h6>
+                        <div class="highlight-slim dirty-green mt-3 mb-7"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="max60 imh" data-aos="zoom-in">
+                            <img src="../../../../assets/images/marketing/for-protegee-icon/medal.png" class="rad-10" alt="">
+                        </div>
+                        <h6 class="mt-3">
+                            Easy scheduling and displayable certificates of recognition
+                        </h6>
+                        <div class="highlight-slim red-faded mt-3 mb-7"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="how-to">
+    <h2>How to find a coach</h2>
+    <div class="highlight green mb-5"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="step1">
+                <div class="imh" data-aos="fade-in">
+                    <img src="../../../../assets/images/marketing/step1.svg" data-aos-delay="400" class="rad-10" alt="">
+                </div>
+                <div class="imh arrow mobile-fade" data-aos-delay="600">
+                    <img src="../../../../assets/images/marketing/step1-arrow.svg" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="step2">
+                <div class="imh" data-aos="fade-in" data-aos-delay="900">
+                    <img src="../../../../assets/images/marketing/step2.svg" class="rad-10" alt="">
+                </div>
+                <div class="imh arrow mobile-fade" data-aos-delay="1000">
+                    <img src="../../../../assets/images/marketing/step2-arrow.svg" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="step3">
+                <div class="imh" data-aos="fade-in" data-aos-delay="1400">
+                    <img src="../../../../assets/images/marketing/step3.svg" class="rad-10" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="find-coach">
+        <a routerLink="/find-coach">
+            <button><strong>Find a coach now</strong></button>
+        </a>
+    </div>
+    <div class="event-sect">
+        <h3 class="mb-3 mt-3">Take a look at upcoming events</h3>
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-2" *ngFor="let eventData of UpcomingEvents">
+                <app-event-card [cardData]="eventData"></app-event-card>
+            </div>
+            <!-- <div class="col-md-6 mt-3 mb-2">
+                <app-event-card></app-event-card>
+            </div>
+            <div class="col-md-6 mt-3 mb-2">
+                <app-event-card></app-event-card>
+            </div>
+            <div class="col-md-6 mt-3 mb-2">
+                <app-event-card></app-event-card>
+            </div>
+            <div class="col-md-6 mt-3 mb-2">
+                <app-event-card></app-event-card>
+            </div> -->
+        </div>
+    </div>
+</div>

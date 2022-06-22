@@ -1,0 +1,31 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+
+.restriction-area{
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.switch{
+    width: 35px;
+    height: 20px;
+    background-color: $grey-light;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    div{
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        border-radius: 50%;
+        box-shadow: 0 0 8px -1px $black-faint3;
+    }
+}
+.active-switch{
+    justify-content: flex-end;
+    background-color: $secondary-blue;
+}

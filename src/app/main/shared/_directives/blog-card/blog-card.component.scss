@@ -1,0 +1,55 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.coach{
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 2px;
+    background-color: $white;
+    border-radius: 20px;
+    // .contain{}
+    h6{
+        color: $primary-blue;
+        font-size: 1.2em;
+    }
+    .coach-top{
+        display: grid;
+        grid-template-columns: auto 67px;
+        .coach-sticker{
+            background-color: $primary-blue;
+            color: $white;
+            margin-left: 10px;
+            border-radius: 16px;
+            padding: 3px 3px;
+            width: 65px !important;
+            font-size: 12px;
+            span{
+                border-radius: 50%;
+                width: 9px;
+                height: 9px;
+                display: inline-block;
+                margin-right: 10px;
+                background-color: $white;
+            }
+        }
+    }
+    .avatar{
+        width: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid $white;
+        margin-right: 14px;
+        img{
+            width: 100%;
+        }
+    }
+    .imageStack{
+        padding: 4px 4px 4px 24px;
+        img{
+            width: 30px;
+            border-radius: 50%;
+            border: 2px solid $white;
+            margin-left: -20px;
+        }
+    }
+}

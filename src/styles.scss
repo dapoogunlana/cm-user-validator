@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/general.scss';
+
+@font-face{
+    font-family: 'Gilroy2';
+    src: url(assets/fonts/gilroy-family/Gilroy-Light.otf);
+    font-weight: 200;
+}
+
+@font-face{
+    font-family: 'Gilroy3';
+    src: url(assets/fonts/gilroy-family/Gilroy-Regular.ttf);
+    font-weight: 300;
+}
+
+@font-face{
+    font-family: 'Gilroy4';
+    src: url(assets/fonts/gilroy-family/Gilroy-Medium.ttf);
+    font-weight: 400;
+}
+
+@font-face{
+    font-family: 'Gilroy6';
+    src: url(assets/fonts/gilroy-family/Gilroy-Bold.ttf);
+    font-weight: 600;
+}
+
+@font-face{
+    font-family: 'Gilroy7';
+    src: url(assets/fonts/gilroy-family/Gilroy-ExtraBold.otf);
+    font-weight: 700;
+}
+
+@font-face{
+    font-family: 'Gilro8';
+    src: url(assets/fonts/gilroy-family/Gilroy-Heavy.ttf);
+    font-weight: 800;
+}
+
+// @font-face{
+//     font-family: 'Gilroy';
+//     src: url(assets/fonts/gilroy-family/Gilroy-Light.otf);
+//     src: url(assets/fonts/gilroy-family/Gilroy-Regular.ttf);
+//     src: url(assets/fonts/gilroy-family/Gilroy-Medium.ttf);
+//     src: url(assets/fonts/gilroy-family/Gilroy-Bold.ttf);
+//     src: url(assets/fonts/gilroy-family/Gilroy-ExtraBold.otf);
+//     src: url(assets/fonts/gilroy-family/Gilroy-Heavy.ttf);
+//     // font-weight: 900;
+// }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gilroy3';
+    @include mediaM(750px){
+        font-size: 0.9rem;
+    }
+}
+h1{
+    font-family: 'Gilroy7';
+    @include mediaM(750px){
+        font-family: 'Gilroy6';
+    }
+}
+h2{
+    font-family: 'Gilroy6';
+}
+h3{
+    font-family: 'Gilroy4';
+}
+h6{
+    font-family: 'Gilroy6';
+}
+body{
+    overflow-x: hidden;
+}
+// .root{
+//     // width: 100%;
+//     overflow-x: hidden;
+// }
+a{
+    color: inherit;
+    text-decoration: none !important;
+    &:hover{
+        text-decoration: none !important;
+    }
+}
+
+p{
+    font-size: 0.9em;
+}
+
+.image-lock{
+    img{
+        width: 100%;
+    }
+}
+
+.g-2{
+    font-family: 'Gilroy2';
+}
+.g3{
+    font-family: 'Gilroy3';
+}
+.g-4{
+    font-family: 'Gilroy4';
+}
+.g-6{
+    font-family: 'Gilroy6';
+}
+.g-7{
+    font-family: 'Gilroy7';
+}
+.g-8{
+    font-family: 'Gilroy8';
+}

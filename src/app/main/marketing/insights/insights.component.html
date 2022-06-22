@@ -1,0 +1,175 @@
+<div class="hero">
+    <div class="spread-info mb-custom">
+        <div class="imh logo">
+            <a routerLink="/">
+                <img src="../../../../assets/images/new-marketing/main-logo.png" alt="">
+            </a>
+        </div>
+        <a routerLink="/auth/log-in">
+            <button class="solid-button-orange-2">Login</button>
+        </a>
+    </div>
+    <div class="board">
+        <div class="anim-holder">
+            <div class="imh w100">
+                <img src="../../../../assets/images/new-marketing/insight-hero.png" alt="">
+            </div>
+        </div>
+        <div class="content">
+            <P class="c-sc-blue more-space">THE OFFICIAL COOACHMIE BLOG</P>
+            <div class="pt-5 md-open"></div>
+            <h1 class="c-pr-blue">
+                Proven insights to
+            </h1>
+            <h1 class="c-sc-blue g-4 skip-slider" *ngIf="activeQuote">
+                {{ activeQuote }}
+            </h1>
+            <p class="c-grey increased mb-4">From domain experts across the world.</p>
+            <div class="pt-4 pb-3 md-close"></div>
+            <a routerLink="/auth/coach-request-invite">
+                <button class="solid-button-2 c-yellow-im p-3">START SHARING</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="benefit mt-2">
+    <div class="w90 max110">
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <div class="w96 my-5">
+                    <div class="blue-sect px-4 pb-4">
+                        <div class="">
+                            <img src="./../../../../assets/images/new-marketing/blue_ribbon.png" width="24" alt="">
+                            <p class="py-2 pl-4 c-sc-blue inline-block">FEATURED</p>
+                        </div>
+                        <div class="imh overflow-hidden rad-15">
+                            <img src="./../../../../assets/images/new-marketing/insight-highlight-img.jpg" alt="">
+                        </div>
+                        <h2 class="mt-4 mb-3">Here are the Top Mentors of December</h2>
+                        <p class="c-grey">Introduction</p>
+                        <p class="c-grey">
+                            This policy describes what information we collect when you use Superpeer’s sites, services, mobile applications, products, and content (“Services”). It also provides information about how we store, transfer, use, and delete that information, and what choices you have with respect to the information.
+                        </p>
+                        <div class="spread-info-front pt-3">
+                            <div class="ww40 imh rad-15 overflow-hidden">
+                                <img src="./../../../../assets/images/new-marketing/little-avatar.png" alt="">
+                            </div>
+                            <div class="pl-3">
+                                <h5 class="mb-0">Owolabi Joseph</h5>
+                                <p class="c-grey-light mb-0">
+                                    13 Aug 2021 - 46 min read
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="w96 my-5">
+                    <div class="yellow-sect px-2 pb-4 full-min">
+                        <div class="px-3">
+                            <img src="./../../../../assets/images/new-marketing/blue_ribbon.png" width="24" alt="">
+                            <p class="py-2 pl-4 c-sc-blue inline-block">EDITOR’S</p>
+                        </div>
+                        <div class="row px-3 pt-3 pb-3">
+                            <div class="col-6">
+                                <div class="imh">
+                                    <img src="./../../../../assets/images/new-marketing/insight-tutor-1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-6 pl-0">
+                                <p class="c-grey">This policy describes what to expect</p>
+                            </div>
+                        </div>
+                        <div class="row px-3 pt-3 pb-3">
+                            <div class="col-6">
+                                <div class="imh">
+                                    <img src="./../../../../assets/images/new-marketing/insight-tutor-2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-6 pl-0">
+                                <p class="c-grey">This policy describes what to expect</p>
+                            </div>
+                        </div>
+                        <div class="row px-3 pt-3 pb-3">
+                            <div class="col-6">
+                                <div class="imh">
+                                    <img src="./../../../../assets/images/new-marketing/insight-tutor-3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-6 pl-0">
+                                <p class="c-grey">This policy describes what to expect</p>
+                            </div>
+                        </div>
+                        <div class="row px-3 pt-3 pb-3">
+                            <div class="col-6">
+                                <div class="imh">
+                                    <img src="./../../../../assets/images/new-marketing/insight-tutor-4.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-6 pl-0">
+                                <p class="c-grey">This policy describes what to expect</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6" *ngFor="let insight of insightList" data-aos="fade-up">
+                <a [routerLink]="'/insight/' + insight.id">
+                    <div class="insight-card max450 w96 p-3 my-4">
+                        <div class="imh rad-10 overflow-hidden mb-3 rad-10">
+                            <img [src]="insight.banner" alt="">
+                        </div>
+                        <h3 class="c-purple-grey">{{ insight.title }}</h3>
+                        <p class="c-purple-grey mt-3 mb-0">Introduction</p>
+                        <p class="c-purple-grey mt-2">
+                            {{ insight.brief }}
+                        </p>
+                        <div class="spread-info-front pt-3">
+                            <div class="ww40 imh rad-15 overflow-hidden">
+                                <img [src]="insight.image" alt="">
+                            </div>
+                            <div class="pl-3">
+                                <h5 class="mb-0 reduced-soft">{{ insight.author }}</h5>
+                                <p class="c-grey-light mb-0">
+                                    {{ insight.datePosted }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <h5 class="py-4 text-center c-purple-grey"><span class="clickable" (click)="loadMoreArticles()">{{loadingArticles ? 'Loading...' : 'See More Articles'}}</span></h5>
+</div>
+
+<div class="footer p-3">
+    <div class="spread-info-web-sm w90 holder">
+        <div class="center-info">
+            <a routerLink="/insights">Insights</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/privacy">Privacy</a>
+            <a routerLink="/terms">Terms</a>
+        </div>
+        <div class="center-info">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="center-info footer-space-equator">
+            cm, Inc
+        </div>
+    </div>
+</div>
+

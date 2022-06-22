@@ -1,0 +1,67 @@
+<div class="filter" id="filter" [ngClass]="{'fixed-filter': fixedFilter}">
+    <div class="w90">
+        <div class="filter-head no-scroll">
+            <div class="category-tabs">
+                <div class="category" (click)="changeCategory('all_results')" 
+                    [ngClass]="{'active-category': category === 'all_results'}">
+                    All Results
+                </div>
+                <div class="category" (click)="changeCategory('most_impressions')" 
+                    [ngClass]="{'active-category': category === 'most_impressions'}">
+                    Most Impressions
+                </div>
+                <div class="category" (click)="changeCategory('most_viewed')" 
+                    [ngClass]="{'active-category': category === 'most_viewed'}">
+                    Most Viewed
+                </div>
+                <div class="category" (click)="changeCategory('most_shared')" 
+                    [ngClass]="{'active-category': category === 'most_shared'}">
+                    Most Shared
+                </div>
+                <div class="category" (click)="changeCategory('from_top_coaches')" 
+                    [ngClass]="{'active-category': category === 'from_top_coaches'}">
+                    From Top Coaches
+                </div>
+            </div>
+            <div class="result-spread">
+                <p class="result"><span>{{ cardData.count | number }}</span> Insights</p>
+                <h6 class="toggle-filters" (click)="toggleFilters()">
+                    <span *ngIf="!openFilters">More Filters</span>
+                    <span *ngIf="openFilters">Hide Filters</span>
+                </h6>
+            </div>
+        </div>
+        <div class="filter-body" [ngClass]="{'closed-body': !openFilters}">
+            <form action="">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Date Published</label>
+                            <input type="date" id="date_published" name="date_published" [(ngModel)]="form.date_published">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Domain</label>
+                            <select name="domain" id="domain" [(ngModel)]="form.domain">
+                                <option value="">Choose Domain</option>
+                                <option [value]="item.id" *ngFor=" let item of domains">{{ item.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Key Words</label>
+                            <input type="text" id="key_words" name="key_words" [(ngModel)]="form.key_words">
+                        </div>
+                    </div>
+                </div>
+                <div class="info-grid w96 max450 mt-2 mb-3">
+                    <button class="hollow-button" (click)="clearFilters()">Clear Filter</button>
+                    <span></span>
+                    <button class="solid-button" (click)="filterAction()"><i class="fas fa-search"></i> &nbsp; Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

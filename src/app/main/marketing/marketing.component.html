@@ -1,0 +1,3 @@
+<app-marketing-header *ngIf="!switchService.hideMarketingHeader"></app-marketing-header>
+<router-outlet (change)="switchLayoutAttachment()"></router-outlet>
+<app-marketing-footer *ngIf="!switchService.hideMarketingHeader" [canRegister]="canRegister"></app-marketing-footer>

@@ -1,0 +1,14 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+.schedule{
+    background-color: $light-blue-auth;
+    border-radius: 10px;
+    border: 1px solid $grey-light;
+    .day{
+        background-color: $white;
+        border-radius: 8px;
+        border: 1px solid $grey-light;
+    }
+}

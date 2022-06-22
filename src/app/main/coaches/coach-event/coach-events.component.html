@@ -1,0 +1,32 @@
+<div class="all">
+    <div class="spacer"></div>
+    <div class="spread-info mt-5">
+        <h2 class="c-pr-blue mb-0">Events</h2>
+        <button class="solid-button-2 mb-2"><i class="fas fa-plus"></i> &nbsp; New Event</button>
+    </div>
+    <div class="ash-tab-holder">
+        <div class="tablet-case mb-3 mt-3">
+            <div class="tablet" [ngClass]="{'active-tab': activeTab === 'upcoming_events'}" (click)="switchTab('upcoming_events')">
+                Upcoming Events
+            </div>
+            <div class="tablet" [ngClass]="{'active-tab': activeTab === 'ended_events'}" (click)="switchTab('ended_events')">
+                History
+            </div>
+        </div>
+    </div>
+    <div class="loading-half" *ngIf="!loaded; else loadedSect">
+        <app-loader></app-loader>
+    </div>
+    <ng-template #loadedSect>
+        <div class="row mt-5" *ngIf="activeTab === 'upcoming_events'">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3 mt-3" *ngFor="let item of events">
+                <app-event-card [cardData]="item"></app-event-card>
+            </div>
+        </div>
+        <div class="row mt-5" *ngIf="activeTab === 'ended_events'">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3 mt-3" *ngFor="let item of events">
+                <app-event-card [cardData]="item"></app-event-card>
+            </div>
+        </div>
+    </ng-template>
+</div>

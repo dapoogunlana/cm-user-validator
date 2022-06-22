@@ -1,0 +1,264 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.hero{
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding:2vh 6vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-blue;
+    position: relative;
+    .info{
+        .spacer{
+            height: 5vw;
+        }
+        position: relative;
+        width: 70%;
+        color: $white;
+        padding-right: 3vmax;
+        @include mediaM(1100px) {
+            padding-right: 0;
+            width: 100%;
+        }
+        h2{
+            font-weight: 700;
+            max-width: 650px;
+            font-size: 3.4rem;
+            @include mediaM(750px){
+                font-size: 1.8rem;
+            }
+        }
+        h1{
+            max-width: 550px;
+        }
+        p{
+            font-size: 1.3em;
+            margin-top: 2vh;
+            margin-bottom: 3vh;
+            max-width: 520px;
+            @include mediaM(750px){
+                font-size: 1.05em;
+            }
+        }
+        button{
+            @include solid-button($primary-green, $primary-green-hover, 20px, 12px, 1em);
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    }
+    .hero-image{
+        width: 50%;
+        max-width: 490px;
+        padding: 12vh 2vh 0;
+        position: relative;
+        @include mediaM(1100px) {
+            display: none;
+        }
+    }
+    @include mediaM(1100px) {
+        padding:2vh 6vmax;
+    }
+}
+.stats-bar{
+    min-height: 80px;
+    width: 100%;
+    background-color: $white;
+    display: grid;
+    grid-template-columns: 33.3% 33.4% 33.3%;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: $primary-blue-hover;
+        border: 0.5px solid $primary-blue-faint3;
+    }
+}
+.credibility-sect{
+    width: 100%;
+    min-height: 100vh;
+    padding:2vh 6vmax;
+    background-color: #f1f3f6;
+    .coaches{
+        margin-top: 5vh;
+        .validation{
+            width: 100%;
+            padding: 1vh 5px;
+            // padding: 0 5px 4vh;
+            p{
+                padding:0;
+                margin-bottom: 0; // Add
+                font-size: 1.7em;
+                color: $primary-blue
+            }
+        }
+        width: 100%;
+        border-radius: 20px;
+        padding: 2vw;
+        background-color: $white;
+        // box-shadow: 0 0 5px 1px $black-faint3;
+        .tutor-card{
+            width: 90%;
+            margin: 3vh auto;
+            border-radius: 11%;
+            position: relative;
+            overflow: hidden;
+            .overlay{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient($transparent, $black);
+                padding: 9%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                div{
+                    color: $white;
+                    width: 100%;
+                }
+            }
+            .overlay-strong{
+                background-color: $black;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                padding: 4vh 9% 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                h2{
+                    font-size: 1.6em;
+                    margin-bottom: 5vh;
+                    color: $white;
+                    @include mediaM(500px){
+                        margin-bottom: 4vh;
+                        font-size: 1.1em;
+                    }
+                }
+                button{
+                    @include solid-button($secondary-blue, $secondary-blue-hover, 20px, 12px, 1em);
+                    border-radius: 5px;
+                    font-weight: 500;
+                    @include mediaM(500px){
+                        @include solid-button($secondary-blue, $secondary-blue-hover, 10px, 5px, 0.9em);
+                    }
+                }
+            }
+        }
+    }
+    .for-protegees{
+        position: relative;
+        h2{
+            color: $primary-blue;
+            font-size: 2em;
+            @include mediaM(500px){
+                font-size: 1.6em;
+            }
+        }
+        p{
+            color: $faint-font;
+        }
+        .benefit-card{
+            background-color: $white;
+            border-radius: 10px;
+            padding: 20px;
+            @include mediaM(500px){
+                border-radius: 6px;
+                padding: 12px;
+            }
+        }
+        .pr-image{
+            img{
+                width: 100%;
+                border-radius: 15px;
+            }
+        }
+        h6{
+            color: $primary-blue;
+            font-size: 1.2em;
+            max-width: 220px;
+        }
+        .mt-10{
+            margin-top: 32vh;
+            @include mediaM(500px){
+                margin-top: 4vh;
+            }
+        }
+        .mt-7{
+            margin-top: 15vh;
+            @include mediaM(500px){
+                margin-top: 9vh;
+            }
+        }
+        .mb-7{
+            margin-bottom: 15vh;
+            @include mediaM(500px){
+                margin-bottom: 9vh;
+            }
+        }
+    }
+}
+.how-to{
+    width: 100%;
+    min-height: 50vh;
+    padding: 10vh 6vmax;
+    background-color: #f1f3f6;
+    h2{
+        color: $primary-blue;
+        font-size: 3em;
+        @include mediaM(500px){
+            font-size: 1.7em;
+        }
+    }
+    .step1{
+        position: relative;
+        padding: 0;
+        @include mediaM(750px){
+            padding-top: 0px;
+        }
+    }
+    .step2{
+        position: relative;
+        padding-top: 18vh;
+        @include mediaM(750px){
+           margin: 5vh auto;
+        }
+        .arrow{
+            position:absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            @include mediaM(750px){
+                display: none;
+            }
+        }
+    }
+    .step3{
+        position: relative;
+        .arrow{
+            position:absolute;
+            width: 30%;
+            left: 0;
+            bottom: -50%;
+            @include mediaM(750px){
+                display: none;
+            }
+        }
+    }
+    .be-coach{
+        text-align: center;
+        button{
+            @include solid-button($primary-blue, $primary-blue-hover, 20px, 13px, 1em);
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    }
+}

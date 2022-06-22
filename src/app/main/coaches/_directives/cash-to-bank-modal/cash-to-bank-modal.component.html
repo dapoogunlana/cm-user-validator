@@ -1,0 +1,37 @@
+<div class="vid-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <!-- <div class="modal-closer" (click)="closeModal()">
+                <i class="fas fa-times"></i>
+            </div> -->
+            <div class="spread-info">
+                <h5 class="c-pr-blue font-weight-bold">Cash To Bank</h5>
+                <h5 class="c-pr-blue">
+                    <i class="fas fa-times blue-clicker" (click)="closeModal()"></i>
+                </h5>
+            </div>
+            <div class="restriction-area">
+                <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                    <label>Withdrawal Amount</label>
+                    <input type="number" required name="withdrawal_amount" required [(ngModel)]="form.withdrawal_amount"
+                        id="withdrawal_amount" placeholder="Enter withdrawal amount">
+                    <label>Bank</label>
+                    <select required name="bank" form="signin_form" [(ngModel)]="form.bank" id="bank">
+                        <option [value]="undefined" disabled>Select Bank</option>
+                        <option [value]="bank.id" *ngFor="let bank of bankList">{{ bank.name}}</option>
+                    </select>
+                    <label>Acount Number</label>
+                    <input type="number" required name="account_number" required [(ngModel)]="form.account_number"
+                        id="account_number" placeholder="Enter account number">
+                    <div class="w80 max250">
+                        <button class="solid-button w100" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Proceed</span>
+                            <span *ngIf="loading"><app-basic-loader></app-basic-loader></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

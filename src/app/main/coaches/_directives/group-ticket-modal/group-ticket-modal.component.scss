@@ -1,0 +1,96 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.vid-modal{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    opacity: 0;
+    .modal-bg{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: $black-faint2;       
+    }
+    .modal-container{
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+        .modal-content{
+            position: relative;
+            width: 100%;
+            border-radius: 15px;
+            // height: 0;
+            // padding-bottom: 56.25%;
+            padding: 15px;
+            background-color: $white;
+            transition: 0.4s ease;
+            transform: scale(0.001);
+            .modal-closer{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                border-radius: 6px;
+                opacity: 0.5;
+                background-color: $grey-light;
+                color: $grey-dark;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.2s ease;
+                @include mediaM(500px) {
+                    padding: 4px 8px 3px;
+                }
+                &:hover{
+                    color: $white;
+                    background-color: $red-hover;
+                    opacity: 1;
+                }
+                &:active{
+                    transform: scale(1.1);
+                    background-color: $red-active;
+                }
+            }
+            .restriction-area{
+                max-height: 60vh;
+                overflow: auto;
+            }
+            .form-control-dp{
+                label{
+                    width: 100%;
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+                input, select, textarea{
+                    width: 100%;
+                    padding: 5px 15px;
+                    border-radius: 6px;
+                    border: 1px solid $primary-blue-faint3;
+                    transition: 0.2s ease;
+                    margin-bottom: 12px;
+                    &:hover{
+                        box-shadow: 0 0 10px -1px $black-faint3;
+                    }
+                    &:focus{
+                        outline: none;
+                        border-color: $primary-blue;
+                    }
+                }
+                select{
+                    padding: 7px 15px;
+                }
+            }
+        }
+    }
+}

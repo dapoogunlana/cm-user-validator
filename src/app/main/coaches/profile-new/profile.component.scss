@@ -1,0 +1,308 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.wi310{
+    width: 324px !important;
+    @include mediaM(550px) {
+        width: 100% !important;
+    }
+}
+.notification{
+    border-radius: 9px;
+    padding: 10px;
+    border: 0.5px solid $secondary-blue;
+    background-color: $white;
+    display: grid;
+    grid-template-columns: auto 50px;
+    .info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            width: 100%;
+        }
+    }
+    .closer{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        i{
+            color: $grey-mid;
+            background-color: $grey-lightest;
+            padding: 6px;
+            border-radius: 5px;
+            transition: 0.2s ease;
+            &:hover{
+                background-color: $red;
+            }
+        }
+    }
+}
+
+.image-card{
+    overflow: hidden;
+    border-radius: 12px;
+    .top{
+        min-height: 150px;
+        position: relative;
+        background-image: url(../../../../assets/images/new-coach-dashboard/cover-photo.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    .bottom{
+        min-height: 130px;
+        .bt-grid{
+            display: grid;
+            grid-template-columns: 180px auto;
+            @include mediaM(550px){
+                display: block;
+            }
+            .profile-holder{
+                padding: 6px; border-radius: 50%;
+                position: relative;
+                top: -50%;
+                margin-bottom: -50px;
+                .profile-image{
+                    border-radius: 50%;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                    }
+                }
+                @include mediaM(550px){
+                    width: 80%;
+                    max-width: 230px;
+                    margin: -115px auto 0%;
+                }
+            }
+        }
+    }
+}
+.editor{
+    color: $secondary-blue;
+    background-color: $white;
+    border-radius: 6px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: 0.3 ease;
+    &:hover{
+        background-color: $secondary-blue;
+        color: $white
+    }
+}
+
+.video-holder{
+    video{
+        width: 100%;
+    }
+}
+
+
+.onboarding-grid{
+    position: relative;
+    @include mediaW(850px){
+        display: grid;
+        grid-template-columns: 300px auto;
+    }
+    .side-menu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 100;
+        overflow: scroll;
+        .content-holder{
+            background-color: $white;
+            position: relative;
+        }
+        .progress-capsule{
+            border-radius: 20px;
+            border: 1px solid $primary-blue;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer !important;
+            .check{
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $white;
+                background-color: $secondary-blue;
+            }
+            .unreached{
+                opacity: 0.4;
+                i{
+                    display: none;
+                }
+            }
+        }
+        .current-level{
+            box-shadow: 0 1px 9px 1px $black-faint3;
+        }
+    }
+    .click-catcher{
+        pointer-events: none;
+    }
+    @include mediaM(850px){
+        .side-menu{
+            .content-holder{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 260px;
+                height: 100vh;
+                transition: 0.3s ease;
+                transform: translateX(-264px);
+                transition: 0.3s ease;
+            }
+            .click-catcher{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: $black-faint4;
+                transition: 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .content-holder-active{
+                transform: translateX(0);
+                pointer-events: all;
+            }
+            .catcher-active{
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+        .auth-bg{
+            background-color: $white;
+        }
+    }
+    .mobile-menu{
+        @include mediaW(851px){
+            display: none;
+        }
+        @include mediaM(850px){
+            padding-bottom: 75px;
+        }
+        .fix{
+            @include mediaM(850px){
+                position: fixed;
+                z-index: 8;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                padding: 10px;
+                background-color: $white;
+            }
+        }
+        i{
+            font-size: 1.9em;
+        }
+        button{
+            color: $black-faint1;
+            background-color: $grey-lightest;
+            box-shadow: none;
+        }
+        .progress-bar{
+            background-color: $grey-lightest;
+            width: 100%;
+            height: 7px;
+            .indicator{
+                background-color: $primary-green;
+                border-radius:  3px;
+                height: 7px;
+            }
+        }
+    }
+    .inner-bg{
+        background-color: $white;
+        padding: 4vh 4vw;
+        border-radius: 3vw;
+    }
+    .sub-wid{
+        width: 80%;
+    }
+}
+
+.popular-domain{
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 11px;
+    color: $primary-blue;
+    background-color: $light-blue;
+    margin: 5px 7px;
+    cursor: pointer;
+}
+
+.active-domain{
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $secondary-blue;
+    margin: 5px 7px;
+    i{
+        cursor: pointer;
+    }
+}
+
+.preference-point{
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 30px 15px auto;
+    padding: 8px 0;
+    .tick-area{
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $primary-blue-faint3;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        transition: 0.2s ease;
+    }
+    .active{
+        background-color: $secondary-blue;
+        border-color: $secondary-blue;
+        transition: 0.2s ease;
+        box-shadow: 0 0 5px -2px $secondary-blue-hover;
+    }
+}
+.eye-toggle{
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+.logout-button{
+    border: none;
+    border-radius: 7px;
+    box-shadow: 2px 3px 8px 0px $black-faint4;
+    color: $red;
+    background-color: $white;
+    padding: 10px 30px;
+    transition: 0.3s ease;
+    &:hover{
+        box-shadow: 2px 3px 8px 2px $black-faint3;
+    }
+    &:active{
+        transform: translateY(6px);
+    }
+}

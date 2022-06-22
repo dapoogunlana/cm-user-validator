@@ -1,0 +1,70 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="md-close pt-4 pb-3"></div>
+    <h1 class="mb-3">Invite</h1>
+    <div class="mt-5">
+        <div class="">
+            <div class="tablet-case bordered-case wi310 mb-3 mt-3">
+                <div class="tablet" [ngClass]="{'active-tab': activeTab === 'newInvite'}" (click)="switchTab('newInvite')">
+                    New
+                </div>
+                <div class="tablet mr-0" [ngClass]="{'active-tab': activeTab === 'sentInvite'}" (click)="switchTab('sentInvite')">
+                    Sent
+                </div>
+            </div>
+            <div class="" *ngIf="activeTab === 'newInvite'">
+                <div class="">
+                    <div class="notification my-3" *ngIf="newNotification">
+                        <div class="spread-info p-3 py-0">
+                            <div class="info">
+                                <div class="center-info text-danger">
+                                    <i class="fas fa-exclamation-circle mr-3 increased-x"></i>
+                                    <p class="mb-0">Note</p>
+                                </div>
+                            </div>
+                            <div class="closer" (click)="closeNotification()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="px-3 pt-0">
+                            <p class="mb-0">{{ notification.message }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="shadowed white rad-15 mt-3 p-3 relative my-5">
+                    <h5 class="g-4">Invite Friends</h5>
+                    <hr class="" />
+                    <form  #f="ngForm" name="invite_form" (ngSubmit)="sendInvite()" id="invite_form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Recepient’s Email</label>
+                            </div>
+                            <div class="col-md-9 input-styler">
+                                <input class="mb-0" type="email" name="recepientEmail" id="recepientEmail" required [(ngModel)]="invitePayload.recepientEmail" />
+                            </div>
+                            <div class="col-md-3">
+                                <div class="full-button">
+                                    <button class="solid-button-2" type="submit" [disabled]="f.invalid || submitting" >{{ submitting ? 'Processing..' : 'Invite' }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="" *ngIf="activeTab === 'sentInvite'">
+                <div class="shadowed white rad-15 mt-3 p-3 relative my-5 max600">
+                    <h5 class="g-4">Invite Friends</h5>
+                    <hr class="" />
+                    <div class="py-5 center-info" *ngIf="!inviteDetailsLoaded; else invitesLoaded">
+                        <app-loader></app-loader>
+                    </div>
+                    <ng-template #invitesLoaded>
+                        <app-default-table [title]="''" [tableData]="inviteTableData" [calculateTotal]="false"></app-default-table>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

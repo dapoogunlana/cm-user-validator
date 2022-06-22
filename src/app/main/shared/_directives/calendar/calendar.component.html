@@ -1,0 +1,13 @@
+<div class="py-3">
+    <div class="maxh200 soft-scroll">
+        <div class="spread-info availability-capsule mb-2" *ngFor="let date of availableDates">
+            <span>{{ date.date | date }}</span>
+            <i *ngIf="canEdit" class="fas fa-times-circle" (click)="removeAvailability(date.id)"></i>
+        </div>
+    </div>
+    <!-- <input type="date" class="unclickable"  name="pick-date" id="pick-date" (change)="chooseDate($event)"> -->
+    <div class="text-center">
+        <button class="solid-button" (click)="openDateDialogue()">Choose Date</button>
+    </div>
+    <!-- <p>Calender Module</p> -->
+</div>

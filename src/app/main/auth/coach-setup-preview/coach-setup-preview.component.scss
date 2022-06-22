@@ -1,0 +1,22 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.progress-box{
+    .progress-point{
+        .tick-area{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: $primary-blue;
+            opacity: 0.15;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+        }
+        .active{
+            opacity: 1 !important;
+        }
+    }
+}

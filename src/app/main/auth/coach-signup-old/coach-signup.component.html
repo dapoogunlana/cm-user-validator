@@ -1,0 +1,93 @@
+
+<div class="auth-bg">
+    <div class="auth-card">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="!registered; else registerMessage">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <h6>Get Your Free Expert Impact Account</h6>
+                    <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                        <label>First Name</label>
+                        <input type="text" required name="first_name" required [(ngModel)]="form.first_name"
+                            id="first_name" placeholder="Enter first name">
+                        <label>Last Name</label>
+                        <input type="text" required name="last_name" required [(ngModel)]="form.last_name"
+                            id="last_name" placeholder="Enter last name">
+                        <label>Email</label>
+                        <input type="email" required name="email" required [(ngModel)]="form.email"
+                            id="email" placeholder="Enter email">
+                        <!-- <label>username</label>
+                        <input type="text" required name="username" required [(ngModel)]="form.username"
+                            id="username" placeholder="Enter username"> -->
+                        <label>Password</label>
+                        <div class="relative">
+                            <input [type]="passwordType" required name="password" required [(ngModel)]="form.password"
+                                id="password" placeholder="Enter password">
+                            <div class="eye-toggle">
+                                <i class="far fa-eye" *ngIf="!passwordVisible" (click)="togglePasswordVisibility(true)"></i>
+                                <i class="far fa-eye-slash" *ngIf="passwordVisible" (click)="togglePasswordVisibility(false)"></i>
+                            </div>
+                        </div>
+                        <label>Confirm Password</label>
+                        <input type="password" required name="password2" required [(ngModel)]="form.password2"
+                            id="password2" placeholder="Confirm password">
+                        <button class="solid-button mt-2" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Register</span>
+                            <span *ngIf="loading"><app-basic-loader [dimentions]="{size: 30, stroke: 4}"></app-basic-loader></span>
+                        </button>
+                    </form>
+                    <div class="center-info">
+                        <div class="bar"></div>
+                        <span class="mx-2 my-3">Or register with social</span>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="center-info mb-3">
+                        <!-- <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/instagram.svg" alt="">
+                        </div>
+                        <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/facebook.svg" alt="">
+                        </div>
+                        <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/twitter.svg" alt="">
+                        </div> -->
+                        <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/google.svg" alt="">
+                        </div>
+                        <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/apple.svg" alt="">
+                        </div>
+                        <div class="social-link">
+                            <img src="./../../../../assets/images/marketing/social-icons/linkedin.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="text-center">Already have an have an account? <a routerLink="/auth/sign-in" class="font-weight-bold">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+        <ng-template #registerMessage>
+            <div class="form-flex">
+                <div class="input-flex">
+                    <div class="text-center">
+                        <h6 class="mb-3">Your data has been saved</h6>
+                        <p>
+                            You have sucessfully started your registration journey. a code has been sent to your email.
+                            If you have the code press the button below to verify it and continue the journey. If for any 
+                            reason during this registration process you have leave, you can always log in while returning 
+                            to continue right from where you stopped.
+                        </p>
+                        <div class="w80 full-button mb-2">
+                            <a routerLink="/auth/confirm-email-old">
+                                <button class="solid-button-2">Verify your email</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,285 @@
+<div class="auth-bg">
+    <div class="auth-card" [ngClass]="{'auth-wide': coachSetupService.progressLevel === 6}">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="coachSetupService.progressLevel === 0">
+            <app-loader></app-loader>
+            <p>Setting Up Your Configuration.</p>
+        </div>
+        <div class="form-flex" *ngIf="coachSetupService.progressLevel > 0">
+            <div class="input-flex">
+                <!-- <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 1">
+                    <h6>What are you interested in?</h6>
+                    <div class="progress-box">
+                        <div class="maxh-40 y-overflow">
+                            <div class="progress-point" *ngFor="let interest of interests; let i = index">
+                                <div class="tick-area" [ngClass]="{'active': interest.active}" (click)="toggleActive(i)">
+                                    <i class="fas fa-check" *ngIf="interest.active"></i>
+                                </div>
+                                <p class="dark mb-0">{{ interest.interest }}</p>
+                            </div>
+                        </div>
+                        <div class="add-point">
+                            <input type="text">
+                            <div class="add">
+                                <div>
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 1">
+                    <h6>Add Expertise Domain</h6>
+                    <p>Expertise Domains</p>
+                    <div class="mb-3">
+                        <div class="popular-domain" *ngFor="let domain of coachSetupService.setupData.coachDomains.popularDomains; let i = index" (click)="addDomain(domain)">
+                            <span class="mr-2">{{ domain.domain }}</span>
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                    </div>
+                    <div class="progress-box">
+                        <div class="maxh-40 y-overflow">
+                            <div class="active-domain" *ngFor="let domain of coachSetupService.setupData.coachDomains.customDomains; let i = index">
+                                <span class="mr-2">{{ domain.domain }}</span>
+                                <i class="fas fa-times-circle" (click)="removeDomain(i)"></i>
+                            </div>
+                        </div>
+                        <div class="full-input mt-5">
+                            <input type="text" placeholder="Add cumtom domain" [(ngModel)]="typeDomain"
+                            maxlength="25" (keypress)="addDomainOnEnter($event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 2">
+                    <h6>Professional Information</h6>
+                    <form #f="ngForm" name="professional_information" id="professional_information">
+                        <label>Job Title</label>
+                        <input type="text" required name="job_title" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.jobTitle"
+                            id="job_title" placeholder="Enter job title">
+                        <label>Company</label>
+                        <input type="text" required name="company" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.companyName"
+                            id="company" placeholder="Enter company name">
+                        <label>Industry</label>
+                        <input type="text" required name="industry" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.industryName"
+                            id="industry" placeholder="Enter industry name">
+                        <label>linkedin Profile</label>
+                        <input type="text" required name="linkedin_link" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.linkedInProfileUrl"
+                            id="linkedin_link" placeholder="paste linkedin profile link">
+                        <label>Country</label>
+                        <select type="text" required name="country" required form="professional_information" [(ngModel)]="coachSetupService.setupData.professionalInformationPage.countryId"
+                            id="country">
+                            <option [value]="undefined">Choose your country</option>
+                            <option [value]="country.id" *ngFor="let country of coachSetupService.countries">{{ country.name }}</option>
+                        </select>
+                        <label>Professional Expertise Work Summary</label>
+                        <textarea type="text" required name="professional_summary" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.professionalSummary"
+                            id="professional_summary" placeholder="Enter professional summary" rows="2"></textarea>
+                    </form>
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 3">
+                    <h6>Profile picture</h6>
+                    <div class="upload-box" [ngClass]="{'drag-target': activeDrag}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                    (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragImage($event)"
+                    (dragover)="processDrag($event)">
+                        <div class="imh relative light-box" *ngIf="coachSetupService.setupData.profilePicturePage.pictureBase64String; else noPreview">
+                            <div class="floating-close x-in" (click)="discardImage()">
+                                <i class="fas fa-times" title="Delete image"></i>
+                            </div>
+                            <div class="image-center-sect">
+                                <p class="c-green increased-x text-center">Position <br> face here</p>
+                            </div>
+                            <img [src]="coachSetupService.setupData.profilePicturePage.pictureBase64String" alt="">
+                        </div>
+                        <ng-template #noPreview>
+                            <p *ngIf="!activeDrag">Drag and drop image here</p>
+                            <p *ngIf="activeDrag">Now drop image here</p>
+                            <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Upload profile picture</div>
+                            <input id="hidden_image_holder" (change)="collectImage($event)" class="full-hidden" type="file">
+                        </ng-template>
+                    </div>
+                    <p class="mt-2">
+                        Picture should not be heavier than 500KB. 
+                        Picture should have equal height and width with a minimum of 200px x 200px.
+                        Allowed picture formats are 
+                        <span *ngFor="let format of imageExtensionList; let i = index">
+                            <span *ngIf="(i + 1) === imageExtensionList.length"> and </span>
+                            {{ format }}
+                            <span *ngIf="(i + 2) < imageExtensionList.length">, </span>
+                        </span>
+                    </p>
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 4">
+                    <h6>Expertise Pitch Video</h6>
+                    <div class="upload-box relative" [ngClass]="{'drag-target': activeDrag, 'deactivate': coachSetupService.uploadingStage === 1}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                    (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragVideo($event)"
+                    (dragover)="processDrag($event)">
+                    <div *ngIf="coachSetupService.uploadingStage === 2 ||coachSetupService.setupData.profileVideoPage.videoRetrievalLocation" class="upload-confirmation">Video Uploaded</div>
+                        <div class="relative light-box" *ngIf="vidPreview; else noPreviewVideo">
+                            <div class="floating-close x-in" (click)="discardVideo()">
+                                <i class="fas fa-times" title="Delete video"></i>
+                            </div>
+                            <p class="mb-0 text-center increased">{{ videoName }}</p>
+                            <button class="solid-button" [disabled]="coachSetupService.uploadingStage > 0"
+                                (click)="coachSetupService.saveCoachVideo(rawVideoFile)">
+                                {{ coachSetupService.uploadVideo }}
+                            </button>
+                            <!-- <video id="preview_vid" [src]="previewVideo"></video> -->
+                        </div>
+                        <ng-template #noPreviewVideo>
+                            <p *ngIf="!activeDrag">Drag and drop video here</p>
+                            <p *ngIf="activeDrag">Now drop video here</p>
+                            <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Select Video</div>
+                            <input id="hidden_image_holder" (change)="collectVideo($event)" class="full-hidden" type="file">
+                        </ng-template>
+                    </div>
+                    <p class="mt-2">
+                        Video should not be longer than 1 munite long. <br>
+                        Accepted formats are 
+                        <span *ngFor="let format of videoExtensionList; let i = index">
+                            <span *ngIf="(i + 1) === videoExtensionList.length"> and </span>
+                            {{ format }}
+                            <span *ngIf="(i + 2) < videoExtensionList.length">, </span>
+                        </span>
+                    </p>
+                    <div class="center-info">
+                        <div class="bar"></div>
+                        <span class="mx-2 my-3">Or Paste Your Video Url</span>
+                        <div class="bar"></div>
+                    </div>
+                    <label>Youtube link</label>
+                    <input type="text" required name="youtube_vid" required [(ngModel)]="coachSetupService.setupData.profileVideoPage.expertYoutubeUrl"
+                        id="youtube_vid" placeholder="Enter youtube link">
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 5">
+                    <h6>Expertise Commitment and Service Consulting Type</h6>
+                    <form #f="ngForm" name="expertise_form" id="expertise_form">
+                        <p class="mt-3 mb-0 font-weight-bold">Specify Expertise Commitment (Maximum 60 Characters)</p>
+                        <!-- <label>Youtube link</label> -->
+                        <input type="text" required name="expertise_commitment" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.expertiseCommitment"
+                            id="expertise_commitment" placeholder="Expertise commitment" maxlength="60">
+                        <p class="font-weight-bold">Choose Service Consulting Type</p>
+                        <div class="preference-point">
+                            <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService}" (click)="toggleExpertise('isOneOffConsultingService')">
+                                <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService"></i>
+                            </div>
+                            <span></span>
+                            <p class="mb-0"><strong>One-off Consulting Service:</strong> 
+                                A 60-minute-long one-on-one consulting session.
+                            </p>
+                        </div>
+                        <textarea type="text" required *ngIf="coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService" name="one_off_brief" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.oneOffConsultingServiceText"
+                            id="one_off_brief" placeholder="Provide an outline of your consulting session" rows="2"></textarea>
+                            
+                        <div class="preference-point">
+                            <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService}" (click)="toggleExpertise('isExtendedDeepDiveAdvisoryService')">
+                                <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService"></i>
+                            </div>
+                            <span></span>
+                            <p class="mb-0"><strong>Extended deep-dive advisory service:</strong> 
+                                A 3-month, 6-month or 12-month extended consultation sessions – 3 one-on-one sessions/month.
+                            </p>
+                        </div>
+                        <textarea type="text" required *ngIf="coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService" name="extended_brief" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.extendedDeepDiveAdvisoryServiceText"
+                            id="one_off_brief" placeholder="Provide an outline of your consulting session" rows="2"></textarea>
+                    </form>
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 6">
+                    <h6>Billing Configuration</h6>
+                    <div class="grid-warning">
+                        <div class="text-center pt-2"><i class="fas fa-exclamation-circle"></i></div>
+                        <div>
+                            <p class="mb-0"><strong>Enter hourly rates for the billing types you want to support</strong></p>
+                            <p class="mb-0">You can toggle on/off any plan you dont want to support</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6" *ngFor="let plan of coachSetupService.setupData.profileBillingConfigurationPage.selectedBillings; let i = index">
+                            <div class="plan" [ngClass]="{'full-deactivated': plan.extra.disabled}">
+                                <div class="plan-top">
+                                    <div class="spread-info mb-2">
+                                        <h3>{{ plan.name }}</h3>
+                                        <div class="switch" (click)="switchActive(i)" [ngClass]="{'active-switch': plan.selected}">
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <small>{{ plan.extra.briefSummary }}</small>
+                                    </p>
+                                </div>
+                                <div class="plan-body" [ngClass]="{'deactivated': !plan.selected}">
+                                    <div class="preference-point">
+                                        <div class="tick-area" [ngClass]="{'active': plan.agreedtoTerms}" (click)="togglePlanAgreement(i)">
+                                            <i class="fas fa-check" *ngIf="plan.agreedtoTerms"></i>
+                                        </div>
+                                        <span></span>
+                                        <p class="mt-1">Agree to <span class="clickable font-weight-bold c-sc-blue" (click)="showAgreement(i + 1)">billing terms</span></p>
+                                    </div>
+                                    <input type="number" style="text-align: right;" [(ngModel)]="plan.pricing" [name]="'name' + i">
+                                    <div class="plan-grid"  *ngFor="let feature of plan.extra.descriptions">
+                                        <i class="fas fa-check"></i>
+                                        <p>
+                                            {{ feature.description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 7">
+                    <h6>Declaration</h6>
+                    <p>
+                        I solemnlydeclarethat all the information furnished during onboarding on this platform is free of
+                        errors to the best of my knowledge. I herebydeclarethat all the information contained herein is in 
+                        accordance with facts or truths to my knowledge. I take full responsibility for the correctness of 
+                        the said information.
+                    </p>
+                    <div class="preference-point">
+                        <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked}" (click)="toggleDisclaimer()">
+                            <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked"></i>
+                        </div>
+                        <span></span>
+                        <p class="mb-0 mt-1 dark">
+                            Please tick the box to agree to the Declaration Statement.
+                        </p>
+                    </div>
+                </div>
+                <div class="navigator">
+                    <div class="clicker" (click)="back()" [ngClass]="{'deactivate': coachSetupService.progressLevel === 1 || coachSetupService.uploadingStage === 1}">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="center-info" *ngIf="coachSetupService.loadingProgress; else progressIndicator">
+                        <app-loader></app-loader>
+                    </div>
+                    <ng-template #progressIndicator>
+                        <div class="progress">
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 1}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 2}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 3}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 4}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 5}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 6}"></div>
+                            <div [ngClass]="{'active': coachSetupService.progressLevel === 7}"></div>
+                        </div>
+                    </ng-template>
+                    <!-- <div class="clicker" (click)="forward()" [ngClass]="{'deactivate': coachSetupService.progressLevel === 5}">
+                        <i class="fas fa-arrow-right"></i>
+                    </div> -->
+                    <div class="clicker" (click)="forward()" *ngIf="coachSetupService.progressLevel <= 6" [ngClass]="{'deactivate': coachSetupService.uploadingStage === 1}">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <button class="solid-button-2" [disabled]="!coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked"
+                        [ngClass]="{'deactivate': coachSetupService.uploadingStage === 1}" (click)="coachSetupService.submit()" *ngIf="coachSetupService.progressLevel > 6">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-info-modal *ngIf="showPlanAgreementModal" (modalSignal)="closeInfoModal($event)" [data]="coachSetupService.activeBillAgreement"></app-info-modal>

@@ -1,0 +1,123 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.onboarding-grid{
+    position: relative;
+    @include mediaW(850px){
+        display: grid;
+        grid-template-columns: 300px auto;
+    }
+    .side-menu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        overflow: scroll;
+        .content-holder{
+            background-color: $white;
+            position: relative;
+            width: 300px;
+            .profile-card{
+                border-radius: 10px;
+                background-color: $grey-lightest;
+                border: 1px solid $grey-light;
+            }
+            .page-links{
+                width: 100%;
+                border-right: 5px solid $secondary-blue;
+                color: $secondary-blue;
+                filter: grayscale(1);
+                display: block;
+                padding: 8px 15px;
+                transition: 0.3s ease;
+                border-color: $white;
+                opacity: 0.8;
+                padding-top: 3vh;
+            }
+            .active-link{
+                transition: 0.3s ease;
+                border-color: $secondary-blue;
+                opacity: 1;
+                filter: grayscale(0);
+            }
+        }
+    }
+    .click-catcher{
+        pointer-events: none;
+    }
+    @include mediaM(850px){
+        .side-menu{
+            .content-holder{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 260px;
+                height: 100vh;
+                transition: 0.3s ease;
+                transform: translateX(-264px);
+                transition: 0.3s ease;
+            }
+            .click-catcher{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: $black-faint4;
+                transition: 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .content-holder-active{
+                transform: translateX(0);
+                pointer-events: all;
+            }
+            .catcher-active{
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+        .auth-bg{
+            background-color: $white;
+        }
+    }
+    .mobile-menu{
+        @include mediaW(851px){
+            display: none;
+        }
+        @include mediaM(850px){
+            padding-bottom: 75px;
+        }
+        .fix{
+            @include mediaM(850px){
+                position: fixed;
+                z-index: 8;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                padding: 10px;
+                background-color: $white;
+            }
+        }
+        i{
+            font-size: 1.9em;
+        }
+        button{
+            color: $black-faint1;
+            background-color: $grey-lightest;
+            box-shadow: none;
+        }
+    }
+    .inner-bg{
+        background-color: $white;
+        padding: 4vh 4vw;
+        border-radius: 3vw;
+    }
+    .sub-wid{
+        width: 80%;
+    }
+    .content-holder{
+        background-color: $grey-lightest3;
+        min-height: 100vh;
+    }
+}

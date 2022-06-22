@@ -1,0 +1,17 @@
+
+<div class="content-holder">
+    <table class="table-responsive" *ngIf="loaderService.dataLoaded">
+        <tr style="width: 100%;">
+            <th *ngFor="let cell of tableData.headerRow" class="increased-soft g-6" [innerHTML]="cell"></th>
+        </tr>
+        <tr style="width: 100%;" *ngFor="let row of tableData.bodyRows">
+            <td *ngFor="let cell of row" class="faint-font-local reduced-soft py-3" [innerHTML]="cell"></td>
+        </tr>
+        <tr style="width: 100%;" *ngIf="calculateTotal">
+            <td *ngFor="let cell of total" class="font-weight-bold" [innerHTML]="cell"></td>
+        </tr>
+    </table>
+    <div class="loading-space" *ngIf="!loaderService.dataLoaded">
+        <app-loader></app-loader>
+    </div>
+</div>

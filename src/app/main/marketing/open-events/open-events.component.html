@@ -1,0 +1,41 @@
+<div class="hero">
+    <div class="underlay">
+        <img src="assets/images/marketing/spiral-cut.png" alt="">
+    </div>
+    <div class="info" data-aos="fade-right">
+        <div class="spacer"></div>
+        <h2>
+            Learn with others. <br>
+            Take your goals from <span>to-do</span> to done.
+        </h2>
+        <p>
+            Discover experts-led events while making new connections – anywhere you are in the world.
+        </p>
+    </div>
+    <div class="hero-image" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">
+        <div class="imh">
+            <img src="assets/images/marketing/event-hero-bg.png" alt="">
+        </div>
+    </div>
+</div>
+
+<app-events-filter (filterPayload)="runFilters($event)" [cardData]="filterInfo"></app-events-filter>
+
+<div class="loading-space-70" *ngIf="!loaded; else loadedSect">
+    <app-loader></app-loader>
+</div>
+
+<ng-template #loadedSect>
+    <div class="credibility-sect">
+        <div class="w96 max1100">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3 mt-3" *ngFor="let item of events">
+                    <app-event-card [cardData]="item"></app-event-card>
+                </div>
+            </div>
+            <div class="w90 max150 text-center mt-5">
+                <button class="solid-button w96">Load More</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

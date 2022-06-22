@@ -1,0 +1,92 @@
+
+// Color variables
+
+$primary-green: #4DAA57;
+$primary-green-hover: #34753b;
+$primary-green-active: #235528;
+
+$primary-green-hover-faint1: rgba(52, 117, 58, 0.7);
+$primary-green-hover-faint2: rgba(52, 117, 58, 0.45);
+$primary-green-hover-faint3: rgba(52, 117, 58, 0.2);
+$primary-green-hover-faint4: rgba(52, 117, 58, 0.1);
+$primary-green-hover-faint5: rgba(52, 117, 58, 0.06);
+
+
+$primary-blue: #22215B;
+$primary-blue-hover: #14133b;
+$primary-blue-active: #03020f;
+
+
+$primary-blue-faint1: rgba(34, 33, 91, 0.7);
+$primary-blue-faint2: rgba(34, 33, 91, 0.45);
+$primary-blue-faint3: rgba(34, 33, 91, 0.2);
+$primary-blue-faint4: rgba(34, 33, 91, 0.1);
+$primary-blue-faint5: rgba(34, 33, 91, 0.06);
+
+$secondary-blue: #258AFF;
+$secondary-blue-hover: #0f5cb4;
+$secondary-blue-active: #063974;
+$secondary-blue-light: #b7d9ff;
+
+$mid-blue: #56CCF2;
+$light-blue: #EEF7FE;
+$light-blue-2: #e4f3ff;
+$light-blue-3: #ddedff;
+$light-blue-auth: #F7FAFE;
+$light-purple-bg: #F7F7FC;
+$light-yellow: #fffaee;
+$light-orange: #FFEED5;
+$yellow: #F9D92E;
+$pale-yellow: #FFD166;
+$orange: #F7A02C;
+$orange-mid-dark: #df7e00;
+$orange-dark: #ca7300;
+$light-cyan: #B2F0FB;
+$green-cyan: #34EAB9;
+
+$white: #ffffff;
+$white-faint1: rgba(255, 255, 255, 0.7);
+$white-faint2: rgba(255, 255, 255, 0.45);
+$white-faint3: rgba(255, 255, 255, 0.2);
+$white-faintest: rgba(255, 255, 255, 0.02);
+
+$off-white: #f1f3f6;
+
+$black: #000000;
+$black-faint1: rgba(0, 0, 0, 0.7);
+$black-faint2: rgba(0, 0, 0, 0.45);
+$black-faint3: rgba(0, 0, 0, 0.2);
+$black-faint4: rgba(0, 0, 0, 0.13);
+$grey-lightest3: #FAFAFB;
+$grey-lightest2: #fcfcfc;
+$grey-lightest: #eff0f2;
+$grey-lighter: #f4f4f4;
+$grey-light: #cccccc;
+$grey-mid: #818181;
+$grey-dark: #414141;
+
+$faint-font: rgba(34, 33, 91, 0.6);
+
+$brown: #4D2E44;
+$red: #ff0101;
+$red-hover: #a10000;
+$red-active: #530000;
+$red-faded: #EB5757;
+$pink: #FF00B5;
+// $yellow: #F7A02C;
+$dirty-green: #587D71;
+
+$transparent: rgba(0, 0, 0, 0);
+
+// Mixins
+
+@mixin mediaM($value) {
+    @media all and (max-width:$value){
+        @content
+    }
+};
+@mixin mediaW($value) {
+    @media all and (min-width:$value){
+        @content
+    }
+};

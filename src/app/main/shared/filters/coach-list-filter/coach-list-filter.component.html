@@ -1,0 +1,113 @@
+<div class="filter fixed-filter" id="coach_list_filter">
+    <div class="w90">
+        <div class="filter-head no-scroll">
+            <div class="category-tabs">
+                <div class="category" (click)="changeCategory('')" 
+                    [ngClass]="{'active-category': category === ''}">
+                    All Results
+                </div>
+                <div class="category" (click)="changeCategory('popular')" 
+                    [ngClass]="{'active-category': category === 'popular'}">
+                    Popular
+                </div>
+                <div class="category" (click)="changeCategory('matching_interests')" 
+                    [ngClass]="{'active-category': category === 'matching_interests'}">
+                    Matching Interests
+                </div>
+                <div class="category" (click)="changeCategory('newly_added ')" 
+                    [ngClass]="{'active-category': category === 'newly_added '}">
+                    Newly Added 
+                </div>
+                <div class="category" (click)="changeCategory('available_on_weekends')" 
+                    [ngClass]="{'active-category': category === 'available_on_weekends'}">
+                    Available On Weekends
+                </div>
+            </div>
+            <div class="result-spread ml-5">
+                <p class="result"><span>{{ cardData.count | number }}</span> Coaches</p>
+                <h6 class="toggle-filters" (click)="toggleFilters()">
+                    <span *ngIf="!openFilters">More Filters</span>
+                    <span *ngIf="openFilters">Hide Filters</span>
+                </h6>
+            </div>
+        </div>
+        <div class="search-case" *ngIf="!openFilters">
+            <div class="search-area">
+                <div class="input-area">
+                    <input type="text" placeholder="Try “IELTS, MCAT, ICAN”" [(ngModel)]="form.search" name="search" id="search">
+                </div>
+                <div class="submit-area" (click)="runSearch()">
+                     Search
+                     <!-- {{ 40000 | currency:'840' }} -->
+                </div>
+            </div>
+        </div>
+        <div class="filter-body" [ngClass]="{'closed-body': !openFilters}">
+            <form action="">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Search</label>
+                            <input type="text" id="filterSearch" name="filterSearch" [(ngModel)]="form.search">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Available Date</label>
+                            <input type="date" id="available_date" name="available_date" [(ngModel)]="form.available_date">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Domain</label>
+                            <select name="domain" id="domain" [(ngModel)]="form.domain">
+                                <option [value]="undefined">Choose Domain</option>
+                                <option [value]="item.id" *ngFor=" let item of domains">{{ item.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Hourly Rate ($)</label>
+                            <input type="number" id="hourly_rate" name="hourly_rate" [(ngModel)]="form.hourly_rate" placeholder="Enter hourly rate ($)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>Country</label>
+                            <select name="country" id="country" [(ngModel)]="form.country">
+                                <option [value]="undefined">Choose Country</option>
+                                <option [value]="item.id" *ngFor=" let item of countries">{{ item.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>State/Region</label>
+                            <select name="state" id="state" [(ngModel)]="form.state">
+                                <option [value]="undefined">Choose State</option>
+                                <option [value]="item.id" *ngFor=" let item of states">{{ item.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-control-dp">
+                            <label>City</label>
+                            <select name="city" id="city" [(ngModel)]="form.city">
+                                <option [value]="undefined">Choose City</option>
+                                <option [value]="item.id" *ngFor=" let item of cities">{{ item.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-grid w96 max450 mt-2 mb-3">
+                    <button class="hollow-button" (click)="clearFilters()">Clear Filter</button>
+                    <span></span>
+                    <button class="solid-button" (click)="filterAction()"><i class="fas fa-search"></i> &nbsp; Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="space_holder"></div>

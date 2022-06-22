@@ -1,0 +1,95 @@
+<div class="onboarding-grid">
+    <div class="side-menu">
+        <div class="click-catcher" [ngClass]="{'catcher-active' : showSidebar}" (click)="hideSideBar()"></div>
+        <div class="content-holder py-4" [ngClass]="{'content-holder-active' : showSidebar}">
+            <a routerLink="/">
+                <div class="w60 max200 imh mb-4">
+                    <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+                </div>
+            </a>
+            <div class="w90 profile-card p-2 mt-3 spread-info-front">
+                <div class="imh ww40 rad-25 overflow-hidden mr-3">
+                    <img src="../../../../assets/images/marketing/card-photo2.png" alt="">
+                </div>
+                <div>
+                    <p class="mb-0 g-6 increased-soft">{{ userDetails.firstName | titlecase }} {{ userDetails.lastName | titlecase }}</p>
+                    <p class="mb-0 c-grey reduced-soft">{{ userDetails.username }}</p>
+                </div>
+            </div>
+            <div class="py-3"></div>
+            <a routerLink="/coach/overview" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/overview-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Overview</p>
+                </div>
+            </a>
+            <a routerLink="/coach/one-on-one" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/one-on-one-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">One-on-One</p>
+                </div>
+            </a>
+            <a routerLink="/coach/group" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/group-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Group</p>
+                </div>
+            </a>
+            <a routerLink="/coach/impact" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/impact-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Impact</p>
+                </div>
+            </a>
+
+
+            <div class="pb-4"></div>
+
+
+            <a routerLink="/coach/profile" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/profile-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Profile</p>
+                </div>
+            </a>
+            <a routerLink="/coach/availability" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/availability-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Availability</p>
+                </div>
+            </a>
+            <a routerLink="/coach/payout" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/payout-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Payout</p>
+                </div>
+            </a>
+            <a routerLink="/coach/notification" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/notification-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Notification</p>
+                </div>
+            </a>
+            <a routerLink="/coach/invite" class="page-links" routerLinkActive="active-link">
+                <div class="spread-info-front">
+                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/invite-icon.svg" width="30px" alt="">
+                    <p class="mb-0 pl-3 ml-2 pt-1 increased-soft">Invite</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="side-holder"></div>
+    <div class="content-holder">
+        <div class="mobile-menu">
+            <div class="fix">
+                <div class="spread-info mb-3">
+                    <div class="imh" (click)="openSideBar()">
+                        <img src="./../../../../assets/images/new-onboarding/burger-icon-2.png" alt="">
+                    </div>
+                    <button class="solid-button-2">Back</button>
+                </div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

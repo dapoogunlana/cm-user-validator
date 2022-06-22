@@ -1,0 +1,75 @@
+
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="mt-5">
+        <div class="py-5 center-info" *ngIf="!notificationsLoaded; else loaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #loaded>
+            <div class="">
+                <h1>Notifications</h1>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="shadowed white rad-15 mb-5 p-3 relative">
+                            <h5 class="g-4">Axtivity</h5>
+                            <div class="restriction-area soft-scroll">
+                                <p class="" [ngClass]="{'c-grey': notification.viewed}" *ngFor="let notification of notificationList"><span class="g-6">{{ notification.user }}</span> {{ notification.message }}</p>
+                            </div>
+                        </div>
+                        <div class="shadowed white rad-15 mb-5 p-3 relative">
+                            <h5 class="g-4 mb-3">Select notifications you want to recieve</h5>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">New Session is booked</p>
+                                <div class="switch" (click)="switchActive('newSessionAlert')" [ngClass]="{'active-switch': notificationSettings.newSessionAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">Session is cancelled</p>
+                                <div class="switch" (click)="switchActive('sessionCanceledAlert')" [ngClass]="{'active-switch': notificationSettings.sessionCanceledAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">Session is rescheduled</p>
+                                <div class="switch" (click)="switchActive('sessionRescheduledAlert')" [ngClass]="{'active-switch': notificationSettings.sessionRescheduledAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">Event is rescheduled</p>
+                                <div class="switch" (click)="switchActive('eventResheduledAlert')" [ngClass]="{'active-switch': notificationSettings.eventResheduledAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">15 minutes before session or event</p>
+                                <div class="switch" (click)="switchActive('quarterBeforeSessionAlert')" [ngClass]="{'active-switch': notificationSettings.quarterBeforeSessionAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="spread-info my-2 pb-2">
+                                <p class="increased-soft mb-0">1 hours before session or event</p>
+                                <div class="switch" (click)="switchActive('hourBeforeSessionAlert')" [ngClass]="{'active-switch': notificationSettings.hourBeforeSessionAlert}">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="shadowed white rad-15 relative p-3 input-styler">
+                            <h5 class="g-4 increased-soft">
+                                Enable text notification to never miss any of your calls
+                            </h5>
+                            <input type="number" name="" id="">
+                            <small class="c-sc-blue">resend verification code</small>
+                            <div class="full-button">
+                                <button class="solid-button-sec-2">Verify</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+.info-card{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: $light-blue-3;
+}
+.ash-tab-holder{
+    background-color: $grey-lightest;
+    width: 100%;
+    border-radius: 20px;
+}

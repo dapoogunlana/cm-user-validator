@@ -1,0 +1,97 @@
+<a [routerLink]="'/coach/session/' + cardData.id">
+    <div class="session">
+        <div [ngClass]="{'row': !isMobile}">
+            <div class="col-md-5 mb-2">
+                <div class="imh">
+                    <img [src]="cardData.sessionImage" class="rad-15" alt="">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="contain">
+                    <div class="session-top">
+                        <h6 class="c-pr-blue increased mb-0">
+                            Private Session
+                        </h6>
+                        <div>
+                            <div class="session-sticker green" *ngIf="cardData.status === 'Accepted'">
+                                Accepted
+                            </div>
+                            <div class="session-sticker dark-blue" *ngIf="cardData.status === 'Ended'">
+                                Session Ended
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-info-front mt-2 mb-2">
+                        <div class="avatar">
+                            <img [src]="cardData.coachImage" alt="">
+                        </div>
+                        <p class="c-sc-blue mb-0">{{cardData.coachName}}</p>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <img src="./../../../../assets/images/marketing/calendar.svg" width="30px" alt="">
+                        <p class="mb-0 ml-2 c-black">{{ cardData.time }}, {{ cardData.date }}</p>
+                    </div>
+                    <div class="mb-2">
+                        <div class="category interest" *ngFor="let plan of cardData.plans">
+                            {{ plan }}
+                        </div>
+                    </div>
+                    <div class="spread-info mb-2">
+                        <h6 class="mb-0 c-pr-blue increased">${{ cardData.hourlyRate }}/hr</h6>
+                        <p class="mb-0 c-faint-font">Duration: {{ cardData.duration }} Minutes</p>
+                    </div>
+                    <p class="c-faint-font mb-0">
+                        {{ cardData.briefInfo }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</a>
+
+<!-- <div class="full-card">
+    <div class="spread-info mb-2">
+        <h5>${{ cardData.ratePerHour }}/hr</h5>
+    </div>
+    <div class="w70 max150">
+        <div class="card-image">
+            <div>
+                <img [src]="cardData.imageUrl" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <h6 class="c-pr-blue increased mt-3 mb-1">{{ cardData.sessionFullName }}</h6>
+        <p class="c-sc-blue">{{ cardData.roleName }}</p>
+        <p class="c-faint-font">{{ utility.clipText(cardData.catchyAchievementPhrase, 45) }}</p>
+    </div>
+    <div class="category-tabs2 no-scroll" *ngIf="cardData.sessionPricingPlans.length > 2; else lessPlans">
+        <div class="category interest2" *ngFor="let plan of cardData.sessionPricingPlans">
+            {{ plan }}
+        </div>
+    </div>
+    <ng-template #lessPlans>
+        <div class="center-info">
+            <div class="category interest2" *ngFor="let plan of cardData.sessionPricingPlans">
+                {{ plan }}
+            </div>
+        </div>
+    </ng-template>
+    <div class="w80">
+        <div class="spread-info mt-2">
+            <p><span class="font-weight-bold c-pr-blue">{{ cardData.numberOfSessions }}</span> Sessions</p>
+            <h6 class="c-pr-blue"><i class="fas fa-star c-orange"></i> {{ cardData.rating }}</h6>
+        </div>
+    </div>
+    <div class="text-center">
+        <p class="c-pr-blue">Available from <span class="font-weight-bold">{{ cardData.available || '12th December 2021' }}</span></p>
+    </div>
+    <div class="w80">
+        <div class="text-center full-button">
+            <a [routerLink]="'/session-detail/' + cardData.id">
+                <button class="solid-button-2">See More</button>
+            </a>
+        </div>
+    </div>
+</div> -->

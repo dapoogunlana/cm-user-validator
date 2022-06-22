@@ -1,0 +1,98 @@
+<!-- <a [routerLink]="'/coach-detail/' + cardData.id">
+    <div class="coach">
+        <div [ngClass]="{'row': !isMobile}">
+            <div class="col-md-5 mb-2">
+                <div class="imh">
+                    <img src="./../../../../assets/images/marketing/card-photo4.jpg" class="rad-15" alt="">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="contain">
+                    <div class="coach-top">
+                        <h6>
+                            {{ cardData.coachName }}
+                        </h6>
+                        <div>
+                            <div class="coach-sticker">
+                                <span></span>Coach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <p class="mb-0 c-secondary-blue mr-2">{{ cardData.profession }}</p>
+                        <h6 class="mb-0 c-primary-blue reduced">{{ cardData.placeOfWork }}</h6>
+                    </div>
+                    <div class="mb-2">
+                        <div class="category" *ngFor="let skill of cardData.skills">
+                            {{ skill }}
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="category interest" *ngFor="let package of cardData.engagementPackages">
+                            {{ package }}
+                        </div>
+                    </div>
+                    <div class="spread-info-front mb-2">
+                        <p class="mb-0 font-weight-bold increased mr-2 c-primary-blue">${{ cardData.hourlyRate }}/hr </p>
+                        <p class="mb-0" [innerHTML]="utility.calculateColoredStars(cardData.rating)"></p>
+                    </div>
+                    <div class="spread-info">
+                        <p class="mb-0 reduced">Next available date</p>
+                        <p class="mb-0 reduced c-primary-blue1"><span class="font-weight-bold">{{ cardData.sessionsCompleted }}</span> Sessions completed</p>
+                    </div>
+                    <h6 class="c-primary-blue">{{ cardData.availableDate }}</h6>
+                    <p class="c-primary-blue mb-0">
+                        {{ cardData.briefInfo }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</a> -->
+
+<div class="full-card">
+    <div class="spread-info mb-2">
+        <h5>${{ cardData.ratePerHour }}/hr</h5>
+    </div>
+    <div class="w70 max150">
+        <div class="card-image">
+            <div>
+                <img [src]="cardData.imageUrl" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <h6 class="c-pr-blue increased mt-3 mb-1">{{ cardData.coachFullName }}</h6>
+        <p class="c-sc-blue">{{ cardData.roleName }}</p>
+        <p class="c-faint-font">{{ utility.clipText(cardData.catchyAchievementPhrase, 45) }}</p>
+    </div>
+    <div class="category-tabs2 center-info no-scroll" *ngIf="cardData.coachPricingPlans.length > 2; else lessPlans">
+        <div class="interest-small" *ngFor="let plan of cardData.coachPricingPlans">
+            {{ plan }}
+        </div>
+    </div>
+    <ng-template #lessPlans>
+        <div class="center-info">
+            <div class="interest-small" *ngFor="let plan of cardData.coachPricingPlans">
+                {{ plan }}
+            </div>
+        </div>
+    </ng-template>
+    <div class="w80">
+        <div class="center-info mt-2">
+            <h6 class="c-pr-blue mb-0"><i class="fas fa-star c-orange"></i> {{ cardData.rating }}</h6>
+            <p class="mb-0 ml-2 c-faint-font">(<span class="font-weight-bold">{{ cardData.numberOfSessions }}</span> Sessions)</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <p class="c-pr-blue">Available from <span class="font-weight-bold">{{ cardData.available || '12th December 2021' }}</span></p>
+    </div>
+    <div class="w80">
+        <div class="text-center full-button">
+            <a [routerLink]="'/coach-detail/' + cardData.id">
+                <button class="solid-button-2">See More</button>
+            </a>
+        </div>
+    </div>
+</div>

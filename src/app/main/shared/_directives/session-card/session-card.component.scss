@@ -1,0 +1,92 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.session{
+    width: 100%;
+    min-height: 200px;
+    padding: 15px 15px;
+    background-color: $white;
+    border-radius: 20px;
+    // .contain{}
+    .session-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .session-sticker{
+            // background-color: $primary-green;
+            color: $white;
+            margin-left: 10px;
+            border-radius: 6px;
+            padding: 3px 7px;
+            font-size: 12px;
+            span{
+                border-radius: 50%;
+                width: 9px;
+                height: 9px;
+                display: inline-block;
+                margin-right: 10px;
+                background-color: $white;
+            }
+        }
+    }
+    .avatar{
+        width: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid $white;
+        margin-right: 14px;
+        img{
+            width: 100%;
+        }
+    }
+    .imageStack{
+        padding: 4px 4px 4px 24px;
+        img{
+            width: 30px;
+            border-radius: 50%;
+            border: 2px solid $white;
+            margin-left: -20px;
+        }
+    }
+}
+
+// .full-card{
+//         width: 100%;
+//         min-height: 200px;
+//         padding: 15px 15px;
+//         background-color: $white;
+//         border-radius: 20px;
+//     .card-image{
+//         position: relative;
+//         border-radius: 20px;
+//         width: 100%;
+//         padding-bottom: 100%;
+//         overflow: hidden;
+//         box-shadow: 0 1px 8px -1px $black-faint3;
+//         div{
+//             position: absolute;
+//             width: 120%;
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//             img{
+//                 width: 100%;
+//             }
+//         }
+//     }
+//     .category-tabs2{
+//         white-space: nowrap;
+//         overflow: auto;
+//         .category{
+//             padding: 4px 13px;
+//             border-radius: 6px;
+//             margin: 5px 14px 5px 0;
+//             cursor: pointer;
+//         }
+//         .active-category{
+//             color: $white;
+//             background-color: $primary-blue-hover;
+//             pointer-events: none;
+//         }
+//     }
+// }

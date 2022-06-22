@@ -1,0 +1,34 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.all{
+    padding: 23vh 0 10vh;
+    background-color: #f1f3f6;
+    .coach-img{
+        img{
+            width: 100%;
+            border-radius: 25px;
+        }
+    }
+    .coach-info{
+        .avatar{
+            width: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid $white;
+            margin-right: 14px;
+            img{
+                width: 100%;
+            }
+        }
+        .imageStack{
+            padding: 4px 4px 4px 24px;
+            img{
+                width: 30px;
+                border-radius: 50%;
+                border: 2px solid $white;
+                margin-left: -20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+
+.notification{
+    border-radius: 9px;
+    padding: 10px;
+    border: 0.5px solid $secondary-blue;
+    background-color: $white;
+    .top{
+        display: grid;
+        grid-template-columns: auto 50px;
+        .info{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            div{
+                width: 100%;
+            }
+        }
+    }
+    .closer{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        i{
+            color: $grey-mid;
+            background-color: $grey-lightest;
+            padding: 6px;
+            border-radius: 5px;
+            transition: 0.2s ease;
+            &:hover{
+                background-color: $red;
+            }
+        }
+    }
+}
+.min-200{
+    min-height: 285px;
+}
+.radio-holder{
+    opacity: 0.6;
+    cursor: pointer;
+    .radio{
+        width: 20px;
+        margin-right: 10px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $secondary-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+    }
+}
+.active-radio{
+    opacity: 1;
+    .radio{
+        div{
+            background-color: $white;
+        }
+    }
+}
+.sp-spacer{
+    height: 0;
+    width: calc(10px + 3vw);
+}

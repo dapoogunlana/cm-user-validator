@@ -1,0 +1,75 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="mt-5">
+        <div class="py-5 center-info" *ngIf="!sessionDetailsLoaded; else newSessionLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #newSessionLoaded>
+            <div class="">
+                <div class="spread-info mb-3">
+                    <h2 class="">Session details</h2>
+                    <div class="white rad-10 px-3 py-2 clickable" (click)="goback()">
+                        <i class="fas fa-chevron-left mr-3"></i>
+                        Back
+                    </div>
+                </div>
+                <div class="mb-4 white rad-15 p-3 shadowed">
+                    <h5 class="g-6">{{ groupSessionDetail.topic }}</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="imh">
+                                <img [src]="groupSessionDetail.sessionImage" class="rad-10" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="rad-10 bordered-light p-3 full-height-web">
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/calendar.svg" width="30" class="mr-3" alt="">
+                                    <span>{{ groupSessionDetail.date }}, {{ groupSessionDetail.time }}</span>
+                                </div>
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/vid-icon.svg" width="30" class="mr-3" alt="">
+                                    <span>{{ groupSessionDetail.type }}</span>
+                                </div>
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icon-tickets-two.svg" width="30" class="mr-3" alt="">
+                                    <span>Ticket: ${{ groupSessionDetail.date }}</span>
+                                </div>
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/dashboard//seat-icon.svg" width="30" class="mr-3" alt="">
+                                    <span>Seats: {{ groupSessionDetail.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tablet-case mb-3 mt-3">
+                    <div class="tablet" [ngClass]="{'active-tab': activeTab === 'description'}" (click)="switchTab('description')">
+                        description
+                    </div>
+                    <div class="tablet mr-0" [ngClass]="{'active-tab': activeTab === 'reviews'}" (click)="switchTab('reviews')">
+                        Reviews
+                    </div>
+                </div>
+                <div class="mt-3" *ngIf="activeTab === 'description'">
+                    <p *ngFor="let info of groupSessionDetail.description" class="c-faint-font">{{ info }}</p>
+                </div>
+                <div class="mt-3 bordered-light rad-15 p-3" *ngIf="activeTab === 'reviews'">
+                    <div class="maxh-35 auto-flow soft-scroll">
+                        <div class="review"  *ngFor="let review of groupSessionDetail.reviews">
+                            <div class="spread-info">
+                                <h5>{{ review.topic }}</h5>
+                                <h5 class="c-sc-blue">{{ review.reviewer }}</h5>
+                            </div>
+                            <hr class="mt-0">
+                            <p class="c-faint-font">
+                                {{ review.comment }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

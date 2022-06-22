@@ -1,0 +1,100 @@
+<div class="auth-bg">
+    <div class="auth-card" [ngClass]="{'auth-wide': progressLevel === 1}">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="progressLevel === 0">
+            <app-loader></app-loader>
+            <p>Setting Up Booking Information.</p>
+        </div>
+        <div class="form-flex" *ngIf="progressLevel > 0">
+            <div class="input-flex">
+                <div class="w100 full-button" *ngIf="progressLevel === 1">
+                    <div class="restrictor">
+                        <div class="spread-info">
+                            <h6 class="mb-0">Billing Configuration</h6>
+                            <p class="mb-0 font-weight-bold cancel" (click)="cancel()">Cancel</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6" (click)="selectPlan(i)"
+                            *ngFor="let plan of coachSessionData.coachPricingPlans; let i = index">
+                            <div class="plan" [ngClass]="{'selected': plan.selected}">
+                                <div class="plan-top">
+                                    <h3>{{ plan.name }}</h3>
+                                    <p>
+                                        <small>{{ plan.extra.briefSummary }}</small>
+                                    </p>
+                                </div>
+                                <div class="plan-body">
+                                    <div class="plan-grid"  *ngFor="let feature of plan.extra.descriptions">
+                                        <i class="fas fa-check"></i>
+                                        <p>
+                                            {{ feature.description }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w100 full-button" *ngIf="progressLevel === 2">
+                    <div class="spread-info">
+                        <h6 class="mb-0">Session Objective</h6>
+                        <p class="mb-0 font-weight-bold cancel" (click)="cancel()">Cancel</p>
+                    </div>
+                    <form #f="ngForm" name="professional_information" id="professional_information">
+                        <label>What would you like to discuss during the session?</label>
+                        <textarea type="text" required name="professional_summary" required [(ngModel)]="coachSessionData.sessionObjective"
+                            id="professional_summary" placeholder="What would you like to discuss during the session?" rows="11"></textarea>
+                    </form>
+                </div>
+                <div class="w100 full-button" *ngIf="progressLevel === 7">
+                    <h6>Declaration</h6>
+                    <p>
+                        I solemnlydeclarethat all the information furnished during onboarding on this platform is free of
+                        errors to the best of my knowledge. I herebydeclarethat all the information contained herein is in 
+                        accordance with facts or truths to my knowledge. I take full responsibility for the correctness of 
+                        the said information.
+                    </p>
+                    <div class="preference-point">
+                        <div class="tick-area">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span></span>
+                        <p class="mb-0 mt-1 dark">
+                            Please tick the box to agree to the Declaration Statement.
+                        </p>
+                    </div>
+                </div>
+                <div class="navigator">
+                    <div class="clicker" (click)="back()" [ngClass]="{'deactivate': progressLevel === 1}">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="center-info" *ngIf="loadingProgress; else progressIndicator">
+                        <app-loader></app-loader>
+                    </div>
+                    <ng-template #progressIndicator>
+                        <div class="progress">
+                            <div [ngClass]="{'active': progressLevel === 1}"></div>
+                            <div [ngClass]="{'active': progressLevel === 2}"></div>
+                            <div [ngClass]="{'active': progressLevel === 3}"></div>
+                            <div [ngClass]="{'active': progressLevel === 4}"></div>
+                            <div [ngClass]="{'active': progressLevel === 5}"></div>
+                            <div [ngClass]="{'active': progressLevel === 6}"></div>
+                            <div [ngClass]="{'active': progressLevel === 7}"></div>
+                        </div>
+                    </ng-template>
+                    <button class="solid-button-2" (click)="forward()" *ngIf="progressLevel <= 6">
+                        Next
+                    </button>
+                    <button class="solid-button-2" [disabled]="false" (click)="submit()" *ngIf="progressLevel > 6">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

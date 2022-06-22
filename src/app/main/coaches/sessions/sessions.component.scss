@@ -1,0 +1,19 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.all{
+    padding: 23vh 0 10vh;
+    padding: 15px 6vmax;
+    background-color: #f1f3f6;
+    .spacer{
+        height: 77px;
+        @include mediaM(550px) {
+            height: 60px;
+        }
+    }
+    .ash-tab-holder{
+        background-color: $grey-lightest;
+        width: 100%;
+        border-radius: 20px;
+    }
+}

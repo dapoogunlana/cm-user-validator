@@ -1,0 +1,285 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <h1 class="mb-3">Availability</h1>
+    <div class="white rad-15 sc-blue-border p-3 max600" data-aos="fade-up">
+        <p class="m-0">Connect your calender to avoid any conflict with your bookings and other activities. Enable SMS notifications to never miss a session or event </p>
+    </div>
+
+    <div class="py-5 center-info" *ngIf="!availabilityLoaded">
+        <app-loader></app-loader>
+    </div>
+    <div class="w100 mt-5" *ngIf="availabilityLoaded">
+        <div class="w100 inner-bg full-button input-styler">
+            <form #f="ngForm" name="professional_information" id="professional_information">
+                <p class="mt-3 increased g-6">Hourly Rate</p>
+                <div class="mt-3 p-3 schedule max600">
+                    <div class="pt-2">
+                        <input type="number" [(ngModel)]="availabilityData.hourlyRate" class="mb-0" name="rate"
+                         />
+                    </div>
+                </div>
+                <p class="mt-3 increased g-6">Available Period (Long Term)</p>
+                <div class="mt-3 p-3 schedule max600">
+                    <div class="preference-point">
+                        <div class="tick-area" [ngClass]="{'active': availabilityData.alwaysAvailable}" (click)="toggleAlwaysAvailable()">
+                            <i class="fas fa-check" *ngIf="availabilityData.alwaysAvailable"></i>
+                        </div>
+                        <span></span>
+                        <p class="mb-0 mt-2 dark">
+                            I have no availability date Limit
+                        </p>
+                    </div>
+                    <div class="spread-info-web" *ngIf="!availabilityData.alwaysAvailable">
+                        <div class="pt-2">
+                            <label>Start Date</label>
+                            <input type="date" [(ngModel)]="availabilityData.startDate" class="mb-0" name="startDate"
+                             />
+                        </div>
+                        <div style="height: 0; width: 20px;"></div>
+                        <div class="pt-2">
+                            <label>End Date</label>
+                            <input type="date" [(ngModel)]="availabilityData.endDate" class="mb-0" name="endDate"
+                             />
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 increased g-6">Weekly Service Scheduling</p>
+                <div class="mt-3 p-3 schedule max600">
+                    <!-- Sunday -->
+                    <div class="day py-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Sunday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('sunday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.sunday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.sunday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.sunday.startTime" (change)="updateStartTime($event, 'sunday')">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.sunday.endTime" (change)="updateEndtime($event, 'sunday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('sunday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.sunday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('sunday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Monday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Monday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('monday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.monday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.monday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.monday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.monday.endTime" (change)="updateEndtime($event, 'monday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('monday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.monday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('monday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tuesday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Tuesday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('tuesday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.tuesday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.tuesday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.tuesday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.tuesday.endTime" (change)="updateEndtime($event, 'tuesday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('tuesday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.tuesday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('tuesday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wednesday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Wednesday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('wednesday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.wednesday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.wednesday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.wednesday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.wednesday.endTime" (change)="updateEndtime($event, 'wednesday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('wednesday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.wednesday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('wednesday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Thursday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Thursday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('thursday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.thursday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.thursday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.thursday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.thursday.endTime" (change)="updateEndtime($event, 'thursday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('thursday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.thursday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('thursday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Friday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Friday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('friday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.friday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.friday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.friday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.friday.endTime" (change)="updateEndtime($event, 'friday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('friday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.friday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('friday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Saturday -->
+                    <div class="day py-3 mt-3">
+                        <div class="spread-info mb-2 px-3">
+                            <p class="mb-0 c-black g-6">Saturday</p>
+                            <div class="switch" (click)="switchAvailabilityActive('saturday')" [ngClass]="{'active-switch': availabilityData.serviceScheduling.saturday.active}">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="availabilityData.serviceScheduling.saturday.active">
+                            <div class="spread-info mb-2 px-3">
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.saturday.startTime">
+                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                                <span class="px-3 increased-x">to</span>
+                                <select class="mb-0" name="start" id="start" [(ngModel)]="availabilitySchedullerData.saturday.endTime" (change)="updateEndtime($event, 'saturday')">
+                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="text-center full-button px-3 pt-2">
+                                <button class="solid-button" (click)="addAvailableHours('saturday')" >Add hours</button>
+                            </div>
+                            <hr class="mb-2">
+                            <div class="px-3">
+                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of availabilityData.serviceScheduling.saturday.hours; let i = index">
+                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('saturday', i)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        <div class="full-button py-3 mt-5 max600">
+            <button class="solid-button-3 g-6" (click)="save()">&nbsp; &nbsp; Save &nbsp; &nbsp; <i class="fas fa-chevron-right"></i>&nbsp; &nbsp; </button>
+        </div>
+    </div>
+</div>

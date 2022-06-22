@@ -1,0 +1,96 @@
+<!-- <a [routerLink]="'/event/' + cardData.id">
+    <div [ngClass]="{'row': !isMobile}" class="event">
+        <div class="col-md-5 mb-2">
+            <div class="imh">
+                <img [src]="cardData.coachImageUrl" class="rad-15" alt="">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="event-top">
+                <h6>
+                    {{ cardData.title }}
+                </h6>
+                <div>
+                    <div class="event-sticker">
+                        <span></span>Event
+                    </div>
+                </div>
+            </div>
+            <div class="spread-info-front mb-2">
+                <div class="avatar">
+                    <img [src]="cardData.coachPreviewImageUrl" alt="">
+                </div>
+                <a [routerLink]="'/' + cardData.coachId">{{ cardData.coachFullName }}</a>
+            </div>
+            <div class="spread-info-front">
+                <p class="mb-2" [innerHTML]="utility.calculateColoredStars(cardData.rating)"></p>
+            </div>
+            <div class="spread-info-front mb-2">
+                <img src="./../../../../assets/images/marketing/calendar.svg" width="30px" alt="">
+                <p class="mb-0 ml-2">{{ cardData.startDate }}</p>
+            </div>
+            <div class="spread-info-front mb-2">
+                <img src="./../../../../assets/images/marketing/clock.svg" width="30px" alt="">
+                <p class="mb-0 ml-2">{{ cardData.startTime }}</p>
+            </div>
+            <div class="spread-info">
+                <div class="c-pr-blue">
+                    <small>Enrollment fee</small>
+                    <p class="mb-0 font-weight-bold increased">${{ cardData.enrolmentFee }} </p>
+                </div>
+                <div class="spread-info-front">
+                    <div class="imageStack">
+                        <img [src]="image" *ngFor="let image of cardData.attendeesImageUrls" alt="">
+                    </div>
+                    <div>
+                        <p class="mb-0 c-sc-blue">+{{ cardData.numberOfAttendees }} Atendees</p>
+                        <p class="mb-0 c-orange">+{{ cardData.numberOfSeatsRemaining }} seats remaining</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a> -->
+
+
+<div class="full-card">
+    <div class="spread-info mb-2">
+        <h5>${{ cardData.enrolmentFee }}/person</h5>
+        <div class="event-sticker">
+            <span></span>Event
+        </div>
+    </div>
+    <div class="card-image">
+        <div>
+            <img [src]="cardData.coachImageUrl" alt="">
+        </div>
+    </div>
+    <div class="text-center">
+        <h6 class="c-pr-blue increased mt-3 mb-1">{{ cardData.title }}</h6>
+    </div>
+    <div class="spread-info">
+        <div class="spread-info">
+            <div class="avatar">
+                <img [src]="cardData.coachImageUrl" alt="">
+            </div>
+            <p class="mb-0 c-sc-blue">{{ cardData.coachFullName }}</p>
+        </div>
+        <h6 class="c-pr-blue mb-0"><i class="fas fa-star c-orange"></i> {{ cardData.rating }}</h6>
+    </div>
+    <div class="">
+        <div class="spread-info mt-2 reduced font-weight-bold">
+            <p class="c-sc-blue">+{{ cardData.numberOfAttendees }} Atendees</p>
+            <p class="c-orange">{{ cardData.seatsRemaining || 42 }} Seats Left</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <p class="c-pr-blue reduced">{{ cardData.startTime }} <span class="font-weight-bold">{{ cardData.startDate }}</span></p>
+    </div>
+    <div class="w80">
+        <div class="text-center full-button">
+            <a [routerLink]="'/event/' + cardData.id">
+                <button class="solid-button-2">See More</button>
+            </a>
+        </div>
+    </div>
+</div>

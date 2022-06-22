@@ -1,0 +1,871 @@
+<div class="onboarding-grid">
+    <div class="side-menu">
+        <div class="click-catcher" [ngClass]="{'catcher-active' : showSidebar}" (click)="hideSideBar()"></div>
+        <div class="content-holder p-4" [ngClass]="{'content-holder-active' : showSidebar}">
+            <a routerLink="/">
+                <div class="w70 imh my-4">
+                    <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+                </div>
+            </a>
+            <div class="py-3"></div>
+            <div class="progress-capsule mt-4" *ngFor="let process of coachSetupService.userSteps; let i = index" (click)="coachSetupService.goToLevel(i)"
+                [ngClass]="{'unclickable': !process.isOpen, 'current-level': i === coachSetupService.progressLevel}">
+                <p class="mb-0 increased-soft">{{ process.name }}</p>
+                <div class="check" [ngClass]="{'unreached': !process.isCompleted}">
+                    <i class="fa fa-check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side-holder"></div>
+    <div class="auth-bg">
+        <div class="mobile-menu">
+            <div class="fix">
+                <div class="spread-info mb-3">
+                    <div class="imh" (click)="openSideBar()">
+                        <img src="./../../../../assets/images/new-onboarding/burger-icon-2.png" alt="">
+                    </div>
+                    <button class="solid-button-2">Back</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="indicator" [ngStyle]="{'width': ((coachSetupService.progressLevel / 6) * 100) + '%'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="auth-card" [ngClass]="{'auth-wide': coachSetupService.progressLevel === 16}">
+            <div class="form-flex" *ngIf="coachSetupService.progressLevel === 0">
+                <div class="input-flex">
+                    <div class="text-center">
+                        <h6>Welcome</h6>
+                        <p class="pt-3 md-close">Just a few more information we need and you’ll be on your way</p>
+                        <div class="inner-bg">
+                            <p class="text-left">
+                                Just a few more information we need and you’ll be on your way
+                            </p>
+                            <p class="text-justify">
+                                Physiological respiration involves the mechanisms that ensure that the composition of the functional residual capacity is 
+                                kept constant, and equilibrates with the gases dissolved in the pulmonary capillary blood, and thus throughout the body. 
+                                Thus, in precise usage, the words breathing and ventilation are hyponyms, not synonyms, of respiration; but this prescription 
+                                is not consistently followed, even by most health care providers, because the term respiratory rate (RR) is a well-established 
+                                term in health care, even though it would need to be consistently replaced with ventilation rate if the precise usage were to 
+                                be followed.
+                            </p>
+                        </div>
+                        <button class="solid-button-3 sub-wid mt-5" [disabled]="!coachSetupService.setupData.registrationPage" (click)="forward()">Proceed</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-flex" *ngIf="coachSetupService.progressLevel > 0">
+                <div class="input-flex">
+                    <div class="w100 inner-bg full-button" *ngIf="coachSetupService.progressLevel === 1">
+                        <h6 class="text-center">Join cm experts</h6>
+                        <p class="text-center">Just a few more information we need and you’ll be on your way</p>
+                        <form #f="ngForm" name="professional_information" id="professional_information">
+                            <div class="info-grid-web">
+                                <div>
+                                    <label>First Name</label>
+                                    <input type="text" disabled required name="first_name" required [(ngModel)]="coachSetupService.setupData.registrationPage.firstName"
+                                        id="first_name" placeholder="Enter first name">
+                                </div>
+                                <span></span>
+                                <div>
+                                    <label>Last Name</label>
+                                    <input type="text" disabled required name="last_name" required [(ngModel)]="coachSetupService.setupData.registrationPage.lastName"
+                                        id="last_name" placeholder="Enter last name">
+                                </div>
+                            </div>
+                            <div>
+                                <label>Username</label>
+                                <input type="text" required name="username" required [(ngModel)]="coachSetupService.setupData.registrationPage.username"
+                                    id="username" placeholder="Enter username">
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="text" disabled required name="email" required [(ngModel)]="coachSetupService.setupData.registrationPage.email"
+                                    id="email" placeholder="Enter email">
+                            </div>
+                            <!-- <div>
+                                <label>Passowrd</label>
+                                
+                                <div class="relative">
+                                    <input [type]="passwordType" required name="password" required [(ngModel)]="coachSetupService.setupData.registrationPage.password"
+                                        id="password" placeholder="Create password">
+                                    <div class="eye-toggle">
+                                        <i class="far fa-eye" *ngIf="!passwordVisible" (click)="togglePasswordVisibility(true)"></i>
+                                        <i class="far fa-eye-slash" *ngIf="passwordVisible" (click)="togglePasswordVisibility(false)"></i>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="pb-3">
+                                <button class="solid-button-3 mt-3" (click)="forward()">Register</button>
+                            </div>
+                            <!-- <hr class="mt-4 mb-0">
+                            <div class="w60 max150 c-grey white mt--1 text-center">Or Join With</div>
+
+                            <div class="center-info google-button c-grey mb-4 mt-4 clickable">
+                                <img src="./../../../../assets/images/new-onboarding/google-icon.svg" width="30" class="mr-3" alt="">
+                                Log in with Google
+                            </div>
+                            <div class="center-info apple-button c-white clickable">
+                                <img src="./../../../../assets/images/new-onboarding//Apple-Logo.svg" width="30" class="mr-3" alt="">
+                                Log in with Apple
+                            </div> -->
+                        </form>
+                    </div>
+
+
+                    <div *ngIf="coachSetupService.progressLevel === 2">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Professional Information</h6>
+                            <p class="text-center">Just a few more information we need and you’ll be on your way</p>
+                            <form #f="ngForm" name="professional_information" id="professional_information">
+                                
+                                <label>Job Title</label>
+                                <input type="text" required name="job_title" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.jobTitle"
+                                    id="job_title" placeholder="Enter job itile">
+                                <label>Company</label>
+                                <input type="text" required name="company" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.companyName"
+                                    id="company" placeholder="Enter company name">
+                                <label>Industry</label>
+                                <input type="text" required name="industry" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.industryName"
+                                    id="industry" placeholder="Enter industry name">
+                                <!-- <label>Country</label>
+                                <select type="text" required name="country" required form="professional_information" [(ngModel)]="coachSetupService.setupData.professionalInformationPage.countryId"
+                                    id="country">
+                                    <option [value]="undefined">Choose your country</option>
+                                    <option [value]="1" *ngIf="coachSetupService.countries.length === 0">Nigeria (Sample)</option>
+                                    <option [value]="country.id" *ngFor="let country of coachSetupService.countries">{{ country.name }}</option>
+                                </select> -->
+                                <label>Professional Expertise Work Summary</label>
+                                <textarea type="text" required name="professional_summary" [(ngModel)]="coachSetupService.setupData.professionalInformationPage.professionalSummary"
+                                    id="professional_summary" placeholder="Enter professional summary" rows="2"></textarea>
+                            </form>
+                        </div>
+                        <div class="w100 inner-bg full-button mt-4">
+                            <h6 class="text-center">Whats your Domain</h6>
+                            <p class="text-center">Just a few more information we need and you’ll be on your way</p>
+                            <div class="mb-3">
+                                <div class="popular-domain" *ngFor="let domain of coachSetupService.popularDomains; let i = index" (click)="addDomain(domain)">
+                                    <span class="mr-2">{{ domain.name }}</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                            <div class="progress-box">
+                                <div class="maxh-40 y-overflow">
+                                    <div class="active-domain" *ngFor="let domain of coachSetupService.setupData.professionalInformationPage.coachDomains; let i = index">
+                                        <span class="mr-2">{{ domain.name }}</span>
+                                        <i class="fas fa-times-circle" (click)="removeDomain(i)"></i>
+                                    </div>
+                                </div>
+                                <div class="full-input mt-5">
+                                    <input type="text" placeholder="Add custom domain" [(ngModel)]="typeDomain"
+                                    maxlength="25" (keyup)="addDomainOnEnter($event)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spread-info py-3 mt-4">
+                            <p class="g-6 increased p-2 mb-0 clickable" [ngClass]="{'unclickable': coachSetupService.uploadingStage === 1}" (click)="back()">PREVIOUS STEP</p>
+                            <button class="solid-button-3 g-6" [disabled]="coachSetupService.uploadingStage === 1" (click)="forward()">&nbsp; &nbsp; NEXT &nbsp; &nbsp; <i class="fas fa-chevron-right"></i>&nbsp; &nbsp; </button>
+                        </div>
+                    </div>
+
+
+                    <div class="w100" *ngIf="coachSetupService.progressLevel === 3">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Professional Information</h6>
+                            <p class="mt-3 increased g-6">Upload Profile picture</p>
+                            <div class="upload-box" [ngClass]="{'drag-target': activeDrag}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                            (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragImage($event)"
+                            (dragover)="processDrag($event)">
+                                <div class="imh relative light-box" *ngIf="coachSetupService.setupData.profileMediaPage.profilePicture; else noPreview">
+                                    <div class="floating-close x-in" (click)="discardImage()">
+                                        <i class="fas fa-times" title="Delete image"></i>
+                                    </div>
+                                    <div class="image-center-sect">
+                                        <!-- <p class="c-green increased-x text-center">Position <br> face here</p> -->
+                                    </div>
+                                    <img [src]="coachSetupService.setupData.profileMediaPage.profilePicture" alt="">
+                                </div>
+                                <ng-template #noPreview>
+                                    <div class="text-center" *ngIf="!activeDrag">
+                                        <div class="w60 max60 imh">
+                                            <img src="./../../../../assets/images/new-onboarding/upload.png" alt="">
+                                        </div>
+                                        <div class="center-info my-3 w90 max200">
+                                            <p>Drop image here or</p>
+                                            <p class="c-sc-blue-im clickable p-2" (click)="triggerImageSaver()">&nbsp; Browse</p>
+                                        </div>
+                                        <p class="mt-2">
+                                            Supports 
+                                            <span *ngFor="let format of imageExtensionList; let i = index">
+                                                <span *ngIf="(i + 1) === imageExtensionList.length"> and </span>
+                                                {{ format }}
+                                                <span *ngIf="(i + 2) < imageExtensionList.length">, </span>
+                                            </span><br>
+                                            Max file size <span class="c-orange-im">500KB</span>. 
+                                            Picture should have equal height and width with a minimum of <span class="c-orange-im">200px x 200px</span>.
+                                        </p>
+                                    </div>
+                                    <p *ngIf="activeDrag">Now drop image here</p>
+                                    <!-- <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Upload profile picture</div> -->
+                                    <input id="hidden_image_holder" (change)="collectImage($event)" class="full-hidden" type="file">
+                                </ng-template>
+                            </div>
+
+                            <hr class="mt-4 mb-3">
+                            
+                            <p class="mt-3 increased g-6">Expertise Pitch Video</p>
+                            <p>A one minute video telling us about your prowess in this niche.</p>
+                            <div class="upload-box relative" [ngClass]="{'drag-target': activeDrag, 'deactivate': coachSetupService.uploadingStage === 1}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                            (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragVideo($event)"
+                            (dragover)="processDrag($event)">
+                            <div *ngIf="coachSetupService.uploadingStage === 2 ||coachSetupService.setupData.profileMediaPage.profileVideoAttachedLink" class="upload-confirmation">Video Uploaded</div>
+                                <div class="relative light-box" *ngIf="vidPreview; else noPreviewVideo">
+                                    <div class="floating-close x-in" (click)="discardVideo()">
+                                        <i class="fas fa-times" title="Delete video"></i>
+                                    </div>
+                                    <p class="mb-0 text-center increased">{{ videoName }}</p>
+                                    <button class="solid-button" [disabled]="coachSetupService.uploadingStage > 0"
+                                        (click)="coachSetupService.saveCoachVideo(rawVideoFile)">
+                                        {{ coachSetupService.uploadVideo }}
+                                    </button>
+                                    <!-- <video id="preview_vid" [src]="previewVideo"></video> -->
+                                </div>
+                                <ng-template #noPreviewVideo>
+                                    <div class="text-center" *ngIf="!activeDrag">
+                                        <div class="w60 max60 imh">
+                                            <img src="./../../../../assets/images/new-onboarding/upload.png" alt="">
+                                        </div>
+                                        <div class="center-info my-3 w90 max200">
+                                            <p>Drop video here or</p>
+                                            <p class="c-sc-blue-im clickable p-2" (click)="triggerVideoSaver()">&nbsp; Browse</p>
+                                        </div>
+                                        <p class="mt-2">
+                                            Supports 
+                                            <span *ngFor="let format of videoExtensionList; let i = index">
+                                                <span *ngIf="(i + 1) === videoExtensionList.length"> and </span>
+                                                {{ format }}
+                                                <span *ngIf="(i + 2) < videoExtensionList.length">, </span>
+                                            </span><br>
+                                            Max file size <span class="c-orange-im">20MB</span>. Duration <span class="c-orange-im">60 Sec</span>
+                                        </p>
+                                    </div>
+                                    <p *ngIf="activeDrag">Now drop video here</p>
+                                    <input id="hidden_video_holder" (change)="collectVideo($event)" class="full-hidden" type="file">
+                                </ng-template>
+                            </div>
+                            <div class="center-info">
+                                <div class="bar"></div>
+                                <span class="mx-2 my-3">Or Paste Your Video Url</span>
+                                <div class="bar"></div>
+                            </div>
+                            <p class="g-6">Youtube link</p>
+                            <input type="text" required name="youtube_vid" required [(ngModel)]="coachSetupService.setupData.profileMediaPage.profileVideoWrittenLink"
+                                id="youtube_vid" placeholder="Enter youtube link">
+                            
+                        </div>
+                        <div class="spread-info py-3 mt-4">
+                            <p class="g-6 increased p-2 mb-0 clickable" [ngClass]="{'unclickable': coachSetupService.uploadingStage === 1}" (click)="back()">PREVIOUS STEP</p>
+                            <button class="solid-button-3 g-6" [disabled]="coachSetupService.uploadingStage === 1" (click)="forward()">&nbsp; &nbsp; NEXT &nbsp; &nbsp; <i class="fas fa-chevron-right"></i>&nbsp; &nbsp; </button>
+                        </div>
+                    </div>
+
+
+                    <div class="w100" *ngIf="coachSetupService.progressLevel === 4">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Availability</h6>
+                            <p class="mt-3 increased g-6">Service Configuration</p>
+                            <form #f="ngForm" name="professional_information" id="professional_information">
+                                <label>Price per hour</label>
+                                <input type="number" required name="hourlyRate" required [(ngModel)]="coachSetupService.setupData.availabilityPage.hourlyRate"
+                                    id="hourlyRate" placeholder="Input price / hour">
+                                <hr>
+                                <p class="mt-3 increased g-6">Available Period (Long Term)</p>
+                                <div class="mt-3 p-3 schedule">
+                                    <div class="preference-point">
+                                        <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.availabilityPage.alwaysAvailable}" (click)="toggleAlwaysAvailable()">
+                                            <i class="fas fa-check" *ngIf="coachSetupService.setupData.availabilityPage.alwaysAvailable"></i>
+                                        </div>
+                                        <span></span>
+                                        <p class="mb-0 mt-2 dark">
+                                            I have no availability date Limit
+                                        </p>
+                                    </div>
+                                    <div class="spread-info-web" *ngIf="!coachSetupService.setupData.availabilityPage.alwaysAvailable">
+                                        <div class="pt-2">
+                                            <label>Start Date</label>
+                                            <input type="date" [(ngModel)]="coachSetupService.setupData.availabilityPage.startDate" class="mb-0" name="startDate"
+                                             />
+                                        </div>
+                                        <div style="height: 0; width: 20px;"></div>
+                                        <div class="pt-2">
+                                            <label>End Date</label>
+                                            <input type="date" (change)="logData()" [(ngModel)]="coachSetupService.setupData.availabilityPage.endDate" class="mb-0" name="endDate"
+                                             />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 increased g-6">Weekly Service Scheduling</p>
+                                <div class="mt-3 p-3 schedule">
+                                    <!-- Sunday -->
+                                    <div class="day py-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Sunday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('sunday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.sunday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.sunday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.sunday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.sunday.endTime" (change)="updateEndtime($event, 'sunday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('sunday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.sunday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('sunday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Monday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Monday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('monday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.monday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.monday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.monday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.monday.endTime" (change)="updateEndtime($event, 'monday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('monday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.monday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('monday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tuesday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Tuesday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('tuesday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.tuesday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.tuesday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.tuesday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.tuesday.endTime" (change)="updateEndtime($event, 'tuesday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('tuesday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.tuesday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('tuesday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Wednesday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Wednesday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('wednesday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.wednesday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.wednesday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.wednesday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.wednesday.endTime" (change)="updateEndtime($event, 'wednesday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('wednesday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.wednesday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('wednesday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Thursday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Thursday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('thursday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.thursday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.thursday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.thursday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.thursday.endTime" (change)="updateEndtime($event, 'thursday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('thursday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.thursday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('thursday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Friday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Friday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('friday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.friday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.friday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.friday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.friday.endTime" (change)="updateEndtime($event, 'friday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('friday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.friday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('friday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Saturday -->
+                                    <div class="day py-3 mt-3">
+                                        <div class="spread-info mb-2 px-3">
+                                            <p class="mb-0 c-black g-6">Saturday</p>
+                                            <div class="switch" (click)="switchAvailabilityActive('saturday')" [ngClass]="{'active-switch': coachSetupService.setupData.availabilityPage.serviceScheduling.saturday.active}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="" *ngIf="coachSetupService.setupData.availabilityPage.serviceScheduling.saturday.active">
+                                            <div class="spread-info mb-2 px-3">
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.saturday.startTime">
+                                                    <option [value]="undefined" disabled selected>Choose Start Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                                <span class="px-3 increased-x">to</span>
+                                                <select class="mb-0" name="start" id="start" [(ngModel)]="coachSetupService.availabilitySchedullerData.saturday.endTime" (change)="updateEndtime($event, 'saturday')">
+                                                    <option [value]="undefined" disabled selected>Choose End Time</option>
+                                                    <option [value]="time.value" *ngFor="let time of coachSetupService.timeList">{{ time.time }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-center full-button px-3 pt-2">
+                                                <button class="solid-button" (click)="addAvailableHours('saturday')" >Add hours</button>
+                                            </div>
+                                            <hr class="mb-2">
+                                            <div class="px-3">
+                                                <div class="rad-10 light-sc-blue mt-3 p-2 pl-3 spread-info" *ngFor="let hour of coachSetupService.setupData.availabilityPage.serviceScheduling.saturday.hours; let i = index">
+                                                    <Span>From {{ timeListTranslation[hour.from] }} to {{ timeListTranslation[hour.to] }}</Span>
+                                                    <i class="fas fa-times-circle increased clickable" (click)="removeTimeBlock('saturday', i)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                        <div class="spread-info py-3 mt-5">
+                            <p class="g-6 increased p-2 mb-0 clickable" [ngClass]="{'unclickable': coachSetupService.uploadingStage === 1}" (click)="back()">PREVIOUS STEP</p>
+                            <button class="solid-button-3 g-6" [disabled]="coachSetupService.uploadingStage === 1" (click)="forward()">&nbsp; &nbsp; NEXT &nbsp; &nbsp; <i class="fas fa-chevron-right"></i>&nbsp; &nbsp; </button>
+                        </div>
+                    </div>
+
+
+                    <div class="w100" *ngIf="coachSetupService.progressLevel === 5">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Commitments</h6>
+                            <p class="pt-3 md-close">Just a few more information we need and you’ll be on your way</p>
+                            <form #f="ngForm" name="agreements" id="agreements">
+                                <label>Expertise Commitement &nbsp; <a class="c-sc-blue clickable" (click)="openExpertiseInfoModal()"><i class="fas fa-question-circle"></i></a></label>
+                                <textarea type="text" required name="expertise_commitement" required [(ngModel)]="coachSetupService.setupData.agreementPage.expertiseCommitment"
+                                    id="expertise_commitement" placeholder="Enter expertise commitement" rows="2"></textarea>
+                                <label>Consultation Outline &nbsp; <a class="c-sc-blue clickable" (click)="openConsultationInfoModal()"><i class="fas fa-question-circle"></i></a></label>
+                                <textarea type="text" required name="consultation_outline" required [(ngModel)]="coachSetupService.setupData.agreementPage.consultationOutline"
+                                    id="consultation_outline" placeholder="Enter consultation outline" rows="5"></textarea>
+                                <div class="preference-point">
+                                    <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.agreementPage.agreeToTerms}" (click)="toggleDisclaimer()">
+                                        <i class="fas fa-check" *ngIf="coachSetupService.setupData.agreementPage.agreeToTerms"></i>
+                                    </div>
+                                    <span></span>
+                                    <p class="mb-0 mt-1 dark">
+                                        Please tick the box to agree to the <span class="c-sc-blue clickable" (click)="openTermsInfoModal()">terms of use</span>.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="spread-info py-3 mt-5">
+                            <p class="g-6 increased p-2 mb-0 clickable" [ngClass]="{'unclickable': coachSetupService.uploadingStage === 1}" (click)="back()">PREVIOUS STEP</p>
+                            <button class="solid-button-3 g-6" [disabled]="coachSetupService.uploadingStage === 1" (click)="forward()">&nbsp; &nbsp; SUBMIT &nbsp; &nbsp; <i class="fas fa-chevron-right"></i>&nbsp; &nbsp; </button>
+                        </div>
+                    </div>
+
+
+                    <div class="w100" *ngIf="coachSetupService.progressLevel === 6">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Profile Setup</h6>
+                            <p class="g-6 text-center increased c-pr-green-im">Completed</p>
+                            <div class="w80 my-4 imh">
+                                <img src="./../../../../assets/images/new-onboarding/done-clip.gif" alt="">
+                            </div>
+                        </div>
+                        <div class="w90 full-button py-3 mt-5">
+                            <button class="solid-button-3 g-6" (click)="forward()">Proceed to Dashboard</button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- Resources -->
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 11">
+                        <h6>Add Expertise Domain</h6>
+                        <p>Expertise Domains</p>
+                        <div class="mb-3">
+                            <div class="popular-domain" *ngFor="let domain of coachSetupService.setupData.coachDomains.popularDomains; let i = index" (click)="addDomain(domain)">
+                                <span class="mr-2">{{ domain.domain }}</span>
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="progress-box">
+                            <div class="maxh-40 y-overflow">
+                                <div class="active-domain" *ngFor="let domain of coachSetupService.setupData.coachDomains.customDomains; let i = index">
+                                    <span class="mr-2">{{ domain.domain }}</span>
+                                    <i class="fas fa-times-circle" (click)="removeDomain(i)"></i>
+                                </div>
+                            </div>
+                            <div class="full-input mt-5">
+                                <input type="text" placeholder="Add cumtom domain" [(ngModel)]="typeDomain"
+                                maxlength="25" (keypress)="addDomainOnEnter($event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 12">
+                        <h6>Professional Information</h6>
+                        <form #f="ngForm" name="professional_information" id="professional_information">
+                            <label>Job Title</label>
+                            <input type="text" required name="job_title" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.jobTitle"
+                                id="job_title" placeholder="Enter job title">
+                            <label>Company</label>
+                            <input type="text" required name="company" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.companyName"
+                                id="company" placeholder="Enter company name">
+                            <label>Industry</label>
+                            <input type="text" required name="industry" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.industryName"
+                                id="industry" placeholder="Enter industry name">
+                            <label>linkedin Profile</label>
+                            <input type="text" required name="linkedin_link" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.linkedInProfileUrl"
+                                id="linkedin_link" placeholder="paste linkedin profile link">
+                            <label>Country</label>
+                            <select type="text" required name="country" required form="professional_information" [(ngModel)]="coachSetupService.setupData.professionalInformationPage.countryId"
+                                id="country">
+                                <option [value]="undefined">Choose your country</option>
+                                <option [value]="country.id" *ngFor="let country of coachSetupService.countries">{{ country.name }}</option>
+                            </select>
+                            <label>Professional Expertise Work Summary</label>
+                            <textarea type="text" required name="professional_summary" required [(ngModel)]="coachSetupService.setupData.professionalInformationPage.professionalSummary"
+                                id="professional_summary" placeholder="Enter professional summary" rows="2"></textarea>
+                        </form>
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 13">
+                        <h6>Profile picture</h6>
+                        <div class="upload-box" [ngClass]="{'drag-target': activeDrag}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                        (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragImage($event)"
+                        (dragover)="processDrag($event)">
+                            <div class="imh relative light-box" *ngIf="coachSetupService.setupData.profilePicturePage.pictureBase64String; else noPreview">
+                                <div class="floating-close x-in" (click)="discardImage()">
+                                    <i class="fas fa-times" title="Delete image"></i>
+                                </div>
+                                <div class="image-center-sect">
+                                    <p class="c-green increased-x text-center">Position <br> face here</p>
+                                </div>
+                                <img [src]="coachSetupService.setupData.profilePicturePage.pictureBase64String" alt="">
+                            </div>
+                            <ng-template #noPreview>
+                                <p *ngIf="!activeDrag">Drag and drop image here</p>
+                                <p *ngIf="activeDrag">Now drop image here</p>
+                                <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Upload profile picture</div>
+                                <input id="hidden_image_holder" (change)="collectImage($event)" class="full-hidden" type="file">
+                            </ng-template>
+                        </div>
+                        <p class="mt-2">
+                            Picture should not be heavier than 500KB. 
+                            Picture should have equal height and width with a minimum of 200px x 200px.
+                            Allowed picture formats are 
+                            <span *ngFor="let format of imageExtensionList; let i = index">
+                                <span *ngIf="(i + 1) === imageExtensionList.length"> and </span>
+                                {{ format }}
+                                <span *ngIf="(i + 2) < imageExtensionList.length">, </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 14">
+                        <h6>Expertise Pitch Video</h6>
+                        <div class="upload-box relative" [ngClass]="{'drag-target': activeDrag, 'deactivate': coachSetupService.uploadingStage === 1}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                        (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragVideo($event)"
+                        (dragover)="processDrag($event)">
+                        <div *ngIf="coachSetupService.uploadingStage === 2 ||coachSetupService.setupData.profileVideoPage.videoRetrievalLocation" class="upload-confirmation">Video Uploaded</div>
+                            <div class="relative light-box" *ngIf="vidPreview; else noPreviewVideo">
+                                <div class="floating-close x-in" (click)="discardVideo()">
+                                    <i class="fas fa-times" title="Delete video"></i>
+                                </div>
+                                <p class="mb-0 text-center increased">{{ videoName }}</p>
+                                <button class="solid-button" [disabled]="coachSetupService.uploadingStage > 0"
+                                    (click)="coachSetupService.saveCoachVideo(rawVideoFile)">
+                                    {{ coachSetupService.uploadVideo }}
+                                </button>
+                                <!-- <video id="preview_vid" [src]="previewVideo"></video> -->
+                            </div>
+                            <ng-template #noPreviewVideo>
+                                <p *ngIf="!activeDrag">Drag and drop video here</p>
+                                <p *ngIf="activeDrag">Now drop video here</p>
+                                <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Select Video</div>
+                                <input id="hidden_image_holder" (change)="collectVideo($event)" class="full-hidden" type="file">
+                            </ng-template>
+                        </div>
+                        <p class="mt-2">
+                            Video should not be longer than 1 munite long. <br>
+                            Accepted formats are 
+                            <span *ngFor="let format of videoExtensionList; let i = index">
+                                <span *ngIf="(i + 1) === videoExtensionList.length"> and </span>
+                                {{ format }}
+                                <span *ngIf="(i + 2) < videoExtensionList.length">, </span>
+                            </span>
+                        </p>
+                        <div class="center-info">
+                            <div class="bar"></div>
+                            <span class="mx-2 my-3">Or Paste Your Video Url</span>
+                            <div class="bar"></div>
+                        </div>
+                        <label>Youtube link</label>
+                        <input type="text" required name="youtube_vid" required [(ngModel)]="coachSetupService.setupData.profileVideoPage.expertYoutubeUrl"
+                            id="youtube_vid" placeholder="Enter youtube link">
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 15">
+                        <h6>Expertise Commitment and Service Consulting Type</h6>
+                        <form #f="ngForm" name="expertise_form" id="expertise_form">
+                            <p class="mt-3 mb-0 font-weight-bold">Specify Expertise Commitment (Maximum 60 Characters)</p>
+                            <!-- <label>Youtube link</label> -->
+                            <input type="text" required name="expertise_commitment" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.expertiseCommitment"
+                                id="expertise_commitment" placeholder="Expertise commitment" maxlength="60">
+                            <p class="font-weight-bold">Choose Service Consulting Type</p>
+                            <div class="preference-point">
+                                <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService}" (click)="toggleExpertise('isOneOffConsultingService')">
+                                    <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService"></i>
+                                </div>
+                                <span></span>
+                                <p class="mb-0"><strong>One-off Consulting Service:</strong> 
+                                    A 60-minute-long one-on-one consulting session.
+                                </p>
+                            </div>
+                            <textarea type="text" required *ngIf="coachSetupService.setupData.profileExpertisePage.isOneOffConsultingService" name="one_off_brief" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.oneOffConsultingServiceText"
+                                id="one_off_brief" placeholder="Provide an outline of your consulting session" rows="2"></textarea>
+                                
+                            <div class="preference-point">
+                                <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService}" (click)="toggleExpertise('isExtendedDeepDiveAdvisoryService')">
+                                    <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService"></i>
+                                </div>
+                                <span></span>
+                                <p class="mb-0"><strong>Extended deep-dive advisory service:</strong> 
+                                    A 3-month, 6-month or 12-month extended consultation sessions – 3 one-on-one sessions/month.
+                                </p>
+                            </div>
+                            <textarea type="text" required *ngIf="coachSetupService.setupData.profileExpertisePage.isExtendedDeepDiveAdvisoryService" name="extended_brief" required [(ngModel)]="coachSetupService.setupData.profileExpertisePage.extendedDeepDiveAdvisoryServiceText"
+                                id="one_off_brief" placeholder="Provide an outline of your consulting session" rows="2"></textarea>
+                        </form>
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 16">
+                        <h6>Billing Configuration</h6>
+                        <div class="grid-warning">
+                            <div class="text-center pt-2"><i class="fas fa-exclamation-circle"></i></div>
+                            <div>
+                                <p class="mb-0"><strong>Enter hourly rates for the billing types you want to support</strong></p>
+                                <p class="mb-0">You can toggle on/off any plan you dont want to support</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6" *ngFor="let plan of coachSetupService.setupData.profileBillingConfigurationPage.selectedBillings; let i = index">
+                                <div class="plan" [ngClass]="{'full-deactivated': plan.extra.disabled}">
+                                    <div class="plan-top">
+                                        <div class="spread-info mb-2">
+                                            <h3>{{ plan.name }}</h3>
+                                            <div class="switch" (click)="switchActive(i)" [ngClass]="{'active-switch': plan.selected}">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            <small>{{ plan.extra.briefSummary }}</small>
+                                        </p>
+                                    </div>
+                                    <div class="plan-body" [ngClass]="{'deactivated': !plan.selected}">
+                                        <div class="preference-point">
+                                            <div class="tick-area" [ngClass]="{'active': plan.agreedtoTerms}" (click)="togglePlanAgreement(i)">
+                                                <i class="fas fa-check" *ngIf="plan.agreedtoTerms"></i>
+                                            </div>
+                                            <span></span>
+                                            <p class="mt-1">Agree to <span class="clickable font-weight-bold c-sc-blue" (click)="showAgreement(i + 1)">billing terms</span></p>
+                                        </div>
+                                        <input type="number" style="text-align: right;" [(ngModel)]="plan.pricing" [name]="'name' + i">
+                                        <div class="plan-grid"  *ngFor="let feature of plan.extra.descriptions">
+                                            <i class="fas fa-check"></i>
+                                            <p>
+                                                {{ feature.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w100 full-button" *ngIf="coachSetupService.progressLevel === 17">
+                        <h6>Declaration</h6>
+                        <p>
+                            I solemnlydeclarethat all the information furnished during onboarding on this platform is free of
+                            errors to the best of my knowledge. I herebydeclarethat all the information contained herein is in 
+                            accordance with facts or truths to my knowledge. I take full responsibility for the correctness of 
+                            the said information.
+                        </p>
+                        <div class="preference-point">
+                            <div class="tick-area" [ngClass]="{'active': coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked}" (click)="toggleDisclaimer()">
+                                <i class="fas fa-check" *ngIf="coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked"></i>
+                            </div>
+                            <span></span>
+                            <p class="mb-0 mt-1 dark">
+                                Please tick the box to agree to the Declaration Statement.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- <div class="navigator">
+                        <div class="clicker" (click)="back()" [ngClass]="{'deactivate': coachSetupService.progressLevel === 1 || coachSetupService.uploadingStage === 1}">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        <div class="center-info" *ngIf="coachSetupService.loadingProgress; else progressIndicator">
+                            <app-loader></app-loader>
+                        </div>
+                        <ng-template #progressIndicator>
+                            <div class="progress">
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 1}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 2}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 3}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 4}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 5}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 6}"></div>
+                                <div [ngClass]="{'active': coachSetupService.progressLevel === 7}"></div>
+                            </div>
+                        </ng-template>
+                        <div class="clicker" (click)="forward()" *ngIf="coachSetupService.progressLevel <= 6" [ngClass]="{'deactivate': coachSetupService.uploadingStage === 1}">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <button class="solid-button-2" [disabled]="!coachSetupService.setupData.profileDeclarationPage.isDeclarationStatementChecked"
+                            [ngClass]="{'deactivate': coachSetupService.uploadingStage === 1}" (click)="coachSetupService.submit()" *ngIf="coachSetupService.progressLevel > 6">
+                            Submit
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-cropper></app-cropper> -->
+<app-info-modal *ngIf="showInfoModal" (modalSignal)="closeInfoModal($event)" [data]="coachSetupService.infoModalInfo"></app-info-modal>
+<app-info-modal *ngIf="showPlanAgreementModal" (modalSignal)="closeInfoModal($event)" [data]="coachSetupService.activeBillAgreement"></app-info-modal>

@@ -1,0 +1,54 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.hero{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: calc(4vw + 10px);
+    padding-right: calc(4vw + 10px);
+    .mb-custom{
+        margin-bottom: 20px;
+        button{@include mediaW(550px){
+            padding-left: 30px;
+            padding-right: 30px;
+        }}
+    }
+    .logo{
+        width: 150px;
+        @include mediaM(550px){
+            width: 110px;
+        }
+    }
+    .board{
+        padding: calc(3vh + 3vw);
+        background-color: $light-yellow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        border-radius: 20px;
+        min-height: calc(30vh - 140px);
+        span{
+            font-size: inherit !important;
+        }
+        @include mediaM(750px){
+            display: block;
+            text-align: center;
+        }
+    }
+}
+
+.footer{
+    // background-color: $black;
+    color: $black-faint1;
+    .holder{
+        a{
+            color: inherit;
+            padding: 3px 5px;
+            i{
+                font-size: 1.5em;
+                padding: 0 5px;
+            }
+        }
+    }
+}

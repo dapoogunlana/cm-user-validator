@@ -1,0 +1,31 @@
+<div class="all">
+    <div class="w96 max1100">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="coach-img mb-3">
+                    <img [src]="blogDetails.blogImage" alt="">
+                    <!-- <img src="./../../../../assets/images/marketing/card-photo2.png" alt=""> -->
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="coach-info mb-5">
+                    <h3 class="c-primary-blue font-weight-bold">{{ blogDetails.blogTitle }}</h3>
+                    <p class="c-secondary-blue mb-2">{{ blogDetails.author }}</p>
+                    <div class="spread-info-web mb-2 max400">
+                        <p class="c-primary-blue">{{ blogDetails.date }}</p>
+                        <p class="c-primary-blue1">{{ blogDetails.field }}</p>
+                        <p class="c-primary-blue"><i class="fas fa-share-alt"></i> Share</p>
+                    </div>
+                    <p class="c-faint-font mb-3">
+                        {{ blogDetails.moreInfo }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <p class="c-faint-font mb-2" *ngFor="let point of blogDetails.fullInfo">
+                    {{ point }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

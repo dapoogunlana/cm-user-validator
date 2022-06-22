@@ -1,0 +1,84 @@
+<div class="spacer"></div>
+<div class="holder">
+    <div class="dashboard-grid">
+        <div class="pad-web md-close">
+            <div class="detail-card">
+                <div class="imh curve w60 max100">
+                    <img [src]="userDetail.image ? userDetail.image : avater" alt="">
+                </div>
+                <h6 class="mt-2 mb-1 increased text-center">{{ userDetail.name }}</h6>
+                <p class="mb-1 text-center">{{ userDetail.username }}</p>
+                <p class="text-center" [innerHTML]="utility.calculateColoredStars(userDetail.rating)"></p>
+                <hr>
+                <div class="spread-info mt-3 mb-3">
+                    <a routerLink="/coach/sessions"><h6 class="mb-0">Upcoming Sessions</h6></a>
+                    <p class="mb-0">{{ userDetail.upcomingSessions }}</p>
+                </div>
+                <div class="spread-info mb-3">
+                    <a routerLink="/coach/events"><h6 class="mb-0">Upcoming Events</h6></a>
+                    <p class="mb-0">{{ userDetail.upcomingEvents }}</p>
+                </div>
+            </div>
+            <div class="detail-card mt-3">
+                <div class="mb-2 mt-2">
+                    <canvas [id]="randomId" width="100" height="100" role="chart"
+                    aria-label="pie chart for lagos farmers app"></canvas>
+                </div>
+            </div>
+            <div class="detail-card mt-3">
+                <span class="font-weight-bold">Recent reviews</span>
+                <hr>
+                <div class="mb-2" *ngFor="let review of recentReviews">
+                    <div class="spread-info-front">
+                        <div class="round-img-30 mr-3">
+                            <img [src]="review.image" alt="">
+                        </div>
+                        <h6 class="mb-0">{{review.name}}</h6>
+                    </div>
+                    <span>"{{review.comment}}"</span>
+                </div>
+            </div>
+        </div>
+        <div class="pad-web">
+            <div class="notification-holder mb-3">
+                <div class="spread-info notification">
+                    <p class="mb-0">A private session has been booked</p>
+                    <a routerLink=""><h6 class="mb-0">View</h6></a>
+                </div>
+                <div class="notification-spacer"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pb-3" *ngFor="let item of coachList">
+                    <app-coach-card [cardData]="item"></app-coach-card>
+                </div>
+            </div>
+        </div>
+        <div class="pad-web lg-close">
+            <button class="w100 solid-button-2" (click)="createNewEvent()"><i class="fas fa-plus"></i> &nbsp; Create new event</button>
+            <div class="detail-card mt-3">
+                <app-calendar [availableDates]="availableDates"></app-calendar>
+            </div>
+            
+            <div class="detail-card mt-3">
+                <span class="font-weight-bold">Today</span>
+                <hr>
+                <div class="mb-2" *ngFor="let update of recentUpdate">
+                    <h6>{{ update.type }}</h6>
+                    <div class="spread-info-front">
+                        <div class="round-img-30 mr-3">
+                            <img [src]="update.image" alt="">
+                        </div>
+                        <span class="mb-0">{{update.name}}</span>
+                    </div>
+                    <div class="spread-info-front mt-2">
+                        <img src="./../../../../assets/images/marketing/clock.svg" width="30px" alt="">
+                        <span class="ml-3">{{update.time}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-event-creator">
+        <button class="w100 solid-button-2" (click)="createNewEvent()"><i class="fas fa-plus"></i> &nbsp; Create new event</button>
+    </div>
+</div>

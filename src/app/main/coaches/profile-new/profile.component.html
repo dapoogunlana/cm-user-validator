@@ -1,0 +1,249 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="mt-5">
+        <div class="py-5 center-info" *ngIf="!profileDetailsLoaded; else profileLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #profileLoaded>
+            <div class="">
+                <div class="tablet-case bordered-case wi310 mb-3 mt-3">
+                    <div class="tablet" [ngClass]="{'active-tab': activeTab === 'profileDetails'}" (click)="switchTab('profileDetails')">
+                        Profile Details
+                    </div>
+                    <div class="tablet" [ngClass]="{'active-tab': activeTab === 'expertise'}" (click)="switchTab('expertise')">
+                        Expertise
+                    </div>
+                    <div class="tablet mr-0" [ngClass]="{'active-tab': activeTab === 'settings'}" (click)="switchTab('settings')">
+                        Settings
+                    </div>
+                </div>
+                <div class="notification my-3" *ngIf="newNotification">
+                    <div class="info">
+                        <div class="">
+                            <p class="mb-0">{{ notification.message }}</p>
+                        </div>
+                    </div>
+                    <div class="closer" (click)="closeNotification()">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="row" *ngIf="activeTab === 'profileDetails'">
+                    <div class="col-lg-8">
+                        <div class="image-card shadowed ">
+                            <div class="top relative">
+                                <div class="editor c-grey" (click)="editProfileInfo()">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                            </div>
+                            <div class="bottom relative px-3">
+                                <div class="editor" (click)="editProfileInfo()">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="bt-grid">
+                                    <div class="profile-holder">
+                                        <div class="profile-image">
+                                            <img [src]="profileDetails.profilePhoto" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="center-mobile p-3">
+                                        <h3 class="g-6">{{ profileDetails.name }}</h3>
+                                        <p class="">{{ profileDetails.expertise }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadowed rad-15 mt-5 p-3 relative">
+                            <h5 class="g-4">Professional summary</h5>
+                            <div class="editor" (click)="editProfileInfo()">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <p>
+                                {{ profileDetails.professionalSummary }}
+                            </p>
+                        </div>
+                        <div class="shadowed rad-15 my-5 p-3 relative">
+                            <div class="spread-info">
+                                <h5 class="g-4">Video Summary</h5>
+                                <h5 class="g-4 c-sc-blue clickable" (click)="uploadVideo()">Upload file +</h5>
+                            </div>
+                            <input type="file" class="full-hidden" id="hidden-video-input" (change)="captureVideo($event)" />
+                            <div class="mt-2 video-holder imh">
+                                <!-- <video src="https://youtu.be/dxw6tCthIH0"></video> -->
+                                <img src="../../../../assets/images/new-coach-dashboard/vid-placeholder.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="shadowed rad-15 relative overflow-hidden{">
+                            <div class="p-3">
+                                <h5 class="g-4">More details</h5>
+                                <div class="editor" (click)="editProfileInfo()">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <hr class="mt-0">
+                                <div class="spread-info-front mb-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icons/mail.svg" width="20" class="mr-2" alt="">
+                                    <div>
+                                        <p class="mb-0 reduced-soft">Email</p>
+                                        <p class="mb-0 reduced-soft c-sc-blue">{{ profileDetails.email }}</p>
+                                    </div>
+                                </div>
+                                <div class="spread-info-front mb-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icons/globe.svg" width="20" class="mr-2" alt="">
+                                    <div>
+                                        <p class="mb-0 reduced-soft">Country</p>
+                                        <p class="mb-0 reduced-soft c-sc-blue">{{ profileDetails.country }}</p>
+                                    </div>
+                                </div>
+                                <div class="spread-info-front mb-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icons/file-text.svg" width="20" class="mr-2" alt="">
+                                    <div>
+                                        <p class="mb-0 reduced-soft">Industry</p>
+                                        <p class="mb-0 reduced-soft c-sc-blue">{{ profileDetails.industry }}</p>
+                                    </div>
+                                </div>
+                                <div class="spread-info-front mb-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icons/calendar.svg" width="20" class="mr-2" alt="">
+                                    <div>
+                                        <p class="mb-0 reduced-soft">Join Date</p>
+                                        <p class="mb-0 reduced-soft c-sc-blue">{{ profileDetails.joinDate }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sc-blue c-white p-3 text-center rad-b-15">
+                                <p class="mb-0">
+                                    Share Profile 
+                                    <i class="fas fa-share-alt"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="" *ngIf="activeTab === 'expertise'">
+                    <div class="white input-styler px-3 py-4 rad-15 my-5">
+                        <div class="w100 inner-bg full-button">
+                            <h6 class="text-center">Commitments</h6>
+                            <p class="pt-3 md-close">Just a few more information we need and you’ll be on your way</p>
+                            <form #f="ngForm" name="agreements" id="agreements">
+                                <label>Expertise Commitement </label>
+                                <textarea type="text" required name="expertise_commitement" required [(ngModel)]="expertise.commitment.expertiseCommitment"
+                                    id="expertise_commitement" placeholder="Enter expertise commitement" rows="2"></textarea>
+                                <label>Consultation Outline </label>
+                                <textarea type="text" required name="consultation_outline" required [(ngModel)]="expertise.commitment.consultationOutline"
+                                    id="consultation_outline" placeholder="Enter consultation outline" rows="5"></textarea>
+                                <div class="preference-point">
+                                    <div class="tick-area" [ngClass]="{'active': expertise.commitment.agreeToTerms}" (click)="toggleDisclaimer()">
+                                        <i class="fas fa-check" *ngIf="expertise.commitment.agreeToTerms"></i>
+                                    </div>
+                                    <span></span>
+                                    <p class="mb-0 mt-1 dark">
+                                        Please tick the box to agree to the <span class="c-sc-blue clickable" (click)="openTermsInfoModal()">terms of use</span>.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="white input-styler px-3 py-5 pt-4 rad-15 my-4">
+                        <div class="w100 inner-bg full-button mt-4 ">
+                            <h6 class="text-center">Whats your Domain</h6>
+                            <p class="text-center">Just a few more information we need and you’ll be on your way</p>
+                            <div class="mb-3">
+                                <div class="popular-domain" *ngFor="let domain of popularDomains; let i = index" (click)="addDomain(domain)">
+                                    <span class="mr-2">{{ domain.name }}</span>
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                            <div class="progress-box">
+                                <div class="maxh-40 y-overflow">
+                                    <div class="active-domain" *ngFor="let domain of expertise.coachDomains; let i = index">
+                                        <span class="mr-2">{{ domain.name }}</span>
+                                        <i class="fas fa-times-circle" (click)="removeDomain(i)"></i>
+                                    </div>
+                                </div>
+                                <div class="full-input mt-5">
+                                    <input type="text" placeholder="Add custom domain" [(ngModel)]="typeDomain"
+                                    maxlength="25" (keyup)="addDomainOnEnter($event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-styler" *ngIf="activeTab === 'settings'">
+                    <div class="shadowed rad-15 mt-5 p-3 relative">
+                        <h5 class="g-4">Timezone</h5>
+                        <p>
+                            When you change timezone in your cm account, your availability hours and scheduled calls adapt to the new time zone. For 
+                            example, a 10AM call PT changes to  a 1PM ET call if you travel from San Rancisco to New York. No matter where you set your 
+                            weekly availability, everyone will see it in theirown time zone.
+                        </p>
+                        <select class="mb-0" name="endTime" id="endTime" [(ngModel)]="profileSettings.timeZone">
+                            <option [value]="zone.value" *ngFor="let zone of timezones">{{ zone.name }}</option>
+                            <!-- <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option> -->
+                        </select>
+                    </div>
+                    <div class="shadowed rad-15 mt-5 p-3 relative my-5">
+                        <h5 class="g-4">Date & Time</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input class="mb-0" type="date" name="date" id="date" required [(ngModel)]="profileSettings.date" />
+                            </div>
+                            <div class="col-md-4">
+                                <select class="mb-0" name="time" id="time" required form="new_group_session" [(ngModel)]="profileSettings.time">
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                <div class="full-button">
+                                    <button class="solid-button-2">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shadowed rad-15 mt-5 p-3 relative my-5">
+                        <h5 class="g-4">Change password</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>New Password</label>
+                                <div class="relative">
+                                    <input [type]="passwordType" required name="new_password" required [(ngModel)]="profileSettingsPassword.newPassword"
+                                        id="new_password" placeholder="Create password">
+                                    <div class="eye-toggle">
+                                        <i class="far fa-eye" *ngIf="!passwordVisible" (click)="togglePasswordVisibility(true)"></i>
+                                        <i class="far fa-eye-slash" *ngIf="passwordVisible" (click)="togglePasswordVisibility(false)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Confirm Password</label>
+                                <div class="relative">
+                                    <input [type]="passwordType" required name="confirm_password" required [(ngModel)]="profileSettingsPassword.confirmPassword"
+                                        id="confirm_password" placeholder="Confirm password">
+                                    <div class="eye-toggle">
+                                        <i class="far fa-eye" *ngIf="!passwordVisible" (click)="togglePasswordVisibility(true)"></i>
+                                        <i class="far fa-eye-slash" *ngIf="passwordVisible" (click)="togglePasswordVisibility(false)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                <div class="full-button">
+                                    <label class="c-white-im">!</label>
+                                    <button class="solid-button-2">Change</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 relative my-5">
+                        <button class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<app-info-modal *ngIf="showInfoModal" (modalSignal)="closeInfoModal($event)" [data]="infoModalInfo"></app-info-modal>

@@ -1,0 +1,149 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <h1 class="mb-3">Group Sessions</h1>
+    <div class="tablet-case mb-3 mt-4">
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'new'}" (click)="switchTab('new')">
+            New
+        </div>
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'upcoming'}" (click)="switchTab('upcoming')">
+            Upcoming
+        </div>
+        <div class="tablet pt-2" [ngClass]="{'active-tab': activeTab === 'history'}" (click)="switchTab('history')">
+            History
+        </div>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'new'">
+        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+            <div class="w100 inner-bg full-button input-styler">
+                <form #f="ngForm" name="new_group_session" id="new_group_session">
+                    <h2 class="">Create group sessions</h2>
+                    <div class="row pt-4 pb-3">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="upload-box" [ngClass]="{'drag-target': activeDrag}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                            (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragImage($event)"
+                            (dragover)="processDrag($event)">
+                                <div class="imh relative light-box" *ngIf="newGroupSessionImage; else noPreview">
+                                    <div class="floating-close x-in" (click)="discardImage()">
+                                        <i class="fas fa-times" title="Delete image"></i>
+                                    </div>
+                                    <img [src]="newGroupSessionImage" alt="">
+                                </div>
+                                <ng-template #noPreview>
+                                    <div class="text-center" *ngIf="!activeDrag">
+                                        <p class="">Upload headline Image</p>
+                                        <div class="w60 max60 imh">
+                                            <img src="./../../../../assets/images/new-onboarding/upload.png" alt="">
+                                        </div>
+                                        <div class="center-info mt-3 w90 max200">
+                                            <p class="mb-0">Drag&nbsp;image&nbsp;or</p>
+                                            <p class="c-sc-blue-im clickable pl-2 mb-0" (click)="triggerImageSaver()">Browse</p>
+                                        </div>
+                                    </div>
+                                    <p *ngIf="activeDrag">Now drop image here</p>
+                                    <input id="hidden_image_holder" (change)="collectImage($event)" class="full-hidden" type="file">
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7">
+
+                            <label>Name of Session</label>
+                            <input type="text" [(ngModel)]="newGroupSession.name" required placeholder="Enter session name" class="mb-0" name="name" />
+                            <label class="mt-3">Session Descripton</label>
+                            <textarea required name="expertise_commitement"  [(ngModel)]="newGroupSession.descripton"
+                                id="expertise_commitement" placeholder="Enter session descripton" rows="3"></textarea>
+                        </div>
+                        <div class="col-lg-4 col-md-5">
+                            <label>Start</label>
+                            <div class="auto-grid">
+                                <input type="date" [(ngModel)]="newGroupSession.startDate" required placeholder="Enter " class="mb-0" name="startDate" />
+                                <span></span>
+                                <select class="mb-0" name="startTime" id="startTime" required form="new_group_session" [(ngModel)]="newGroupSession.startTime" (change)="updateStartTime($event)">
+                                    <option [value]="undefined" disabled selected>Time</option>
+                                    <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7">
+                            <label>End</label>
+                            <div class="spread-info-web">
+                                <div class="auto-grid">
+                                    <input type="date" [(ngModel)]="newGroupSession.endDate" required placeholder="Enter " class="mb-0" name="endDate" />
+                                    <span></span>
+                                    <select class="mb-0" name="endTime" id="endTime" required form="new_group_session" [(ngModel)]="newGroupSession.endTime" (change)="updateEndTime($event)">
+                                        <option [value]="undefined" disabled selected>Time</option>
+                                        <option [value]="time.value" *ngFor="let time of timeList">{{ time.time }}</option>
+                                    </select>
+                                </div>
+                                <div class="full-button">
+                                    <div class="py-2 md-open"></div>
+                                    <button class="solid-button-sec-2" (click)="newTicket()">Create a Ticket</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 my-2">
+                            <div class="ticket-band spread-info-web my-2" *ngFor="let ticket of ticketList; let i = index">
+                                <div class="spread-info py-2">
+                                    <div class="tag mr-2" [ngClass]="{'free-tag': ticket.ticketType === 'free'}">
+                                        <img src="../../../../assets/images/new-coach-dashboard/white-ticket-icon.svg" alt="">
+                                    </div>
+                                    <p class="mb-0">{{ ticket.label | titlecase }}</p>
+                                    <div class="md-open spread-info">
+                                        <div class="tag-adit ml-3" title="Edit Ticket" (click)="editTicket(ticket)">
+                                            <i class="fas fa-edit"></i>
+                                        </div>
+                                        <div class="tag-delete ml-3" title="Delete Ticket" (click)="deleteTicket(i)">
+                                            <i class="far fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spread-info py-2">
+                                    <p class="mb-0">availableSeats: {{ ticket.availableSeats }}</p>
+                                    <p class="mb-0 mx-3">Price: ${{ ticket.price }}</p>
+                                    <div class=" md-close spread-info">
+                                        <div class="tag-adit ml-3" title="Edit Ticket" (click)="editTicket(ticket)">
+                                            <i class="fas fa-edit"></i>
+                                        </div>
+                                        <div class="tag-delete ml-3" title="Delete Ticket" (click)="deleteTicket(i)">
+                                            <i class="far fa-trash-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-5">
+                            <div class="full-button pt-4">
+                                <button class="solid-button-2" (click)="createGroupSession()" [disabled]="!f.valid">Create Group Session</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'upcoming'">
+        <div class="py-5 center-info" *ngIf="!sessionDetailsLoaded; else newSessionLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #newSessionLoaded>
+            <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                <h5 class="g-6 pt-3">Upcoming Events</h5>
+                <hr class="py-0 my-3">
+                <app-default-table [title]="'Its false'" [tableData]="upcomingessionsTableData" [calculateTotal]="false"></app-default-table>
+            </div>
+        </ng-template>
+    </div>
+    <div class="mt-5" *ngIf="activeTab === 'history'">
+        <div class="py-5 center-info" *ngIf="!sessionDetailsLoaded; else oldSessionLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #oldSessionLoaded>
+            <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                <h5 class="g-6 pt-3">Previous Events</h5>
+                <hr class="py-0 my-3">
+                <app-default-table [title]="'Its false'" [tableData]="previousSessionsTableData" [calculateTotal]="false"></app-default-table>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<app-group-ticket-modal *ngIf="openTicketModal" [ticketDetail]="ticketDetail" (modalSignal)="receiveTicket($event)"></app-group-ticket-modal>

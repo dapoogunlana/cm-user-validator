@@ -1,0 +1,50 @@
+<div class="auth-bg">
+    <div class="auth-card">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="!verified">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <p>
+                        A verification code has been sent to <strong>{{ userDetails.email }}</strong>.
+                        Type in the code to verify your email address.
+                    </p>
+                    <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                        <label>Verification Code</label>
+                        <input type="text" required name="code" required [(ngModel)]="form.code"
+                            id="code" placeholder="Enter verification code">
+                        <p class="text-center">
+                            Didn't get a code?
+                            <span *ngIf="!canResend">Wait a little while to be able to resend</span>
+                            <span *ngIf="canResend" (click)="resendCode()" class="font-weight-bold clickable">Resend Code</span>
+                        </p>
+                        <button class="solid-button" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Confirm Email</span>
+                            <div class="load-holder" *ngIf="loading"><app-basic-loader [colorMap]="'light'"></app-basic-loader></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="form-flex" *ngIf="verified">
+            <div class="input-flex">
+                <div class="w100 text-center">
+                    <h6 class="mb-3">Email Verified</h6>
+                    <p>
+                        Your email has been successfully verified, now we would verify your linked in profile, If we 
+                        find you suitable to join the platform you would get an invite email from us to allow you proceed with
+                        your setup process.
+                    </p>
+                    <div class="w80 full-button mb-2">
+                        <a routerLink="/">
+                            <button class="solid-button-2">Return Home</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

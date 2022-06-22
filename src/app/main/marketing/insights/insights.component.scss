@@ -1,0 +1,125 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.hero{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: calc(4vw + 10px);
+    padding-right: calc(4vw + 10px);
+    .mb-custom{
+        margin-bottom: 20px;
+        button{@include mediaW(550px){
+            padding-left: 30px;
+            padding-right: 30px;
+        }}
+    }
+    .logo{
+        width: 150px;
+        @include mediaM(550px){
+            width: 110px;
+        }
+    }
+    .board{
+        padding: calc(3vh + 3vw);
+        background-color: $grey-lighter;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        border-radius: 20px;
+        min-height: calc(90vh - 140px);
+        h1{
+            @include mediaW(1100px){
+                font-size: 3.2rem;
+            }
+        }
+        span{
+            font-size: inherit !important;
+        }
+        @include mediaM(750px){
+            display: block;
+            text-align: center;
+        }
+        .more-space{
+            letter-spacing: 5px;
+        }
+    }
+    .validation{
+        width: 100%;
+        // padding: 4vh 5px;
+        padding: 0 5px 4vh;
+        opacity: 0.5;
+        filter: grayscale(1);
+        p{
+            padding: 10px 2vmax 0;
+            margin-bottom: 0; // Add
+            font-size: 1em;
+            color: $primary-blue
+        }
+        .companies{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            overflow-x: auto;
+            img{
+                margin: 0 10px;
+            }
+            @include mediaM(500px) {
+                padding-left: 56vw;
+            }
+        }
+    }
+}
+.skip-slider{
+    animation: skipper 2.5s ease 0s infinite;
+}
+
+.blue-sect{
+    background-color: $light-blue;
+    border-radius: 20px;
+}
+
+.yellow-sect{
+    background-color: $light-yellow;
+    border-radius: 20px;
+}
+.full-min{
+    @include mediaW(1100px){
+        min-height: 608px;
+    }
+    @include mediaW(1200px){
+        min-height: 612x;
+    }
+    @include mediaW(1400px){
+        min-height: 630px;
+    }
+    @include mediaW(1620px){
+        min-height: 688px;
+    }
+}
+
+.insight-card{
+    border: 0.5px solid $grey-light;
+    border-radius: 15px;
+}
+
+.footer{
+    color: $black-faint1;
+    .holder{
+        a{
+            color: inherit;
+            padding: 3px 5px;
+            i{
+                font-size: 1.5em;
+                padding: 0 5px;
+            }
+        }
+    }
+}
+
+@keyframes skipper {
+    0%{ transform: translateY(40%);}
+    99%{ transform: translateY(-40%);}
+    100%{ transform: translateY(50%);}
+}

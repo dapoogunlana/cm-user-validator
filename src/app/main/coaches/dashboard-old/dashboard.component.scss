@@ -1,0 +1,80 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.spacer{
+    height: 77px;
+    @include mediaM(550px) {
+        height: 60px;
+    }
+}
+.holder{
+    padding: 15px 6vmax;
+    @include mediaM(550px) {
+        padding: 15px 2vmax;
+    }
+    .mobile-event-creator{
+        position: fixed;
+        bottom: 5vh;
+        left: 5%;
+        width: 90%;
+        button{
+            width: 100%;
+        }
+        @include mediaW(950px) {
+            display: none;
+        }
+    }
+}
+.dashboard-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    @include mediaM(1250px) {
+        grid-template-columns: 30% 70%;
+    }
+    @include mediaM(950px) {
+        display: block;
+    }
+    .detail-card{
+        background-color: $white;
+        border-radius: 20px;
+        padding: 15px 25px 10px;
+        h6, span{
+            color: $primary-blue !important;
+        }
+        p{
+            color: $secondary-blue !important;
+        }
+    }
+    .notification{
+        border-radius: 3px;
+        background-color: $light-orange;
+        color: $orange-dark;
+        border: 1px solid $orange;
+        padding: 5px 15px;
+        p, h6{
+            color: $orange-dark;
+        }
+        @include mediaM(950px) {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            z-index: 9;
+            box-shadow: 0 0 0 10px $off-white;
+        }
+    }
+    .notification-spacer{
+        @include mediaM(950px) {
+            min-height: 10px;
+        }
+    }
+}
+.pad-web{
+    padding: 2vh;
+    @include mediaM(950px) {
+        padding-left: 1vh;
+        padding-right: 0;
+    }
+}

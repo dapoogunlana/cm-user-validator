@@ -1,0 +1,43 @@
+<div class="auth-bg2">
+    <a routerLink="/">
+        <div class="logo-holder2">
+            <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+        </div>
+    </a>
+    <div class="auth-card padded">
+        <div class="form-flex">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <h6 class="pt-3">Welcome back</h6>
+                    <p>
+                        Don’t have an account yet? 
+                        <a routerLink="/auth/coach-request-invite">Request an invite</a>
+                    </p>
+                    <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                        <label>Email</label>
+                        <input type="email" required name="username" required [(ngModel)]="form.username"
+                            id="username" placeholder="Enter email">
+                        <label>Password</label>
+                        <div class="relative">
+                            <input [type]="passwordType" required name="password" required [(ngModel)]="form.password"
+                                id="password" placeholder="Enter email or password">
+                            <div class="eye-toggle">
+                                <i class="far fa-eye" *ngIf="!passwordVisible" (click)="togglePasswordVisibility(true)"></i>
+                                <i class="far fa-eye-slash" *ngIf="passwordVisible" (click)="togglePasswordVisibility(false)"></i>
+                            </div>
+                        </div>
+                        <button class="solid-button-sec py-2 mt-4" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Sign In</span>
+                            <span *ngIf="loading"><app-basic-loader></app-basic-loader></span>
+                        </button>
+                        <!-- <button class="solid-button-sec py-2 mt-4" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Sign In</span>
+                            <span *ngIf="loading"><app-basic-loader></app-basic-loader></span>
+                        </button> -->
+                        <p class="pt-1"><a routerLink="/auth/forgot-password">Forgot password?</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

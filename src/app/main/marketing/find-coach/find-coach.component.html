@@ -1,0 +1,43 @@
+<div class="hero">
+    <div class="underlay">
+        <img src="assets/images/marketing/spiral-cut.png" alt="">
+    </div>
+    <div class="info" data-aos="fade-right">
+        <div class="spacer"></div>
+        <h2>
+            Up-close with Africa’s best experts. <br>
+            Achieve results, <span>big</span>.
+        </h2>
+        <p>
+            Find one-of-a-kind experts to learn in-demand skills and achieve your goals faster.
+        </p>
+    </div>
+    <div class="hero-image" data-aos="fade-in" data-aos-delay="1000" data-aos-duration="1500">
+        <div class="imh">
+            <img src="assets/images/marketing/find-coach-img.png" alt="">
+        </div>
+    </div>
+</div>
+
+<app-find-coach-filter (filterPayload)="runFilters($event)" [cardData]="filterInfo"></app-find-coach-filter>
+
+<div class="loading-space-70" *ngIf="!loaded; else loadedSect">
+    <app-loader></app-loader>
+</div>
+
+<ng-template #loadedSect>
+    <div class="credibility-sect">
+        <div class="w96 max1200">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-3 mt-3" *ngFor="let item of tutors">
+                    <div class="max80vw">
+                        <app-coach-card [cardData]="item"></app-coach-card>
+                    </div>
+                </div>
+            </div>
+            <div class="w90 max150 text-center mt-5">
+                <button class="solid-button w96">Load More</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

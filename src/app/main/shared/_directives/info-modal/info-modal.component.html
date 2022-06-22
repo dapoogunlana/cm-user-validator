@@ -1,0 +1,23 @@
+<div class="vid-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="modal-closer" (click)="closeModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="restriction-area">
+                <!-- <h3 class="text-center mb-3">{{ data.name }}</h3> -->
+                <h5 class="text-center mb-3">{{ data?.title }}</h5>
+                <div [innerHTML]="data?.body || ''" style="font-size: 14px;"></div>
+                <!-- <div class="info-grid">
+                    <button class="hollow-button" (click)="closeModal()">Cancel</button>
+                    <span></span>
+                    <button class="solid-button" (click)="closeModal(true)">Agree</button>
+                </div> -->
+                <div class="w90 maxh-300 py-3">
+                    <button class="solid-button w100" (click)="closeModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,573 @@
+<div class="hero">
+    <div class="spread-info mb-custom">
+        <div class="imh logo">
+            <a routerLink="/">
+                <img src="../../../../assets/images/new-marketing/main-logo.png" alt="">
+            </a>
+        </div>
+        <a routerLink="/auth/log-in">
+            <button class="solid-button-orange-2">Login</button>
+        </a>
+    </div>
+    <div class="board">
+        <div class="anim-holder">
+            <div class="imh w100">
+                <img src="../../../../assets/images/new-marketing/map.png" alt="">
+            </div>
+            <div class="hub africa">
+                <div></div>
+            </div>
+            <div class="hub europe">
+                <div></div>
+            </div>
+            <div class="hub asia">
+                <div></div>
+            </div>
+            <div class="hub america1">
+                <div></div>
+            </div>
+            <div class="hub america2">
+                <div></div>
+            </div>
+            <div class="hub austrailia">
+                <div></div>
+            </div>
+            <div class="hub africa">
+                <div></div>
+            </div>
+        </div>
+        <div class="content">
+            <p class="c-orange md-close">
+                BECOME A SUBJECT MATTER CONSULTANT
+            </p>
+            <div class="pt-5 md-open"></div>
+            <h1 class="c-pr-blue">
+                Work <span class="c-orange g-6">1:1</span> or in <span class="c-orange g-6">groups</span> with subscribers globally
+            </h1>
+            <p class="increased" *ngIf="activeQuote">
+                Helping them <span class="c-orange g-6">{{ activeQuote }}</span> - while you make extra income
+            </p>
+            <div class="pt-4 md-open"></div>
+            <a routerLink="/auth/coach-request-invite">
+                <button class="solid-button-2 c-orange-im">REQUEST INVITE</button>
+            </a>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="validation">
+            <p class="text-center">
+                Our Subject Matter Experts are from some of the world’s best companies
+            </p>
+            <div class="companies">
+                <img [src]="company.image" *ngFor="let company of subjectMatterCompanies" alt="">
+                <!-- <img src="assets/images/marketing/logos/Google-Logo.svg" alt="">
+                <img src="assets/images/marketing/logos/Twitter-Logo.svg" alt="">
+                <img src="assets/images/marketing/logos/Facebook-Logo.svg" alt="">
+                <img src="assets/images/marketing/logos/Apple-Logo.svg" alt="">
+                <img src="assets/images/marketing/logos/Citi-Venture-Capital-International-Logo.svg" alt="">
+                <img src="assets/images/marketing/logos/Microsoft-Logo.svg" alt=""> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-5">
+    <div class="w90 max110">
+        <div class="w96 max600">
+            <h1 class="text-center g-6 c-pr-blue mb-4">
+                Working with <br> cm is Simple
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <div class="relative w90 max200 faint-p" data-aos="zoom-in">
+                    <div class="imh floating-arrow">
+                        <img src="../../../../assets/images/new-marketing/arrow-outer-curve.png" alt="">
+                    </div>
+                    <div class="imh max60 blue-shadow rad-10 overflow-hidden mb-4">
+                        <img src="../../../../assets/images/new-marketing/icon-become-an-expert.png"
+                            class="rad-10" alt="">
+                    </div>
+                    <h5 class="g-6">Become an expert</h5>
+                    <p class="c-grey-mid-im">
+                        Request to consult expertly and get admitted
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="pt-5"></div>
+                <div class="relative w90 max200 faint-p" data-aos="zoom-in">
+                    <div class="imh floating-arrow2 md-close-b">
+                        <img src="../../../../assets/images/new-marketing/arrow-inner-curve.png" alt="">
+                    </div>
+                    <div class="imh max60 blue-shadow rad-10 overflow-hidden mb-4">
+                        <img src="../../../../assets/images/new-marketing/icon-get-profiled.png"
+                            class="rad-10" alt="">
+                    </div>
+                    <h5 class="g-6">Get Profiled</h5>
+                    <p class="c-grey-mid-im">
+                        Your profile is marketed with a personalized URL
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="pt-5 md-close-b"></div>
+                <div class="pt-5 md-close-b"></div>
+                <div class="relative w90 max200 faint-p" data-aos="zoom-in">
+                    <div class="imh floating-arrow3 md-open-b">
+                        <img src="../../../../assets/images/new-marketing/arrow-inner-curve.png" alt="">
+                    </div>
+                    <div class="imh floating-arrow">
+                        <img src="../../../../assets/images/new-marketing/arrow-outer-curve.png" alt="">
+                    </div>
+                    <div class="imh max60 blue-shadow rad-10 overflow-hidden mb-4">
+                        <img src="../../../../assets/images/new-marketing/icon-consult.png"
+                            class="rad-10" alt="">
+                    </div>
+                    <h5 class="g-6">Consult</h5>
+                    <p class="c-grey-mid-im">
+                        Work 1:1 or in groups with subscribers around the world 
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="pt-5"></div>
+                <div class="pt-5 md-close-b"></div>
+                <div class="pt-5 md-close-b"></div>
+                <div class="relative w90 max200 faint-p" data-aos="zoom-in">
+                    <div class="imh max60 blue-shadow rad-10 overflow-hidden mb-4">
+                        <img src="../../../../assets/images/new-marketing/icon-get-paid.png"
+                            class="rad-10" alt="">
+                    </div>
+                    <h5 class="g-6">Get Paid</h5>
+                    <p class="c-grey-mid-im">
+                        Get compensated even more as your subscription grows
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="">
+    <div class="w90">
+        <div class="">
+            <div class="spread-info">
+                <h1 class="g-6 c-pr-blue">
+                    Domain Categories
+                </h1>
+                <div class="scroll-holder spread-info">
+                    <div class="scroll-circle" (click)="scrollLeft()">
+                        <i class="fas fa-arrow-left increased-x"></i>
+                    </div>
+                    <span class="center-space"></span>
+                    <div class="scroll-circle" (click)="scrollRight()">
+                        <i class="fas fa-arrow-right increased-x"></i>
+                    </div>
+                </div>
+            </div>
+            <h6>
+                Work <span class="c-orange g-6">1:1</span> or in <span class="c-orange g-6">groups</span>
+            </h6>
+        </div>
+        <div class="domain-holder no-scroll mb-5" id="domain-holder-container">
+            <div class="domain-slider no-scroll" id="domain-holder" [ngStyle]="{'width': domainSectWidth + 'px'}">
+                <!-- <div class="slider-column">
+                    <div class="domain-card">
+                        <div class="imh">
+                            <img src="../../../../assets/images/new-marketing/category-leadership.jpg" alt="">
+                        </div>
+                        <p class="text-center mt-2 mb-1">Leadership</p>
+                    </div>
+                </div>
+                <div class="slider-column">
+                    <div class="domain-card">
+                        <div class="imh">
+                            <img src="../../../../assets/images/new-marketing/category-education.jpg" alt="">
+                        </div>
+                        <p class="text-center mt-2 mb-1">Education</p>
+                    </div>
+                </div>
+                <div class="slider-column">
+                    <div class="domain-card">
+                        <div class="imh">
+                            <img src="../../../../assets/images/new-marketing/category-business.jpg" alt="">
+                        </div>
+                        <p class="text-center mt-2 mb-1">Business</p>
+                    </div>
+                </div>
+                <div class="slider-column">
+                    <div class="domain-card">
+                        <div class="imh">
+                            <img src="../../../../assets/images/new-marketing/category-technology.jpg" alt="">
+                        </div>
+                        <p class="text-center mt-2 mb-1">Technology</p>
+                    </div>
+                </div> -->
+                <div class="slider-column" *ngFor="let domain of domainList">
+                    <div class="domain-card">
+                        <div class="imh">
+                            <!-- <img src="../../../../assets/images/new-marketing/category-leadership.jpg" alt=""> -->
+                            <img [src]="domain.picture" alt="">
+                        </div>
+                        <p class="text-center mt-2 mb-1">{{ domain.name | titlecase }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pb-5">
+    <div class="w90 yellow-sect">
+        <div class="">
+            <h6 class="text-right my-3 md-close">
+                1:1 ONE-TIME/MULTIPLE SESSIONS 
+            </h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="max400 w100 mb-3">
+                        <h1 class="g-6 c-pr-blue pb-4">
+                            Grow your <br>
+                            business fast
+                        </h1>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-grow-buisness-global-reach.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>Global Reach</h6>
+                                <p>
+                                    Publish your expertise to generate traction and wealth
+                                </p>
+                            </div>
+                        </div>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-grow-buisness-work-1-1.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>Work 1:1 with subscribers all over the world</h6>
+                                <p>
+                                    Work 1:1 with subscribers through video interaction for one-time or multiple session(s)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-grow-buisness-get-paid.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>Get paid & monitor progress</h6>
+                                <p>
+                                    Help subscribers unstuck or achieve their goals and get paid in kind and in cash
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="max350 w100 relative">
+                        <div class="logo-icon imh zoom-clicker">
+                            <img src="../../../../assets/images/new-marketing/logo-icon.png" alt="">
+                        </div>
+                        <div class="session-stat imh zoom-clicker wide-shadow rad-15 overflow-hidden">
+                            <img src="../../../../assets/images/new-marketing/grow-biz-session-request.png" alt="">
+                        </div>
+                        <div class="imh zoom-clicker">
+                            <img src="../../../../assets/images/new-marketing/grow-biz-girl.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <h6 class="text-center w100 mt-4 pt-4 md-open">
+                    1:1 ONE-TIME/MULTIPLE SESSIONS 
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-5 control-everything">
+    <div class="w90 max110">
+        <div class="w96 max450">
+            <h1 class="text-center g-6 c-pr-blue">
+                Control everything in a single space
+            </h1>
+        </div>
+        <div class="w100 max800 mt-5">
+            <div class="w80 relative" data-aos="zoom-in">
+                <div class="imh rad-10">
+                    <img src="../../../../assets/images/new-marketing/dashboard.png" alt="">
+                </div>
+                <div class="logo-icon imh rad-10">
+                    <img src="../../../../assets/images/new-marketing/logo-icon.png" alt="">
+                </div>
+                <div class="full zoom-clicker imh wide-shadow rad-10">
+                    <img src="../../../../assets/images/new-marketing/dashboard.png" alt="">
+                </div>
+                <div class="impact-graph zoom-clicker imh wide-shadow rad-10">
+                    <img src="../../../../assets/images/new-marketing/impact-graph.png" alt="">
+                </div>
+                <div class="activity-list zoom-clicker imh wide-shadow rad-10">
+                    <img src="../../../../assets/images/new-marketing/activity-list.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-5">
+    <div class="w90 ash-sect">
+        <div class="w100 max1000">
+            <h6 class="text-right my-3 md-close">
+                GROUP SESSIONS 
+            </h6>
+            <div class="max600 mb-3">
+                <h1 class="g-6 c-pr-blue pb-4">
+                    Meet with subscribers
+                    anytime, anywhere
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 md-close">
+                    <div class="max500 imh w100">
+                        <img src="../../../../assets/images/new-marketing/client-ring.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="max500 w100">
+                        <div class="pt-5 pb-3 md-close"></div>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-meet-client-high-impact.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>High-impact group consult</h6>
+                                <p>
+                                    Create a group consult for a specific goal with size capacity and wait list
+                                </p>
+                            </div>
+                        </div>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-meet-client-co-create.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>Co-create with subscribers </h6>
+                                <p>
+                                    Work with subscribers helping them achieve what they want
+                                </p>
+                            </div>
+                        </div>
+                        <div class="spread-info-front-top mb-3">
+                            <div class="imh mr-4 ww70">
+                                <img src="../../../../assets/images/new-marketing/icon-meet-client-new-connections.png" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <h6>More money and new connections</h6>
+                                <p>
+                                    The more subscribers you work with, the more money you make while growing your folllowership
+                                </p>
+                            </div>
+                        </div>
+                        <a routerLink="/auth/coach-request-invite">
+                            <button class="solid-button-sec-2 p-3">Get Started for Free</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 md-open">
+                    <div class="max350 imh w100">
+                        <img src="../../../../assets/images/new-marketing/client-ring.png" alt="">
+                    </div>
+                </div>
+                <h6 class="text-center my-3 w100 md-open">
+                    GROUP SESSIONS 
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="benefit mt-5">
+    <div class="w90 max110">
+        <div class="w96 max800">
+            <h1 class="text-center g-6 c-pr-blue">
+                Benefits
+            </h1>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-global-reach.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Global Reach</h5>
+                    <p>
+                        Leverage your experience of been there and done that to impact subscribers across the world
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-secured-platform.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Secured Platform</h5>
+                    <p>
+                        Safe and convenient payment integration by renowned partners with active license
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-data-driven-metrics.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Data-driven Metrics</h5>
+                    <p>
+                        360-degree analytics to evaluate business growth and improve impact factor
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-experts-colaboration.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Experts Collaboration</h5>
+                    <p>
+                        Conduct multidisciplinary consults with other experts to further grow your business and connections
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-powerfool-tooling.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Powerful Tooling</h5>
+                    <p>
+                        Everything needed for automating schedules, marketing, advertising, and publishing 
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="w96 max250 benefit-content my-5" data-aos="fade-up">
+                    <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                        <img src="../../../../assets/images/new-marketing/benefit-icon-global-reach.png" alt="">
+                    </div>
+                    <h5 class="mt-2 g-6">Expert Assistance</h5>
+                    <p>
+                        Unparalled support all the way from onboarding to profile marketing and lead generations
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="mt-5">
+    <div class="w90 max1000 pricing">
+        <div class="w96 max800">
+            <h1 class="text-center g-6 c-pr-blue">
+                Pricing
+            </h1>
+        </div>
+        <div class="row mt-5 mb-5">
+            <!-- <div class="col-sm-6">
+                <div class="w90 max350 price-content my-4" data-aos="flip-left">
+                    <h6>1:1 One-time sessions</h6>
+                    <p class="mt-4 mb-0 cw">Profile Marketing</p>
+                    <h1>0%</h1>
+                    <p class="mb-0 c-grey">
+                        Starts from 5% per session 
+                        for Consultation Infrastructure cost  
+                    </p>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-4 col-sm-6">
+                <div class="w90 max350 price-content my-4" data-aos="flip-left" data-aos-delay="300">
+                    <h6>1:1 Multiple sessions</h6>
+                    <p class="mt-4 mb-0 cw">Profile Marketing</p>
+                    <h1>0%</h1>
+                    <p class="mb-0 c-grey">
+                        Starts from 15% of all sessions
+                        for Consultation Infrastructure cost  
+                    </p>
+                </div>
+            </div> -->
+            <!-- <div class="col-sm-6">
+                <div class="w90 max350 price-content my-4" data-aos="flip-left" data-aos-delay="600">
+                    <h6>Group sessions</h6>
+                    <p class="mt-4 mb-0 cw">Group Session Marketing</p>
+                    <h1>0%</h1>
+                    <p class="mb-0 c-grey">
+                        Starts from 20% of group session 
+                        for Consultation Infrastructure cost  
+                    </p>
+                </div>
+            </div> -->
+            <div class="col-sm-6" *ngFor="let session of sessionDetails">
+                <div class="w90 max350 price-content my-4" data-aos="flip-left">
+                    <h6>{{ session.name}}</h6>
+                    <p class="mt-4 mb-0 cw">{{ session.feature || 'Not available' }}</p>
+                    <h1>{{ session.percentage }}</h1>
+                    <p class="mb-0 c-grey">
+                        {{ session.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="offering mt-5">
+    <div class="w90 max500 text-center">
+        <h1 class="g-6">
+            Manage your Subscribers smartly with cm.
+        </h1>
+        <p>
+            Join the community of global influencers using their expertise to help others get 
+            ahead in life, business and career.
+        </p>
+        <a routerLink="/auth/coach-request-invite">
+            <button class="solid-button-orange-2">
+                <h6 class="action">REQUEST INVITE</h6>
+            </button>
+        </a>
+    </div>
+</div>
+
+<div class="footer p-3">
+    <div class="spread-info-web-sm w90 holder">
+        <div class="center-info">
+            <a routerLink="/insights">Insights</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/privacy">Privacy</a>
+            <a routerLink="/terms">Terms</a>
+        </div>
+        <div class="center-info">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="center-info footer-space-equator">
+            cm, Inc
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,133 @@
+<div class="hero">
+    <div class="spread-info mb-custom">
+        <div class="imh logo">
+            <a routerLink="/">
+                <img src="../../../../assets/images/new-marketing/main-logo.png" alt="">
+            </a>
+        </div>
+        <a routerLink="/auth/log-in">
+            <button class="solid-button-orange-2">Login</button>
+        </a>
+    </div>
+</div>
+<div class="main py-5">
+    <div class="insight-bg-icon">
+        <img src="./../../../../assets/images/new-marketing/insight-detail-bg.png" alt="">
+    </div>
+    <div class="w90 max900 relative py-5">
+        <h1 class="g-4">
+            Walkthrough of a Dashboard Design Refresh from a UX perspective
+        </h1>
+        <div class="spread-info-front pt-4 pb-5">
+            <div class="ww40 imh rad-15 overflow-hidden">
+                <img src="./../../../../assets/images/new-marketing/little-avatar.png" alt="">
+            </div>
+            <div class="pl-3">
+                <h5 class="mb-0 reduced-soft">Owolabi</h5>
+                <p class="c-grey-light mb-0">13 Aug 2021 - 46 min read</p>
+            </div>
+        </div>
+        <hr class="mb-5">
+        <h5 class="c-purple-grey increased-x g-4">New Dashboards</h5>
+        <p class="c-purple-grey">
+            This policy describes what information we collect when you use Superpeer’s sites, services, mobile applications, products, and content (“Services”). 
+            It also provides information about how we store, transfer, use, and delete that .
+            <br><br>
+            This policy applies where we are acting as a Data Controller with respect to the personal data of Hosts and Users of our Services; in other words, 
+            where we determine the purposes and means of the processing of that personal data. For content and data that you upload to or make available through 
+            the Service (“User Content”), you are responsible for ensuring this content is in accordance with our Terms of Service, and that the content is not 
+            violating other Hosts and Users’ privacy.. 
+            <br><br>
+            This policy applies where we are acting as a Data Controller with respect to the personal data of Hosts and Users of our Services; in other words, 
+            where we determine the purposes and means of the processing of that personal data. For content and data that you upload to or make available through 
+            the Service (“User Content”), you are responsible for ensuring this content is in accordance with our Terms of Service, and that the content is not 
+            violating other Hosts and Users’ privacy.
+        </p>
+        <div class="my-5 imh">
+            <img src="./../../../../assets/images/new-marketing/insight-detail-banner.jpg" alt="">
+        </div>
+        <h5 class="c-purple-grey increased-x g-4">Tips and resources</h5>
+        <p class="c-purple-grey">
+            This policy describes what information we collect when you use Superpeer’s sites, services, mobile applications, products, and content (“Services”). 
+            It also provides information about how we store, transfer, use, and delete that .
+            <br><br>
+            This policy applies where we are acting as a Data Controller with respect to the personal data of Hosts and Users of our Services; in other words, 
+            where we determine the purposes and means of the processing of that personal data. For content and data that you upload to or make available through 
+            the Service (“User Content”), you are responsible for ensuring this content is in accordance with our Terms of Service, and that the content is not 
+            violating other Hosts and Users’ privacy.. 
+            <br><br>
+            This policy applies where we are acting as a Data Controller with respect to the personal data of Hosts and Users of our Services; in other words, 
+            where we determine the purposes and means of the processing of that personal data. For content and data that you upload to or make available through 
+            the Service (“User Content”), you are responsible for ensuring this content is in accordance with our Terms of Service, and that the content is not 
+            violating other Hosts and Users’ privacy.
+        </p>
+        <div class="switchable-links" data-aos="fade-up">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="related py-5">
+    <div class="w90 max110">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6" *ngFor="let insight of insightList" data-aos="fade-up">
+                <div class="insight-card max450 w96 p-3 my-4">
+                    <div class="imh rad-10 overflow-hidden mb-3 rad-10">
+                        <img [src]="insight.banner" alt="">
+                    </div>
+                    <h3 class="c-purple-grey">{{ insight.title }}</h3>
+                    <p class="c-purple-grey mt-3 mb-0">Introduction</p>
+                    <p class="c-purple-grey mt-2">
+                        {{ insight.brief }}
+                    </p>
+                    <div class="spread-info-front pt-3">
+                        <div class="ww40 imh rad-15 overflow-hidden">
+                            <img [src]="insight.image" alt="">
+                        </div>
+                        <div class="pl-3">
+                            <h5 class="mb-0 reduced-soft">{{ insight.author }}</h5>
+                            <p class="c-grey-light mb-0">
+                                {{ insight.datePosted }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer p-3">
+    <div class="spread-info-web-sm w90 holder">
+        <div class="center-info">
+            <a routerLink="/insights">Insights</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/privacy">Privacy</a>
+            <a routerLink="/terms">Terms</a>
+        </div>
+        <div class="center-info">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="center-info footer-space-equator">
+            cm, Inc
+        </div>
+    </div>
+</div>
+

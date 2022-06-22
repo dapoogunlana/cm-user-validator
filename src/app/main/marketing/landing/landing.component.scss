@@ -1,0 +1,417 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.hero{
+    width: 100%;
+    // height: 100vh;
+    height: calc(100vh - 100px);
+    padding:2vh 6vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #570110;
+    position: relative;
+    .underlay{
+        position: absolute;
+        width: 70%;
+        height: 90%;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(#96001e, #96001e, #570110, #570110);
+        @include mediaM(1100px) {
+            display: none;
+        }
+    }
+    .info{
+        .spacer{
+            height: 5vw;
+        }
+        position: relative;
+        width: 70%;
+        color: $white;
+        padding-right: 3vmax;
+        @include mediaM(1100px) {
+            padding-right: 0;
+            width: 100%;
+        }
+        h1{
+            font-weight: 700;
+            max-width: 670px;
+            @include mediaM(750px){
+                font-size: 1.8rem;
+            }
+        }
+        p{
+            font-size: 1.3em;
+            margin-top: 2vh;
+            margin-bottom: 3vh;
+            max-width: 660px;
+            @include mediaM(750px){
+                font-size: 1.05em;
+            }
+        }
+        .search-area{
+            display: grid;
+            grid-template-columns: auto 120px;
+            border: none;
+            border-radius: 6px;
+            overflow: hidden;
+            max-width: 650px;
+            margin: 3vh 0;
+            @include mediaM(750px){
+                grid-template-columns: auto 90px;
+            }
+            .input-area{
+                background-color: $white;
+                input{
+                    padding: 20px;
+                    border: none;
+                    width: 100%;
+                    &:focus{
+                        background-color: $white;
+                        outline: none;
+                    }
+                    &::placeholder{
+                        color: $black;
+                        opacity: 0.5;
+                    }
+                    @include mediaM(750px){
+                        padding: 15px;
+                    }
+                }
+            }
+            .submit-area{
+                padding: 20px 5px;
+                background-color: $primary-blue;
+                color: $white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2em;
+                font-weight: 500;
+                transition: 0.2s ease;
+                cursor: pointer;
+                i{
+                    font-size: 0.9em;
+                }
+                &:hover{
+                    background-color: $primary-blue-hover;
+                    color: $white;
+                }
+                &:active{
+                    background-color: $primary-green-active;
+                    color: $white;
+                }
+                @include mediaM(750px){
+                    padding: 15px 5px;
+                    font-size: 0.9em;
+                }
+            }
+        }
+        .popular{
+            a{
+                color: inherit;
+                &:hover{
+                    div{
+                        background-color: $white-faint1;
+                    }
+                }
+            }
+            div{
+                display: inline-block;
+                padding: 6px 9px;
+                border-radius: 4px;
+                font-size: 0.8em;
+                border: 1px solid $white-faint1;
+                margin: 5px 10px 5px 0;
+                transition: 0.2s ease;
+            }
+            .unwrapped{
+                border: none;
+                padding: 6px 0;
+            }
+        }
+    }
+    .hero-image{
+        width: 40%;
+        max-width: 410px;
+        padding: 12vh 2vh 0;
+        position: relative;
+        @include mediaM(1100px) {
+            display: none;
+        }
+    }
+    @include mediaM(1100px) {
+        padding:2vh 6vmax;
+    }
+}
+.credibility-sect{
+    width: 100%;
+    min-height: 100vh;
+    padding:2vh 6vmax;
+    background-color: #f1f3f6;
+    .validation{
+        width: 100%;
+        // padding: 4vh 5px;
+        padding: 0 5px 4vh;
+        p{
+            padding: 10px 2vmax 0;
+            margin-bottom: 0; // Add
+            font-size: 1em;
+            color: $primary-blue
+        }
+        .companies{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            overflow-x: auto;
+            img{
+                margin: 0 10px;
+            }
+            @include mediaM(500px) {
+                padding-left: 56vw;
+            }
+        }
+    }
+    .coaches{
+        .tutor-card{
+            width: 90%;
+            margin: 3vh auto;
+            border-radius: 11%;
+            position: relative;
+            overflow: hidden;
+            .overlay{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient($transparent, $black);
+                padding: 9%;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                div{
+                    color: $white;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .domains{
+        h3{
+            font-size: 2em;
+            color: $primary-blue;
+        }
+        p{
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: $primary-blue;
+        }
+    }
+}
+.plans{
+    position: relative;
+    width: 100%;
+    padding:5vh 6vmax 10vh;
+    background-color: #f1f3f6;
+    .skew-bg{
+        position: absolute;
+        width: 100%;
+        height: calc(100% + 23px);
+        left: 0;
+        top: 0;
+        background-color: #EEF7FE;
+        transform: skewY(-2deg);
+    }
+    .full-content{
+        position: relative;
+        h2{
+            color: $primary-blue;
+            font-size: 2.3em;
+            @include mediaM(500px){
+                font-size: 1.8em;
+            }
+        }
+        .plan{
+            transition: 0.3s ease;
+            width: 90%;
+            margin: 3vh auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 8px 0 $black-faint3;
+            .plan-top{
+                padding: 10px;
+                color: $white;
+                background-color: $primary-blue;
+                transition: 0.3s ease;
+                text-align: center;
+                h3{
+                    font-size: 1.1em;
+                    margin-bottom: 2px;
+                }
+                p{
+                    font-size: 0.8em;
+                    margin-bottom: 0;
+                }
+            }
+            .plan-body{
+                padding: 10px;
+                background-color: $white;
+                .plan-grid{
+                    display: grid;
+                    grid-template-columns: 35px auto;
+                    i{
+                        color: $primary-green;
+                        font-size: 1.5em;
+                        margin-top: 4px;
+                    }
+                }
+                .plan-button{
+                    padding: 4vh 10px 1vh;
+                    button{
+                        width:100%;
+                        @include solid-button($primary-green, $primary-green-hover, 20px, 8px, 1em);
+                        border-radius: 5px;
+                        font-weight: 500;
+                    }
+                }
+            }
+            &:hover{
+                box-shadow: 0 1px 8px 0 $black-faint2;
+                .plan-top{
+                    background-color: $secondary-blue;
+                }
+            }
+        }
+    }
+}
+.for-protegees{
+    position: relative;
+    width: 100%;
+    padding:5vh 6vmax 1vh;
+    background-color: $white;
+    .skew-bg{
+        position: absolute;
+        width: 100%;
+        height: calc(50%);
+        left: 0;
+        top: 0;
+        background-color: $white;
+        transform: skewY(-2deg);
+    }
+    .skew-bg2{
+        position: absolute;
+        width: 100%;
+        height: calc(30%);
+        left: 0;
+        bottom: -2.5%;
+        background-color: $white;
+        transform: skewY(2deg);
+    }
+    .full-content{
+        position: relative;
+        h2{
+            color: $primary-blue;
+            font-size: 2em;
+            @include mediaM(500px){
+                font-size: 1.6em;
+            }
+        }
+        p{
+            color: $faint-font;
+        }
+        .pr-image{
+            img{
+                width: 100%;
+                border-radius: 15px;
+            }
+        }
+        h6{
+            color: $primary-blue;
+            font-size: 1.2em;
+            max-width: 220px;
+        }
+        .mb-7{
+            margin-bottom: 15vh;
+            @include mediaM(500px){
+                margin-bottom: 9vh;
+            }
+        }
+    }
+}
+.how-to{
+    width: 100%;
+    min-height: 50vh;
+    padding: 10vh 6vmax;
+    background-color: #f1f3f6;
+    h2{
+        color: $primary-blue;
+        font-size: 2em;
+        @include mediaM(500px){
+            font-size: 1.6em;
+        }
+    }
+    .step1{
+        position: relative;
+        padding: 0;
+        padding-top: 10vh;
+        @include mediaM(750px){
+            padding-top: 0px;
+        }
+        .arrow{
+            position:absolute;
+            width: 30%;
+            right: 0;
+            top: 5%;
+            @include mediaM(750px){
+                display: none;
+            }
+        }
+    }
+    .step2{
+        position: relative;
+        padding: 0;
+        @include mediaM(750px){
+           margin: 5vh auto;
+        }
+        .arrow{
+            position:absolute;
+            width: 30%;
+            right: 0;
+            @include mediaM(750px){
+                display: none;
+            }
+        }
+    }
+    .step3{
+        position: relative;
+        padding: 0;
+        padding-top: 10vh;
+        @include mediaM(750px){
+            padding-top: 0px;
+        }
+    }
+    .find-coach{
+        text-align: center;
+        button{
+            @include solid-button($secondary-blue, $secondary-blue-hover, 15px, 8px, 0.8em);
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    }
+    .event-sect{
+        padding: 3vh;
+        background-color: #E6E5FF;
+        border-radius: 10px;
+        margin: 8vh auto 5vh;
+        h3{
+            text-align: center;
+            color: $primary-blue;
+        }
+        @include mediaM(750px){
+            padding: 3vh 1vh;
+        }
+    }
+}

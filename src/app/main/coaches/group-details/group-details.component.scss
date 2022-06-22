@@ -1,0 +1,88 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+.info-card{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: $light-blue-3;
+}
+.ash-tab-holder{
+    background-color: $grey-lightest;
+    width: 100%;
+    border-radius: 20px;
+}
+.message-holder{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .message{
+        border-radius: 7px;
+        padding: 10px;
+        width: 70%;
+        max-width: 450px;
+    }
+}
+.self{
+    justify-content: flex-end;
+    .message{
+        background-color: $light-cyan;
+    }
+}
+.other{
+    justify-content: flex-start;
+    .message{
+        background-color: $white;
+    }
+}
+.post-message{
+    display: grid;
+    grid-template-columns: auto 50px;
+    background-color: $white;
+    border: 1px solid $grey-light;
+    border-radius: 8px;
+    overflow: hidden;
+    .input-holder{
+        input{
+            width: 100%;
+            border: none;
+            padding: 5px 15px;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    .send{
+        color: $white;
+        background-color: $secondary-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: $secondary-blue-hover;
+        }
+    }
+}
+.wi200{
+    width: 217px !important;
+    @include mediaM(550px) {
+        width: 187px !important;
+    }
+}
+
+.review{
+    background-color: $white;
+    border-radius: 10;
+    margin: 2vh auto;
+    width: calc(100% - 20px);
+    padding: 12px 15px;
+    border-radius: 7px;
+    @include mediaM(750px) {
+        h5{
+            font-size: 1em;
+            font-weight: 700;
+        }
+    }
+}

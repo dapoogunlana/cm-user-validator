@@ -1,0 +1,95 @@
+
+<div class="auth-bg2">
+    <div class="auth-card padded">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="!registered; else registerMessage">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <h6 class="text-center">Request to be an expert</h6>
+                    <p>
+                        Already have an account? 
+                        <a routerLink="/auth/log-in">Login</a>
+                    </p>
+                    <form #f="ngForm" name="signin_form" (ngSubmit)="onSubmit()" id="signin_form">
+                        <div class="info-grid-web">
+                            <div>
+                                <label>First Name</label>
+                                <input type="text" required name="first_name" required [(ngModel)]="form.first_name"
+                                    id="first_name" placeholder="Enter first name">
+                            </div>
+                            <div></div>
+                            <div>
+                                <label>Last Name</label>
+                                <input type="text" required name="last_name" required [(ngModel)]="form.last_name"
+                                    id="last_name" placeholder="Enter last name">
+                            </div>
+                        </div>
+                        <label>Email</label>
+                        <input type="email" required name="email" required [(ngModel)]="form.email"
+                            id="email" placeholder="Enter email">
+                        <label>Country</label>
+                        <select form="signin_form" required name="countryId" [(ngModel)]="form.countryId"
+                            id="email">
+                            <option value="undefined" selected disabled>{{ countryLoadingMessage }}</option>
+                            <option [value]="country.id" *ngFor="let country of countryList">{{ country.name }}</option>
+                        </select>
+                        <label>linkedIn Profile</label>
+                        <input type="text" required name="linkedin" required [(ngModel)]="form.linkedInProfileUrl"
+                            id="linkedin" placeholder="Enter linkedin or any other professional link">
+                        <button class="solid-button mt-2 mb-3 py-2" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Request Invite</span>
+                            <span *ngIf="loading"><app-basic-loader [dimentions]="{size: 30, stroke: 4}"></app-basic-loader></span>
+                        </button>
+                        <!-- <button class="solid-button mt-2 mb-3 py-2" [ngClass]="{'secondary-blue-i': loading}" type="submit" [disabled]="f.invalid || loading">
+                            <span *ngIf="!loading">Request Invite</span>
+                            <span *ngIf="loading"><app-basic-loader [dimentions]="{size: 30, stroke: 4}"></app-basic-loader></span>
+                        </button> -->
+                    </form>
+                    <p class="small">
+                        By requesting an invite, you agree to cm's <a routerLink="/auth/sign-in">Privacy Policy</a> 
+                        and confirm that you have at least 5 years of experience in a particular domain.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <ng-template #registerMessage>
+            <!-- <div class="form-flex">
+                <div class="input-flex">
+                    <div class="text-center">
+                        <h6 class="mb-3">Your data has been saved</h6>
+                        <p>
+                            You have sucessfully started your registration journey. a code has been sent to your email.
+                            If you have the code press the button below to verify it and continue the journey. 
+                        </p>
+                        <div class="w80 full-button mb-2">
+                            <a routerLink="/auth/confirm-email">
+                                <button class="solid-button-2">Verify your email</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-flex">
+                <div class="input-flex">
+                    <div class="w100 text-center">
+                        <h6 class="mb-3">Information Saved</h6>
+                        <p>
+                            Your information has been succesfully saved, now we would verify your linked in profile, If we 
+                            find you suitable to join the platform you would get an invite email from us to allow you proceed with
+                            your setup process.
+                        </p>
+                        <div class="w80 full-button mb-2">
+                            <a routerLink="/">
+                                <button class="solid-button-2">Return Home</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

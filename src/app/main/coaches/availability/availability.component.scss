@@ -1,0 +1,65 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+
+.schedule{
+    background-color: $light-blue-auth;
+    border-radius: 10px;
+    border: 1px solid $grey-light;
+    .day{
+        background-color: $white;
+        border-radius: 8px;
+        border: 1px solid $grey-light;
+    }
+}
+
+.preference-point{
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 30px 15px auto;
+    padding: 8px 0;
+    .tick-area{
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $primary-blue-faint3;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        transition: 0.2s ease;
+    }
+    .active{
+        background-color: $secondary-blue;
+        border-color: $secondary-blue;
+        transition: 0.2s ease;
+        box-shadow: 0 0 5px -2px $secondary-blue-hover;
+    }
+}
+
+.switch{
+    width: 35px;
+    height: 20px;
+    background-color: $grey-light;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    div{
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        border-radius: 50%;
+        box-shadow: 0 0 8px -1px $black-faint3;
+    }
+}
+.active-switch{
+    justify-content: flex-end;
+    background-color: $secondary-blue;
+}

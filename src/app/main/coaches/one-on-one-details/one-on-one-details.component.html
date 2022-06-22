@@ -1,0 +1,76 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="mt-5">
+        <div class="py-5 center-info" *ngIf="!sessionDetailsLoaded; else newSessionLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #newSessionLoaded>
+            <div class="">
+                <div class="spread-info mb-3">
+                    <h2 class="">Session details</h2>
+                    <div class="white rad-10 px-3 py-2 clickable" (click)="goback()">
+                        <i class="fas fa-chevron-left mr-3"></i>
+                        Back
+                    </div>
+                </div>
+                <div class="mb-4 white rad-15 p-3 shadowed">
+                    <h5 class="g-6">{{ oneOnOneSingleDetail.topic }}</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="imh">
+                                <img [src]="oneOnOneSingleDetail.sessionImage" class="rad-10" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="rad-10 bordered-light p-3 full-height-web">
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/calendar.svg" width="30" class="mr-3" alt="">
+                                    <span>{{ oneOnOneSingleDetail.date }}, {{ oneOnOneSingleDetail.time }}</span>
+                                </div>
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/dashboard/one-on-one-icon.svg" width="30" class="mr-3" alt="">
+                                    <span>{{ oneOnOneSingleDetail.type }}</span>
+                                </div>
+                                <div class="spread-info-front my-3">
+                                    <img src="../../../../assets/images/new-coach-dashboard/icon-tickets-two.svg" width="30" class="mr-3" alt="">
+                                    <span>Ticket: ${{ oneOnOneSingleDetail.date }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tablet-case bordered-case wi200 mb-3 mt-3">
+                    <div class="tablet" [ngClass]="{'active-tab': activeTab === 'description'}" (click)="switchTab('description')">
+                        description
+                    </div>
+                    <div class="tablet mr-0" [ngClass]="{'active-tab': activeTab === 'messages'}" (click)="switchTab('messages')">
+                        Messages
+                    </div>
+                </div>
+                <div class="mt-3" *ngIf="activeTab === 'description'">
+                    <p *ngFor="let info of oneOnOneSingleDetail.description" class="c-faint-font">{{ info }}</p>
+                </div>
+                <div class="mt-3 grey-lightest rad-15 p-3" *ngIf="activeTab === 'messages'">
+                    <div class="maxh-35 auto-flow soft-scroll">
+                        <div class="message-holder" [ngClass]="{'self': message.owner, 'other': !message.owner}" *ngFor="let message of messages">
+                            <div class="message mb-3">
+                                <h6 class="mb-0">{{ message.sender }}</h6>
+                                <p class="mb-0">{{ message.message }}</p>
+                                <p class="mb-0 text-right">{{ message.time }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-message mt-3">
+                        <div class="input-holder">
+                            <input type="text">
+                        </div>
+                        <div class="send">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="all">
+    <div class="spacer"></div>
+    <h2 class="c-pr-blue mt-5">Private Sessions</h2>
+    <div class="ash-tab-holder">
+        <div class="tablet-case mb-3 mt-3">
+            <div class="tablet" [ngClass]="{'active-tab': activeTab === 'upcoming_sessions'}" (click)="switchTab('upcoming_sessions')">
+                Upcoming Sessions
+            </div>
+            <div class="tablet" [ngClass]="{'active-tab': activeTab === 'ended_sessions'}" (click)="switchTab('ended_sessions')">
+                Ended Sessions
+            </div>
+        </div>
+        <div class="row mt-5" *ngIf="activeTab === 'upcoming_sessions'">
+            <div class="col-md-6 mb-3 mt-3" *ngFor="let session of upcomingSessions">
+                <app-session-card [cardData]="session"></app-session-card>
+            </div>
+        </div>
+        <div class="row mt-5" *ngIf="activeTab === 'ended_sessions'">
+            <div class="col-md-6 mb-3 mt-3" *ngFor="let session of endedSessions">
+                <app-session-card [cardData]="session"></app-session-card>
+            </div>
+        </div>
+    </div>
+</div>

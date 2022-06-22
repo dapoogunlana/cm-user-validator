@@ -1,0 +1,45 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+
+
+.wi310{
+    width: 127px !important;
+    @include mediaM(550px) {
+        width: 100% !important;
+    }
+}
+.notification{
+    border-radius: 9px;
+    padding: 10px;
+    border: 0.5px solid $secondary-blue;
+    background-color: $white;
+    .top-holder{
+        display: grid;
+        grid-template-columns: auto 50px;
+    }
+    .info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            width: 100%;
+        }
+    }
+    .closer{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        i{
+            color: $grey-mid;
+            background-color: $grey-lightest;
+            padding: 6px;
+            border-radius: 5px;
+            transition: 0.2s ease;
+            &:hover{
+                background-color: $red;
+            }
+        }
+    }
+}

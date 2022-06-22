@@ -1,0 +1,50 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.all{
+    padding: 23vh 0 10vh;
+    padding: 15px 6vmax;
+    background-color: #f1f3f6;
+    .spacer{
+        height: 77px;
+        @include mediaM(550px) {
+            height: 60px;
+        }
+    }
+    .profile-grid{
+        display: grid;
+        grid-template-columns: 28% 55% 17%;
+        @include mediaM(850px) {
+            display: block;
+        }
+        @include mediaM(850px) {
+            display: block;
+        }
+        .profile-holder{
+            position: relative;
+            padding: 15px;
+            .profile-card{
+                background-color: $white;
+                border-radius: 20px;
+                padding: 15px;
+                .rate-skill{
+                    padding: 6px;
+                    border-radius: 3px;
+                    background-color: $white;
+                    border: 1px solid $primary-blue-faint3;
+                    width: 100%;
+                    max-width: 400px;
+                    margin: auto;
+                }
+            }
+            .web-floating-card{
+                @include mediaW(850px) {
+                    position: absolute;
+                    right: 15px;
+                    top: 15px;
+                    width: 130%;
+                }
+            }
+        }
+    }
+}

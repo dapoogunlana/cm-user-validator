@@ -1,0 +1,103 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.all{
+    padding: 23vh 0 10vh;
+    background-color: #f1f3f6;
+    .coach-img{
+        img{
+            width: 100%;
+            border-radius: 25px;
+        }
+    }
+    .coach-info{
+        .rate-skill{
+            padding: 6px;
+            border-radius: 3px;
+            background-color: $white;
+            border: 1px solid $primary-blue-faint3;
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+    .avatar{
+        width: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid $white;
+        margin-right: 14px;
+        img{
+            width: 100%;
+        }
+    }
+    .danger-hollow-button{
+        @include hollow-button($red, $red-hover, 15px, 4px, 1em);
+        border-radius: 6px;
+        box-shadow: 0 0 10px -1px $black-faint3;
+    }
+    .message-holder{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .message{
+            border-radius: 7px;
+            padding: 10px;
+            width: 70%;
+            max-width: 450px;
+        }
+    }
+    .self{
+        justify-content: flex-end;
+        .message{
+            background-color: $light-cyan;
+        }
+    }
+    .other{
+        justify-content: flex-start;
+        .message{
+            background-color: $white;
+        }
+    }
+    .post-message{
+        display: grid;
+        grid-template-columns: auto 50px;
+        background-color: $white;
+        border: 1px solid $grey-light;
+        border-radius: 8px;
+        overflow: hidden;
+        .input-holder{
+            input{
+                width: 100%;
+                border: none;
+                padding: 5px 15px;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+        .send{
+            color: $white;
+            background-color: $primary-green;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover{
+                background-color: $primary-green-hover;
+            }
+        }
+    }
+    .testimony{
+        .imh{
+            width: 30px;
+            border-radius: 50%;
+            margin-right: 22px;
+            img{
+                width: 100%;
+            }
+        }
+        h6{
+            color: $primary-blue;
+            font-size: 1.1em;
+        }
+    }
+}

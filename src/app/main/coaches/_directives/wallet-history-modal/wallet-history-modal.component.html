@@ -1,0 +1,39 @@
+<div class="vid-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <!-- <div class="modal-closer" (click)="closeModal()">
+                <i class="fas fa-times"></i>
+            </div> -->
+            <div class="spread-info">
+                <h5 class="c-pr-blue font-weight-bold">Wallet History</h5>
+                <h5 class="c-pr-blue">
+                    <i class="fas fa-times blue-clicker" (click)="closeModal()"></i>
+                </h5>
+            </div>
+            <div class="loading-space-mid" *ngIf="!loaded; else loadedSect">
+                <app-loader></app-loader>
+            </div>
+            <ng-template #loadedSect>
+                <div class="restriction-area soft-scroll">
+                    <div class="record" *ngFor="let record of walletHistory; let i = index">
+                        <div class="spread-info pb-2">
+                            <p class="mb-0 reduced">{{ record.description }}</p>
+                            <p class="mb-0 reduced c-faint-font">{{ record.date }}</p>
+                        </div>
+                        <div class="spread-info">
+                            <p class="mb-0 reduced c-pr-green" *ngIf="record.type === 'deposit'">+ ${{ record.amount }}</p>
+                            <p class="mb-0 reduced c-red" *ngIf="record.type === 'withdrawal'">- ${{ record.amount }}</p>
+                            <p [ngClass]="{ 'red': record.status === 'failed', 'orange': record.status === 'pending', 'green': record.status === 'successful' }"
+                                class="mb-0 reduced status-badge">{{ record.status }}</p>
+                        </div>
+                        <hr *ngIf="i < (walletHistory.length - 1)">
+                    </div>
+                    <!-- <div class="w90 maxh-300 pb-3">
+                        <button class="solid-button w100" (click)="closeModal()">OK</button>
+                    </div> -->
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

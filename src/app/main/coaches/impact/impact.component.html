@@ -1,0 +1,44 @@
+
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <h1 class="mb-3">Your impact at a glance</h1>
+    <div class="row">
+        <div class="col-md-8 pb-4">
+            <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                <div class="spread-info mb-3">
+                    <div>
+                        <h1>{{ impactDetails.attendees }}</h1>
+                        <p class="mb-0">Atendees</p>
+                    </div>
+                    <div class="">
+                        <select name="" id="" class="soft-select">
+                            <option value="monthly" selected disabled>Monthly</option>
+                            <option value="weekly" selected disabled>Weekly</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="imh">
+                    <img src="../../../../assets/images/new-coach-dashboard/graph.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 pb-4">
+            <div class="white rad-15 p-3 sc-blue-border full-height-web" data-aos="fade-up">
+                <p class="c-grey mt-4">Reach</p>
+                <h5 class="g-6 pt-3">{{ impactDetails.countries }} Countries</h5>
+                <p class="reduced">{{ impactDetails.region }} Geographical Regions</p>
+                <hr class="py-0 my-4">
+                <p class="c-grey mb-4">Total Subscribers</p>
+                <div class="spread-info-front">
+                    <h1 class="large mb-0">{{ impactDetails.subscribers }}</h1>
+                    <img src="../../../../assets/images/new-coach-dashboard/celebration-icon-multicolor.png" width="60" class="ml-4" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+        <hr class="py-0 my-3">
+        <app-default-table [title]="'Its false'" [tableData]="tableData" [calculateTotal]="false"></app-default-table>
+    </div>
+</div>

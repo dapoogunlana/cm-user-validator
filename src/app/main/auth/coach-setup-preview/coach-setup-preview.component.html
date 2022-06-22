@@ -1,0 +1,64 @@
+<div class="auth-bg">
+    <div class="auth-card">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex">
+            <div class="input-flex">
+                <div class="w100 full-button">
+                    <h6 class="text-center smaller mb-3">Welcome {{ userDetails.firstName + ' ' + userDetails.lastName }}</h6>
+                    <p class="text-center">Just a little more information we need and you'll be on your way</p>
+                    <div class="progress-box">
+                        <div class="progress-point" *ngFor="let step of setupStepList">
+                            <div class="tick-area" [ngClass]="{'active': step.isCompleted}">
+                                <i class="fas fa-check" *ngIf="step.isCompleted"></i>
+                            </div>
+                            <p class="dark mb-0">{{ step.name }}</p>
+                        </div>
+                        <!-- <div class="progress-point">
+                            <div class="tick-area active">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <p class="dark mb-0">General Information</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Expertise Domain</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Interests</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Professional Information</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Profile Picture</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Expertise Pitch Video</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Expertise Commitment and Service Consulting Type</p>
+                        </div>
+                        <div class="progress-point">
+                            <div class="tick-area"></div>
+                            <p class="dark mb-0">Billing Configuration</p>
+                        </div> -->
+                    </div>
+                    <button class="solid-button-2 mt-3" [ngClass]="{'secondary-blue-i': loading}" (click)="proceed()">
+                        <!-- <span *ngIf="!loading">Confirm Email</span>
+                        <span *ngIf="loading"><app-basic-loader></app-basic-loader></span> -->
+                        Proceed
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

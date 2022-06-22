@@ -1,0 +1,53 @@
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="spread-info-front">
+        <h1 class="mb-3">Hello {{ userDetails.firstName }}</h1>
+        <img src="./../../../../assets/images/new-coach-dashboard/waving.png" width="34" class="ml-3 mb-3" alt="">
+    </div>
+    <div class="info-card mb-4" data-aos="zoom-in">
+        <div class="px-4 py-3">
+            <h5>Welcome</h5>
+            <p class="c-grey md-open">
+                Welcome to your home office, viewing all the you need to move your expertise to the next level
+            </p>
+            <p class="c-grey increased md-close">
+                Welcome to your home office, viewing all the you need to move your expertise to the next level
+            </p>
+            <button class="solid-button-2" (click)="createNewEvent()">Create Group Session</button>
+        </div>
+        <div class="imh">
+            <img src="./../../../../assets/images/new-coach-dashboard/overview-card-bg.png" alt="">
+        </div>
+    </div>
+    <div class="row mt-3 mb-4">
+        <div class="col-md-3 col-6 pb-4" data-aos="fade-up">
+            <div class="rad-15 pale-yellow p-3">
+                <h4 class="g-6">{{ (overviewDetails.oneOnOneSession | number) || ' .. '  }}</h4>
+                <p class="mb-0"># of 1:1 Sessions</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 pb-4" data-aos="fade-up">
+            <div class="rad-15 pale-yellow p-3">
+                <h4 class="g-6">{{ (overviewDetails.groupSessions | number) || ' .. '  }}</h4>
+                <p class="mb-0"># of Grp Sessions</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 pb-4" data-aos="fade-up">
+            <div class="rad-15 green-cyan p-3">
+                <h4 class="g-6">${{ (overviewDetails.revenue | number) || ' .. ' }}</h4>
+                <p class="mb-0">Revenue</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 pb-4" data-aos="fade-up">
+            <div class="rad-15 mid-blue p-3">
+                <h4 class="g-6">{{ (overviewDetails.subscriptions?.subscribers | number ) || ' .. ' }} <span class="reduced-x">Subs</span></h4>
+                <p class="mb-0">{{ (overviewDetails.subscriptions?.countries | number) || ' .. '  }} Countries</p>
+            </div>
+        </div>
+    </div>
+    <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+        <h5 class="g-6 pt-3">Upcoming Consultations</h5>
+        <hr class="py-0 my-3">
+        <app-default-table [title]="'Its false'" [tableData]="tableData" [calculateTotal]="false"></app-default-table>
+    </div>
+</div>

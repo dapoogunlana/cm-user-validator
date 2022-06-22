@@ -1,0 +1,49 @@
+<div class="header">
+    <div class="spread-info">
+        <div class="mobile-menu">
+            <i class="fas fa-bars" (click)="openMobileMenu()"></i>
+        </div>
+        <div class="logo imh">
+            <img src="./../../../../../assets/images/marketing/main-logo.png" alt="" (click)="goHome()" class="clickable">
+        </div>
+        <div class="mobile-click-catcher" (click)="closeMobileMenu()"></div>
+        <div class="nav">
+            <ul>
+                <li class="menu-logo">
+                    <div class="full imh">
+                        <img src="./../../../../../assets/images/marketing/main-logo.png" alt="" (click)="goHome()" class="clickable">
+                    </div>
+                </li>
+                <li><a routerLink="/home" routerLinkActive="activeNav">Home</a><div class="under-band"></div></li>
+                <li><a routerLink="/find-coach" routerLinkActive="activeNav">Find a Coach</a><div class="under-band"></div></li>
+                <!-- <li><a routerLink="/become-a-coach" routerLinkActive="activeNav">Become an Expert</a><div class="under-band"></div></li> -->
+                <li><a routerLink="/coach-home" routerLinkActive="activeNav">Expert Portal</a><div class="under-band"></div></li>
+                <li><a routerLink="/events" routerLinkActive="activeNav">Events</a><div class="under-band"></div></li>
+                <li><a routerLink="/blog" routerLinkActive="activeNav">Insights</a><div class="under-band"></div></li>
+                <li><a routerLink="/auth/sign-in"><button>Sign In</button></a></li>
+            </ul>
+            <div class="search">
+                <i class="fas fa-search" (click)="openHeaderSearch()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="search-panel">
+        <div class="spread-info">
+            <div class="logo imh">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+            <div class="mobile-logo imh">
+                <img src="./../../../../../assets/images/favicon.png" alt="">
+            </div>
+            <div class="search-area">
+                <input type="text" placeholder="Search" name="" id="">
+                <div class="addition search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="addition times">
+                    <i class="fas fa-times" (click)="closeHeaderSearch()"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

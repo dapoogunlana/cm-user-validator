@@ -1,0 +1,78 @@
+<div class="all">
+    <div class="w96 max1100">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="coach-img mb-3">
+                    <img [src]="(coachDetails && coachDetails.coach) ? coachDetails.coach.imageUrl: '' " alt="">
+                    <!-- <img src="./../../../../assets/images/marketing/card-photo2.png" alt=""> -->
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="coach-info mb-5">
+                    <h3 class="c-primary-blue font-weight-bold">{{ (coachDetails && coachDetails.coach) ? coachDetails.coach.coachFullName : '' }}</h3>
+                    <p class="c-secondary-blue mb-0">{{ (coachDetails && coachDetails.coach) ? coachDetails.coach.roleName : ''}} at {{ (coachDetails && coachDetails.coach) ? coachDetails.coach.companyName : '' }}</p>
+                    <div class="spread-info-front mb-2">
+                        <p class="mb-0 mr-5" [innerHTML]="utility.calculateColoredStars((coachDetails && coachDetails.coach) ? coachDetails.coach.rating : '')"></p>
+                        <p class="mb-0 font-weight-bold mr-l c-primary-blue"><i class="fas fa-video mr-3"></i>Intro Video </p>
+                    </div>
+                    <p class="mb-0 reduced c-primary-blue1">
+                        <span class="font-weight-bold">{{ (coachDetails && coachDetails.coach) ? coachDetails.coach.numberOfSessions : '' }}</span> Sessions completed
+                    </p>
+                    <div class="rate-skill mb-2 mt-2">
+                        <div class="mb-2">
+                            <div class="category interest" *ngFor="let plan of coachDetails.planRates">
+                                {{ plan.planName }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="mb-2">
+                            <div class="category" *ngFor="let skill of coachDetails.skills">
+                                {{ skill }}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="c-faint-font mb-3 max500">
+                        {{ (coachDetails && coachDetails.coach) ? coachDetails.coach.catchyAchievementPhrase : '' }}
+                    </p>
+                    <p class="mb-0 reduced">Next available date</p>
+                    <div></div>
+                    <h6 class="c-primary-blue">{{ coachDetails.availableDate }}</h6>
+                    <div class="max400 full-button">
+                        <button (click)="checkToBookSession()" class="solid-button-2">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="tablet-case mb-3 mt-3">
+                <div class="tablet" [ngClass]="{'active-tab': activeTab === 'coach_event'}" (click)="switchTab('coach_event')">
+                    Coach's Events
+                </div>
+                <div class="tablet" [ngClass]="{'active-tab': activeTab === 'testimonies'}" (click)="switchTab('testimonies')">
+                    Testimonies
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="activeTab === 'coach_event'">
+                <div class="col-md-3 col-sm-6 mb-3" *ngFor="let event of coachEvents">
+                    <app-event-card [cardData]="event"></app-event-card>
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="activeTab === 'testimonies'">
+                <div class="col-md-6" *ngFor="let testimony of testimonies">
+                    <div class="testimony mb-3">
+                        <div class="spread-info-front mb-2">
+                            <div class="imh">
+                                <img [src]="testimony.image" alt="">
+                            </div>
+                            <h6>{{ testimony.name }}</h6>
+                        </div>
+                        <p class="c-faint-font">{{ testimony.info }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="login-switch" [ngClass]="{'login-on': isLoggedIn, 'login-off': !isLoggedIn}" (click)="switchLogin()"></div>

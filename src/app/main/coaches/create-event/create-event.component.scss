@@ -1,0 +1,345 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.navigator{
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 450px;
+    .clicker{
+        width: 40px;
+        height: 40px;
+        border: 2px solid $primary-blue-faint1;
+        color: $primary-blue;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.2s ease;
+        &:hover{
+            background-color: $primary-blue;
+            color: $white;
+        }
+        &:active{
+            transform: scale(1.1);
+        }
+    }
+    .progress{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0);
+        div{
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: $primary-blue-faint3;
+        }
+        .active{
+            background-color: $primary-blue;
+        }
+    }
+}
+.restrictor{
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding-top: 48px;
+    @include mediaM(1250px) {
+        padding-top: 30px;
+    }
+}
+
+.progress-box{
+    .progress-point{
+        .tick-area{
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: $white;
+            border: 1px solid $primary-blue-faint3;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            transition: 0.2s ease;
+        }
+        .active{
+            background-color: $primary-green;
+            border-color: $primary-green;
+            transition: 0.2s ease;
+            box-shadow: 0 0 5px -2px $primary-green-hover;
+        }
+    }
+    .add-point{
+        padding: 8px 0;
+        display: grid;
+        grid-template-columns: auto 50px;
+        input{
+            border-radius: 6px;
+            padding: 12px 5px;
+            border: 1px solid $primary-blue-faint3;
+            transition: 0.2s ease;
+            &:focus{
+                outline: none;
+                border-color: $primary-blue-faint1;
+            }
+        }
+        .add{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 4px;
+            div{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: $primary-blue;
+                color: $white;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.popular-domain{
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 11px;
+    color: $primary-blue;
+    background-color: $light-blue;
+    margin: 5px 7px;
+    cursor: pointer;
+}
+
+.active-domain{
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $primary-green;
+    margin: 5px 7px;
+    i{
+        cursor: pointer;
+    }
+}
+.upload-box{
+    background-color: $primary-blue-faint5;
+    border-radius: 8px;
+    border: 3.5px dashed $primary-blue-faint3;
+    padding: 12vh 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .upload-confirmation{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    .light-box{
+        background-color: $light-blue;
+        border-radius: 7px;
+        padding: 4px 10px;
+        cursor: pointer;
+        .image-center-sect{
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            left: 15%;
+            top: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $primary-green-hover;
+            border-radius: 50%;
+            background-color: $primary-green-hover-faint3;
+            color: $primary-green-hover;
+            p{
+                opacity: 0;
+                transition: 0.3s ease;
+                color: $white !important;
+                text-shadow: 0 0 10px $primary-green-hover;
+                font-weight: 700;
+            }
+            &:hover{
+                border-width: 3px;
+                background-color: $primary-green-hover-faint2;
+                p{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.drag-target{
+    background-color: $primary-blue-faint3;
+    border-color: $primary-blue-faint2;
+}
+
+
+.preference-box{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $grey-light;
+    padding: 15px 12px;
+    background-color: $white;
+    .preference-point{
+        // display: flex;
+        // align-items: center;
+        // justify-content: flex-start;
+        display: grid;
+        grid-template-columns: 30px 15px auto;
+        padding: 8px 0;
+        .tick-area{
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: $white;
+            border: 1px solid $primary-blue-faint3;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            transition: 0.2s ease;
+        }
+        .active{
+            background-color: $primary-green;
+            border-color: $primary-green;
+            transition: 0.2s ease;
+            box-shadow: 0 0 5px -2px $primary-green-hover;
+        }
+    }
+}
+
+.preference-point{
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 30px 15px auto;
+    padding: 8px 0;
+    .tick-area{
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $white;
+        border: 1px solid $primary-blue-faint3;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        transition: 0.2s ease;
+    }
+    .active{
+        background-color: $primary-green;
+        border-color: $primary-green;
+        transition: 0.2s ease;
+        box-shadow: 0 0 5px -2px $primary-green-hover;
+    }
+}
+
+.grid-warning{
+    border-radius: 3px;
+    background-color: $light-orange;
+    color: $orange-dark;
+    border: 1px solid $orange;
+    padding: 5px 6px;
+    display: grid;
+    grid-template-columns: 50px auto;
+    max-width: 500px;
+    p{
+        color: $orange-dark;
+    }
+    i{
+        font-size: 1.5em;
+    }
+}
+
+.plan{
+    transition: 0.3s ease;
+    width: 90%;
+    margin: 3vh auto;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 1px 8px 0 $black-faint3;
+    .plan-top{
+        padding: 10px;
+        color: $white;
+        background-color: $primary-blue;
+        transition: 0.3s ease;
+        text-align: center;
+        h3{
+            font-size: 1.1em;
+            margin-bottom: 2px;
+        }
+        p{
+            font-size: 0.8em;
+            margin-bottom: 0;
+            color: $white !important;
+        }
+    }
+    .plan-body{
+        padding: 10px;
+        background-color: $white;
+        .plan-grid{
+            display: grid;
+            grid-template-columns: 35px auto;
+            i{
+                color: $primary-green;
+                font-size: 1.5em;
+                margin-top: 4px;
+            }
+        }
+        .plan-button{
+            padding: 4vh 10px 1vh;
+            button{
+                width:100%;
+                @include solid-button($primary-green, $primary-green-hover, 20px, 8px, 1em);
+                border-radius: 5px;
+                font-weight: 500;
+            }
+        }
+    }
+    &:hover{
+        .plan-top{
+            background-color: $secondary-blue;
+        }
+    }
+}
+.selected{
+    transition: 0.3s ease;
+    box-shadow: 0 0 0 5px $primary-green;
+}
+.switch{
+    width: 35px;
+    height: 20px;
+    background-color: $grey-light;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    div{
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        border-radius: 50%;
+        box-shadow: 0 0 8px -1px $black-faint3;
+    }
+}
+.active-switch{
+    justify-content: flex-end;
+    background-color: $primary-green;
+}

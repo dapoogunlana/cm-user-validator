@@ -1,0 +1,26 @@
+<a [routerLink]="'/blog/' + cardData.blogId">
+    <div [ngClass]="{'row': !isMobile}" class="coach">
+        <div class="col-md-5 mb-2">
+            <div class="imh">
+                <img [src]="cardData.blogImage" class="rad-15" alt="">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="contain">
+                <h6>
+                    {{ cardData.blogTitle }}
+                </h6>
+                <p class="mb-2 c-primary-blue1">{{ cardData.author }}</p>
+                <div class="spread-info mb-2">
+                    <p class="mb-0 ">{{ cardData.date }}</p>
+                    <p class="mb-0 c-primary-blue1">{{ cardData.field }}</p>
+                </div>
+                <h6 class="c-primary-blue">{{ cardData.availableDate }}</h6>
+                <p class=" c-primary-blue1 mb-0">
+                    {{ cardData.briefInfo }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</a>

@@ -1,0 +1,83 @@
+<div class="hero py-5">
+    <div class="spread-info mb-custom">
+        <div class="imh logo">
+            <a routerLink="/">
+                <img src="../../../../assets/images/new-marketing/main-logo.png" alt="">
+            </a>
+        </div>
+        <a routerLink="/auth/log-in">
+            <button class="solid-button-orange-2">Login</button>
+        </a>
+    </div>
+    <div class="board">
+        <div class="">
+            <div class="imh hero-girl">
+                <img src="../../../../assets/images/new-marketing/faq-hero.png" alt="">
+            </div>
+        </div>
+        <div class="text-holder">
+            <h1 class="g-6">
+                Find a solution fast
+            </h1>
+            <p class="pt-4 mb">Search articles that answer your questions</p>
+            <div class="search-grid">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="What would you like to learn?">
+            </div>
+            <p class="pt-4 mt-3">Popular searches: <span *ngFor="let search of popularSearches" class="c-grey">{{ search }}</span></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="benefit mt-5">
+    <div class="w90 max1100">
+        <div class="w96 max800">
+            <h1 class="text-center g-6 c-pr-blue">
+                Browse help categories
+            </h1>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-md-4 col-sm-6" *ngFor="let section of helpSections">
+                <a [routerLink]="'/faq/' + section.link">
+                    <div class="w96 p-4 benefit-content my-5" data-aos="fade-up">
+                        <div class="imh w60 max60 mb-4" data-aos="zoom-in">
+                            <img [src]="section.image" alt="">
+                        </div>
+                        <h5 class="mt-2 g-6">{{section.title}}</h5>
+                        <p>{{section.info}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer p-3">
+    <div class="spread-info-web-sm w90 holder">
+        <div class="center-info">
+            <a routerLink="/insights">Insights</a>
+            <a routerLink="/faq">FAQ</a>
+            <a routerLink="/privacy">Privacy</a>
+            <a routerLink="/terms">Terms</a>
+        </div>
+        <div class="center-info">
+            <a href="">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="center-info footer-space-equator">
+            cm, Inc
+        </div>
+    </div>
+</div>
+

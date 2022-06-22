@@ -1,0 +1,70 @@
+<div class="all">
+    <div class="spacer"></div>
+    <div class="profile-grid">
+        <div class="profile-holder">
+            <div class="profile-card">
+                <h6 class="c-pr-blue">Avalability</h6>
+                <div class="spread-info category-full mb-2" *ngFor="let availability of userDetail.availability; let i = index">
+                    <span>{{ availability }}</span>
+                    <i class="fas fa-times-circle" (click)="removeAvailability(i)"></i>
+                </div>
+                <div class="text-right pr-2 mr-1 pt-2">
+                    <i class="fas fa-plus-circle blue-clicker" (click)="addAvailability()"></i>
+                </div>
+            </div>
+        </div>
+        <div class="profile-holder">
+            <div class="profile-card py-5">
+                <div class="imh curve w60 max150">
+                    <img [src]="userDetail.image ? userDetail.image : avater" alt="">
+                </div>
+                <h6 class="mt-2 mb-1 increased text-center c-pr-blue">{{ userDetail.name }}</h6>
+                <p class="mb-0 text-center c-pr-blue">{{ userDetail.profession }}</p>
+                <p class="mb-1 text-center c-pr-blue reduced font-weight-bold">{{ userDetail.placeOfWork }}</p>
+                <p class="text-center" [innerHTML]="utility.calculateColoredStars(userDetail.rating)"></p>
+                <div class="w96 max300">
+                    <p class="mb-1 mt-2 text-center c-faint-font">{{ userDetail.briefInfo }}</p>
+                </div>
+                <p class="text-center clickable" (click)="openVideo()">
+                    <i class="fas fa-video c-sc-blue"></i>
+                    &nbsp;
+                    <span class="c-pr-blue font-weight-bold">Introductory video</span>
+                </p>
+                <div class="text-center">
+                    <div class="category-shrinked text-left min70" *ngFor="let domain of userDetail.coachDomains">
+                        {{ domain.name }}
+                    </div>
+                </div>
+                <div class="rate-skill mb-3 mt-2 text-center">
+                    <div class="mb-0">
+                        <div class="category interest" *ngFor="let plan of userDetail.planRates">
+                            {{ plan.planName }}
+                        </div>
+                    </div>
+                    <p class="mb-0"><small>Hourly Rate</small> <span class="increased font-weight-bold c-pr-blue"> ${{ 210 | number}}/hr</span></p>
+                </div>
+                <div class="info-grid w100 max350">
+                    <button class="hollow-button" (click)="utility.navigateTo('/coach/change-password')">
+                        <span class="md-close">Change </span>Password</button>
+                    <span></span>
+                    <button class="solid-button" (click)="utility.navigateTo('/coach/edit-profile')">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="profile-holder">
+            <div class="profile-card web-floating-card">
+                <small class="c-pr-blue">Wallet Balance</small>
+                <h5 class="c-sc-blue mb-0 font-weight-bold">${{ userDetail.balance | number }}</h5>
+                <hr>
+                <div class="spread-info">
+                    <small class="mb-0 c-pr-green font-weight-bold clickable" (click)="openCashToBankDialogue()">Cash to bank</small>
+                    <small class="mb-0 c-pr-blue font-weight-bold clickable" (click)="openWalletHistoryDialogue()">Wallet history</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-video-modal *ngIf="showVideo" (modalSignal)="closeVideo()"></app-video-modal>
+<app-cash-to-bank-modal *ngIf="showCashToBankModal" (modalSignal)="closeCashToBankDialogue($event)" [data]="{}"></app-cash-to-bank-modal>
+<app-wallet-history-modal *ngIf="showWalletHistoryModal" (modalSignal)="closeWalletHistoryDialogue($event)" [data]="{}"></app-wallet-history-modal>

@@ -1,0 +1,29 @@
+<div class="auth-bg">
+    <div class="auth-card">
+        <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a>
+        <div class="form-flex" *ngIf="verificationStatus === descisionConstants.pending">
+            <app-loader></app-loader>
+            <p>Verifying your status.</p>
+        </div>
+        <div class="form-flex" *ngIf="verificationStatus === descisionConstants.successful">
+            <p>Redirection..</p>
+        </div>
+        <div class="form-flex" *ngIf="verificationStatus === descisionConstants.failed">
+            <div class="input-flex">
+                <div class="w100 text-center">
+                    <h6 class="mb-3">{{ serverMessage.head }}</h6>
+                    <p>{{ serverMessage.body }}</p>
+                    <div class="w80 full-button mb-2">
+                        <a routerLink="/">
+                            <button class="solid-button-2">Return Home</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

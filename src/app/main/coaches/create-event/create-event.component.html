@@ -1,0 +1,129 @@
+<div class="auth-bg">
+    <div class="auth-card" [ngClass]="{'auth-wide': progressLevel === 111}">
+        <!-- <a routerLink="/">
+            <div class="logo-holder">
+                <img src="./../../../../../assets/images/marketing/main-logo.png" alt="">
+            </div>
+        </a> -->
+        <div class="spacer"></div>
+        <div class="form-flex" *ngIf="progressLevel === 0">
+            <app-loader></app-loader>
+            <p>Setting up event creator.</p>
+        </div>
+        <div class="form-flex" *ngIf="progressLevel > 0">
+            <div class="input-flex">
+                <div class="w100 full-button" *ngIf="progressLevel === 1">
+                    <div class="restrictor">
+                        <div class="spread-info">
+                            <h6 class="mb-0">Create new event</h6>
+                            <p class="mb-0 font-weight-bold cancel" (click)="cancel()">Cancel</p>
+                        </div>
+                    </div>
+                    <form #f="ngForm" name="info_1" id="info_1">
+                        <label>Event Title</label>
+                        <input type="text" required name="title" required [(ngModel)]="newEvent.title"
+                            id="title" placeholder="Enter event title">
+                        <label>Event Description</label>
+                        <textarea type="text" required name="description" required [(ngModel)]="newEvent.description"
+                            id="description" placeholder="Enter brief description of the event" rows="2"></textarea>
+                        <label>Event Photo</label>
+                        <div class="upload-box" [ngClass]="{'drag-target': activeDrag}" (drag)="processDrag($event)" (dragenter)="processDragEnter($event)"
+                        (dragstart)="processDrag($event)" (dragend)="processDrag($event)" (dragleave)="processDragLeave($event)" (drop)="collectDragImage($event)"
+                        (dragover)="processDrag($event)">
+                            <div class="imh relative light-box" *ngIf="newEvent.eventImage; else noPreview">
+                                <div class="floating-close x-in" (click)="discardImage()">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div class="image-center-sect">
+                                    <p class="c-green increased-x text-center">Position <br> face here</p>
+                                </div>
+                                <img [src]="newEvent.eventImage" alt="">
+                            </div>
+                            <ng-template #noPreview>
+                                <p *ngIf="!activeDrag">Drag and drop image here</p>
+                                <p *ngIf="activeDrag">Now drop image here</p>
+                                <div class="light-box" (click)="triggerImageSaver()"><i class="fas fa-upload"></i> &nbsp; Upload profile picture</div>
+                                <input id="hidden_image_holder" (change)="collectImage($event)" class="full-hidden" type="file">
+                            </ng-template>
+                        </div>
+                        <p class="mt-2">
+                            Picture should not be heavier than 500KB. 
+                            Picture should have equal height and width with a minimum of 200px x 200px.
+                            Allowed picture formats are jpg, png and gif.
+                        </p>
+                    </form>
+                </div>
+                <div class="w100 full-button" *ngIf="progressLevel === 2">
+                    <div class="restrictor">
+                        <div class="spread-info">
+                            <h6 class="mb-0">Billing and Scheduling</h6>
+                            <p class="mb-0 font-weight-bold cancel" (click)="cancel()">Cancel</p>
+                        </div>
+                    </div>
+                    <form #f="ngForm" name="info_2" id="info_2">
+                        <div class="info-grid">
+                            <div>
+                                <label>Enrollment fee</label>
+                                <input type="number" required name="title" required [(ngModel)]="newEvent.title"
+                                    id="title" placeholder="Enter event title">
+                            </div>
+                            <span></span>
+                            <div>
+                                <label>Set event capacity</label>
+                                <input type="number" required name="title" required [(ngModel)]="newEvent.title"
+                                    id="title" placeholder="Enter event title">
+                            </div>
+                        </div>
+                        <label>Date</label>
+                        <div class="form-card">
+                            <app-calendar (dateChosen)="addCalenderDate($event)"></app-calendar>
+                        </div>
+                        <label>Time</label>
+                        <select required name="eventTime" form="signin_form" [(ngModel)]="newEvent.eventTime" id="eventTime">
+                            <option [value]="''" disabled>Select Time</option>
+                            <option [value]="time.value" *ngFor="let time of timeConstants">{{ time.name }}</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="w100 full-button" *ngIf="progressLevel === 3">
+                    <div class="restrictor">
+                        <div class="spread-info">
+                            <h6 class="mb-0">Event Outline</h6>
+                            <p class="mb-0 font-weight-bold cancel" (click)="cancel()">Cancel</p>
+                        </div>
+                    </div>
+                    <form #f="ngForm" name="info_2" id="info_2">
+                        <label>Event Outline</label>
+                        <textarea type="text" required name="eventOutLine" required [(ngModel)]="newEvent.eventOutLine"
+                            id="eventOutLine" placeholder="Enter outLine of the event" rows="11"></textarea>
+                    </form>
+                </div>
+                <div class="navigator">
+                    <div class="clicker" (click)="back()" [ngClass]="{'deactivate': progressLevel === 1}">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="center-info" *ngIf="loadingProgress; else progressIndicator">
+                        <app-loader></app-loader>
+                    </div>
+                    <ng-template #progressIndicator>
+                        <div class="progress">
+                            <div [ngClass]="{'active': progressLevel === 1}"></div>
+                            <div [ngClass]="{'active': progressLevel === 2}"></div>
+                            <div [ngClass]="{'active': progressLevel === 3}"></div>
+                            <!-- <div [ngClass]="{'active': progressLevel === 4}"></div>
+                            <div [ngClass]="{'active': progressLevel === 5}"></div>
+                            <div [ngClass]="{'active': progressLevel === 6}"></div>
+                            <div [ngClass]="{'active': progressLevel === 7}"></div> -->
+                        </div>
+                    </ng-template>
+                    <div class="clicker" (click)="forward()"  *ngIf="progressLevel <= 2">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <button class="solid-button-2" [disabled]="false" (click)="submit()" *ngIf="progressLevel > 2">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

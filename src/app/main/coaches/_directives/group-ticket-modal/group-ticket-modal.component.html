@@ -1,0 +1,46 @@
+<div class="vid-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="modal-closer" (click)="closeModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <h5 class="text-center py-3 g-6">Send Message</h5>
+            <form #f="ngForm" name="ticket_form" id="ticket_form">
+                <div class="w90 maxh-300 pb-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-control-dp">
+                                <label>Label</label>
+                                <input type="text" id="label" name="label" required [(ngModel)]="form.label">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-control-dp">
+                                <label>Ticket Type</label>
+                                <select class="mb-0" name="ticket_type" id="ticket_type" required form="new_group_session" [(ngModel)]="form.ticketType" 
+                                (change)="updatePrice($event)" required form="ticket_form">
+                                    <option value="free" >Free</option>
+                                    <option value="paid" >Paid</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-control-dp">
+                                <label>Available Seats</label>
+                                <input type="number" id="available_seats" required min="0" name="available_seats" [(ngModel)]="form.availableSeats">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-control-dp">
+                                <label>Price</label>
+                                <input type="number" id="price" required name="price" [(ngModel)]="form.price" [disabled]="form.ticketType === 'free'">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="solid-button-sec-2 w100" [disabled]="f.invalid" (click)="submitTicket()">{{ticketDetail.type === 'new' ? 'Create' : 'Edit'}} Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

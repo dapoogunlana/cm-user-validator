@@ -1,0 +1,241 @@
+
+<div class="py-5 w90 max1000">
+    <div class="md-close pt-4 pb-3"></div>
+    <div class="mt-5">
+        <div class="py-5 center-info" *ngIf="!payoutDataLoaded; else payoutLoaded">
+            <app-loader></app-loader>
+        </div>
+        <ng-template #payoutLoaded>
+            <div class="spread-info">
+                <h1 class="">{{pageState < 3 ? 'Payout' : pageState === 3 ? 'Balance History' : 'Payout History'}}</h1>
+                <div class="spread-info" *ngIf="pageState === 2">
+                    <button class="solid-button-sec-2 px-3 md-close" (click)="changePageState(1)"><i class="far fa-edit"></i> Edit</button>
+                    <span class="px-3 md-close"></span>
+                    <button class="solid-button-2 px-3" (click)="openWithdrawalModal()">Request Withdrawal</button>
+                </div>
+                <button class="solid-button-2 px-3 white-im c-grey-im" *ngIf="pageState === 3 || pageState === 4" (click)="changePageState(2)"><i class="fas fa-chevron-left mr-3"> </i>Back</button>
+            </div>
+            <div class="increased" *ngIf="pageState === 0">
+                <div class="notification my-3 " *ngIf="newNotification">
+                    <div class="top mb-3">
+                        <div class="spread-info-front text-danger">
+                            <i class="fas fa-exclamation-circle increased-x mr-2"></i>
+                            <p class="mb-0 g-4 increased mt-1">Alert</p>
+                        </div>
+                        <div class="closer" (click)="closeNotification()">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="">
+                            <p class="mb-0">{{ notification.message }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="shadowed rad-15 p-3 min-200">
+                            <h5 class="g-6">Bank Account Details</h5>
+                            <p class="c-grey">
+                                In order to start processing payments, you’ll need to link  your business or personal bank account. 
+                                Please connect the account where you’d like us to transfer your funds.
+                            </p>
+                            <button class="solid-button-sec-2" (click)="changePageState(1)">Connect your bank account</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="shadowed rad-15 p-3 min-200">
+                            <h5 class="g-6">Bank Account Details</h5>
+                            <p class="c-grey">
+                                In order to start processing payments, you’ll need to link  your business or personal bank account. 
+                                Please connect the account where you’d like us to transfer your funds
+                            </p>
+                            <h1>0$</h1>
+                            <button class="solid-button-sec-2 deactivated">Withdraw</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="increased input-styler" *ngIf="pageState === 1">
+                <form #account_form="ngForm" name="accountForm" id="accountForm">
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <div class="shadowed white rad-15 p-3 min-200">
+                                <h5 class="g-6">Bank Account Details</h5>
+                                <p class="c-grey">
+                                    Now let’s set up your payment information for the money your earn through coachme. Earnings will be transfered to 
+                                    the bank account below. We use Flutterwave as our payment providerm, and they require proper verification.
+                                </p>
+                                <label>Country of Account creation</label>
+                                <select class="mb-0" name="accountCountry" id="accountCountry" required form="accountform" [(ngModel)]="accountData.accountCountry">
+                                    <option value="" selected disabled>{{ countryLoadingMessage }}</option>
+                                    <option [value]="country.id" *ngFor="let country of countryList">{{ country.name }}</option>
+                                </select>
+                                <p class="g-4">Do you want to link a personal or a business acount?</p>
+                                <div class="spread-info-front">
+                                    <div class="spread-info radio-holder" [ngClass]="{'active-radio': accountData.accountOwnershipType === 'personal'}" (click)="switchAccount('personal')">
+                                        <div class="radio">
+                                            <div></div>
+                                        </div>
+                                        <span>Personal Account</span>
+                                    </div>
+                                    <div class="sp-spacer"></div>
+                                    <div class="spread-info radio-holder" [ngClass]="{'active-radio': accountData.accountOwnershipType === 'business'}" (click)="switchAccount('business')">
+                                        <div class="radio">
+                                            <div></div>
+                                        </div>
+                                        <span>Business Account</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-5">
+                            <div class="shadowed white rad-15 p-3 min-200">
+                                <h5 class="g-6 mb-3">Bank Account Details</h5>
+                                <label>Account holder's name</label>
+                                <input type="text" name="accountHolderName" id="accountHolderName" required [(ngModel)]="accountData.accountHolderName">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>City</label>
+                                        <select class="mb-0" name="city" id="city" required form="accountform" [(ngModel)]="accountData.city">
+                                            <option value="" selected disabled>Choose City</option>
+                                            <option [value]="'canada'">Canada</option>
+                                            <option [value]="'nigeria'">Nigeria</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>State / Province</label>
+                                        <select class="mb-0" name="state" id="state" required form="accountform" [(ngModel)]="accountData.state">
+                                            <option value="" selected disabled>Choose State / Province</option>
+                                            <option [value]="'canada'">Alabama</option>
+                                            <option [value]="'nigeria'">Lagos</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Zip / Postal Code</label>
+                                        <input type="text" name="postalCode" id="postalCode" [(ngModel)]="accountData.postalCode">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-5">
+                            <div class="shadowed white rad-15 p-3 min-200">
+                                <h5 class="g-6 mb-3">Address Details</h5>
+                                <label>Address</label>
+                                <input type="text" name="address" id="address" required [(ngModel)]="accountData.address">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>ACH routing number</label>
+                                        <input type="text" name="routingNumber" placeholder="Enter routing number" id="routingNumber" [(ngModel)]="accountData.routingNumber">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Account Number</label>
+                                        <input type="text" name="accountNumber" placeholder="Enter account number" id="accountNumber" [(ngModel)]="accountData.accountNumber">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Account type</label>
+                                        <select class="mb-0" name="accountType" id="accountType" required form="accountform" [(ngModel)]="accountData.accountType">
+                                            <option value="" selected disabled>Choose Account Type</option>
+                                            <option [value]="'savings'">Savings</option>
+                                            <option [value]="'current'">Current</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-5">
+                            <button class="solid-button-2 px-5" (click)="updateAccountDetails()" [disabled]="account_form.invalid">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="increased input-styler" *ngIf="pageState === 2">
+                <div class="row">
+                    <div class="col-md-12 pt-4 pb-2">
+                        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                            <div class="spread-info mb-3">
+                                <div>
+                                    <p class="mb-0 g-4">REVENUE</p>
+                                </div>
+                                <div class="">
+                                    <select name="" id="" class="soft-select" [(ngModel)]="payoutDetails.revenueBreakdown.mode">
+                                        <option value="monthly" selected disabled>Monthly</option>
+                                        <option value="weekly" selected disabled>Weekly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h1>N {{ payoutDetails.revenueSummary | number }}</h1>
+                            <div class="imh">
+                                <img src="../../../../assets/images/new-coach-dashboard/graph.png" alt="">
+                            </div>
+                            <!-- <div>
+                                <canvas #lineCanvas style="height:10vh; width:20vw"></canvas>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-4">
+                        <div class="white rad-10 p-4 shadowed clickable" (click)="changePageState(3)" data-aos="fade-right">
+                            <div class="spread-info">
+                                <p class="">Your Balance</p>
+                                <p class="c-sc-blue-im">View details <i class="fas fa-chevron-right ml-3"></i></p>
+                            </div>
+                            <h4 class="c-sc-blue g-6">N {{ payoutDetails.balanceSummary | number }}</h4>
+                            <p class="c-grey reduced mb-1">Estimated future payouts</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pt-4">
+                        <div class="white rad-10 p-4 shadowed clickable" (click)="changePageState(4)" data-aos="fade-left">
+                            <div class="spread-info">
+                                <p class="">Total Payouts</p>
+                                <p class="c-sc-blue-im">View details <i class="fas fa-chevron-right ml-3"></i></p>
+                            </div>
+                            <h4 class="c-sc-blue g-6">N {{ payoutDetails.totalPayoutSummary | number }}</h4>
+                            <p class="c-grey reduced mb-1">Expected Today</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 full-button pt-3">
+                        <button class="solid-button-sec-2 px-3 md-open"><i class="far fa-edit"></i> Edit Account Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="increased input-styler" *ngIf="pageState === 3">
+                <div class="row">
+                    <div class="col-md-12 pt-4">
+                        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                            <app-default-table [title]="''" [tableData]="balanceTableData" [calculateTotal]="false"></app-default-table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-4">
+                        <div class="white rad-10 p-3 py-4 shadowed" data-aos="fade-up">
+                            <div class="spread-info">
+                                <div>
+                                    <p class="mb-0">Total Balance <i class="fas fa-chevron-right ml-3"></i></p>
+                                </div>
+                                <h4 class="c-sc-blue mb-0 g-6">N {{ payoutDetails.balanceSummary | number }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="increased input-styler" *ngIf="pageState === 4">
+                <div class="row">
+                    <div class="col-md-12 pt-4">
+                        <div class="white rad-15 p-3 shadowed" data-aos="fade-up">
+                            <app-default-table [title]="''" [tableData]="payoutsTableData" [calculateTotal]="false"></app-default-table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-4">
+                        <div class="white rad-10 p-3 py-4 shadowed" data-aos="fade-up">
+                            <div class="spread-info">
+                                <div>
+                                    <p class="mb-0">Total Payouts <i class="fas fa-chevron-right ml-3"></i></p>
+                                </div>
+                                <h4 class="c-sc-blue mb-0 g-6">N {{ payoutDetails.totalPayoutSummary | number }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

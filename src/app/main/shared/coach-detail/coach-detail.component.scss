@@ -1,0 +1,62 @@
+@import 'src/assets/styles/variables.scss';
+@import 'src/assets/styles/general.scss';
+
+.all{
+    padding: 23vh 0 10vh;
+    background-color: #f1f3f6;
+    .coach-img{
+        img{
+            width: 100%;
+            border-radius: 25px;
+        }
+    }
+    .coach-info{
+        .rate-skill{
+            padding: 6px;
+            border-radius: 3px;
+            background-color: $white;
+            border: 1px solid $primary-blue-faint3;
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+    .testimony{
+        .imh{
+            width: 30px;
+            border-radius: 50%;
+            margin-right: 22px;
+            img{
+                width: 100%;
+            }
+        }
+        h6{
+            color: $primary-blue;
+            font-size: 1.1em;
+        }
+    }
+}
+
+.login-switch{
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    right: 5%;
+    top: 15%;
+    border-radius: 50%;
+    border: 1px solid #f1f3f6;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover{
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+.login-on{
+    background-color: $primary-green;
+    box-shadow: 0 0 12px 0 rgba(37, 190, 101, 0.3);
+}
+.login-off{
+    background-color: $red;
+    box-shadow: 0 0 12px 0 rgba(194, 12, 12, 0.3);
+}
